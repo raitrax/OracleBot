@@ -19,12 +19,9 @@ module.exports = class InviteCommand extends Command {
     .setTitle("Informations")
     .setDescription("Voici quelques informations concernant")
     .setColor(0xcd6e57)
-    .setFooter("DraftMan | Développeur FrontEnd & Graphiste", "https://www.draftman.fr/images/avatar.jpg")
+    .setFooter("Raitrax | Développeur C#", "https://www.draftman.fr/images/avatar.jpg")
     .addField("Lib du bot", "[discord.js](https://discord.js.org)", true)
-    .addField("Website", "[draftman.fr](https://www.draftman.fr/)", true)
     .addField("DiscordBots", "[discordbots.org/draftbot](https://discordbots.org/bot/318312854816161792)", true)
-    .addField("Support", "[draftman.fr/discord](https://www.draftman.fr/discord)", true)
-    .addField("Twitter", "[twitter.com/DraftMan_Dev](https://twitter.com/DraftMan_Dev)", true)
     .addField("Développeur", "Raitrax#8360", true)
     .setTimestamp()
 

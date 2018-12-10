@@ -8,7 +8,7 @@ module.exports = class AvatarCommand extends Command {
       memberName: 'guildscount',
       group: 'bot',
       aliases: ['guilds','guildsnbr','serveurs','serveursnbr'],
-      description: 'Afficher le nombre de serveurs du DraftBot',
+      description: 'Afficher le nombre de serveurs du OracleBot',
       examples: ['guildscount']
     });
   }
@@ -16,7 +16,7 @@ module.exports = class AvatarCommand extends Command {
   run (msg) {
     const embed = new MessageEmbed()
     .setColor('#cd6e57')
-    .setDescription(`Le DraftBot se trouves sur ${this.client.guilds.size} ${this.client.guilds.size > 1 ? 'serveurs' :'serveur'}`)
+    .setDescription(`Le OracleBot se trouves sur ${this.client.guilds.size} ${this.client.guilds.size > 1 ? 'serveurs' :'serveur'}`)
     .setTimestamp(msg.createdAt);
 
     msg.delete()

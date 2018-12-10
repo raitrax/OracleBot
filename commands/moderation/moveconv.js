@@ -33,9 +33,9 @@ module.exports = class MoveConvCommand extends Command {
     const oldChannel = msg.guild.channels.get(msg.channel.id);
 
     channel.fetchWebhooks().then(async webhooks => {
-      let hook = webhooks.find(hook => hook.name === 'DraftBot')
+      let hook = webhooks.find(hook => hook.name === 'OracleBot')
       if(!hook){
-       hook = await channel.createWebhook('DraftBot')
+       hook = await channel.createWebhook('OracleBot')
       }
 
       channel.send('',{embed: new MessageEmbed()

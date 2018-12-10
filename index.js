@@ -1,40 +1,40 @@
 const { CommandoClient, SyncSQLiteProvider } = require('discord.js-commando');
 const path = require('path');
 const {makeWelcomeImage,newUser,guildAdd,sendLogsServ,invites,createTables,error,getLevelFromXp,getLastUserReward} = require('./utils.js');
-const websocket = require('./websocket');
+//const websocket = require('./websocket');
 const {oneLine} = require('common-tags');
 const Database = require('better-sqlite3');
 
 require('dotenv').config();
 
-const DraftBot = new CommandoClient({
+const OracleBot = new CommandoClient({
     commandPrefix: '!',
     unknownCommandResponse: false,
     owner: '207190782673813504',
     disableEveryone: true
 });
 
-new websocket(process.env.token, 8000, DraftBot)
+//new websocket(process.env.token, 8000, OracleBot)
 
 const settings = new Database(path.join(__dirname, './settings.sqlite'));
 const db = new Database(path.join(__dirname, './storage.sqlite'));
-DraftBot.setProvider(new SyncSQLiteProvider(settings));
+OracleBot.setProvider(new SyncSQLiteProvider(settings));
 
-DraftBot.on('ready', () => {
-    console.log('DraftBot connecté !')
-    console.log(`Actif sur ${DraftBot.guilds.size} serveurs.`);
-    DraftBot.user.setActivity('ses lignes', {type: 'WATCHING'})
+OracleBot.on('ready', () => {
+    console.log('OracleBot connecté !')
+    console.log(`Actif sur ${OracleBot.guilds.size} serveurs.`);
+    OracleBot.user.setActivity('ses lignes', {type: 'WATCHING'})
     createTables()
 });
 
-DraftBot.on('guildMemberAdd', member => {
+OracleBot.on('guildMemberAdd', member => {
     makeWelcomeImage(member);
     newUser(member, true)
 })
 
-DraftBot.on('guildMemberRemove', member => newUser(member, false))
+OracleBot.on('guildMemberRemove', member => newUser(member, false))
 
-DraftBot.on('roleUpdate', (oldRole,newRole) => {
+OracleBot.on('roleUpdate', (oldRole,newRole) => {
     if(oldRole.name === 'new role') {
         sendLogsServ(oldRole.guild,`Le role **${newRole.name}** a été crée.`,oneLine`
             ${oldRole.hexColor  !== newRole.hexColor  ? '- La couleur du role à été défini sur \`'+newRole.hexColor +'\`.\n':''}
@@ -53,22 +53,22 @@ DraftBot.on('roleUpdate', (oldRole,newRole) => {
     }
 })
 
-DraftBot.on('roleDelete', role => sendLogsServ(role.guild,`Le role ${role.name} a été supprimé.`,null))
+OracleBot.on('roleDelete', role => sendLogsServ(role.guild,`Le role ${role.name} a été supprimé.`,null))
 
-DraftBot.on('emojiCreate', emoji => sendLogsServ(emoji.guild, `L'émoji ${emoji.name} a été crée.`,null))
+OracleBot.on('emojiCreate', emoji => sendLogsServ(emoji.guild, `L'émoji ${emoji.name} a été crée.`,null))
 
-DraftBot.on('emojiDelete', emoji => sendLogsServ(emoji.guild, `L'émoji ${emoji.name} a été supprimé.`,null))
+OracleBot.on('emojiDelete', emoji => sendLogsServ(emoji.guild, `L'émoji ${emoji.name} a été supprimé.`,null))
 
-DraftBot.on('guildCreate', guild => guildAdd(guild))
+OracleBot.on('guildCreate', guild => guildAdd(guild))
 
-DraftBot.on('channelCreate', channel => {
+OracleBot.on('channelCreate', channel => {
     if(!channel.guild) return;
     sendLogsServ(channel.guild, `Le salon ${channel.name} a été crée.`,null)
 })
 
-DraftBot.on('channelDelete', channel => sendLogsServ(channel.guild, `Le salon ${channel.name} a été supprimé.`,null))
+OracleBot.on('channelDelete', channel => sendLogsServ(channel.guild, `Le salon ${channel.name} a été supprimé.`,null))
 
-DraftBot.on('message', message => {
+OracleBot.on('message', message => {
     if(!message.guild || message.author.bot) return;
     if (message.guild && message.guild.settings.get('invites') === false && invites(message, message.client)) message.delete();
 
@@ -109,12 +109,12 @@ DraftBot.on('message', message => {
     }
 });
 
-DraftBot.on('raw', event => {
+OracleBot.on('raw', event => {
     const { d: data } = event;
     if (event.t === 'MESSAGE_REACTION_ADD' || event.t == "MESSAGE_REACTION_REMOVE"){
-        const channel = DraftBot.channels.get(event.d.channel_id);
+        const channel = OracleBot.channels.get(event.d.channel_id);
         channel.messages.fetch(event.d.message_id).then(msg=> {
-            if(msg.author.id === DraftBot.user.id){
+            if(msg.author.id === OracleBot.user.id){
                 let user = msg.guild.member(data.user_id);
 
                 const result = db.prepare(`SELECT role FROM "reacts" WHERE message='${msg.id}' AND emoji='${data.emoji.id||data.emoji.name}' AND guild='${msg.guild.id}'`).get()
@@ -137,7 +137,7 @@ DraftBot.on('raw', event => {
     }
 });
 
-DraftBot.registry
+OracleBot.registry
     .registerDefaultTypes()
     .registerGroups([
         ['bot', 'Bot - Informations par rapport au bot et au discord'],
@@ -159,4 +159,4 @@ DraftBot.registry
       })
     .registerCommandsIn(path.join(__dirname, 'commands'));
 
-DraftBot.login(process.env.token);
+OracleBot.login(process.env.token);

@@ -1,68 +1,4 @@
-   return roleAutoAsk(msg).then(response => {
-        const value = response.response
-        //aucun stockage 
-        msg.embed(resultEmbed(msg,`La fonction de role automatique est maintenant **${value === true ? 'activé' : 'désactivé'}** !`))
-        this.runProcess(msg, value === true ? 4 : 5)
-      }).catch(error => console.log(error))
-    }
-    if(process === 4){
-      return roleAuto(msg).then(response => {
-        const value = response.response;
-        msg.guild.settings.set('defaultRole', value.id);
-    
-        msg.embed(resultEmbed(msg,`Le role \`${value.name}\` sera maintenant ajouté automatiquement aux nouveaux membres !`))
-        this.runProcess(msg,5);
-      }).catch(error => console.log(error))
-    }
-    if(process === 5){
-      return logsMessagesBot(msg).then(response => {
-        const value = response.response;
-        msg.guild.settings.set('logsMessageBot',value);
-    
-        msg.embed(resultEmbed(msg,`Les messages de logs du bot sont maintenant **${value === true ? 'activés' : 'désactivés'}** !`))
-        this.logschannel = value;
-        this.runProcess(msg, 6);
-      }).catch(error => console.log(error))
-    }
-    if(process === 6){
-      return logsMessagesServ(msg).then(response => {
-        const value = response.response
-        msg.guild.settings.set('logsMessageServ',value);
-    
-        msg.embed(resultEmbed(msg,`Les messages de logs du serveur sont maintenant **${value === true ? 'activés' : 'désactivés'}** !`))
-        this.runProcess(msg, value === true || this.logschannel === true ? 7 : 8)
-      }).catch(error => console.log(error))
-    }
-    if(process === 7){
-      return channelLogs(msg).then(response => {
-        const value = response.response;
-        msg.guild.settings.set('logsChannel', value);
-    
-        msg.embed(resultEmbed(msg,`Les messages de logs seront maintenant envoyés dans le salon \`#${value.name}\` !`))
-        this.runProcess(msg,8)
-      }).catch(error => console.log(error))
-    }
-    if(process === 8){
-      return levelSystem(msg).then(response => {
-        const value = response.response;
-        msg.guild.settings.set('levelSystem', value);
-    
-        msg.embed(resultEmbed(msg,`Le système de niveau est maintenant **${value === true ? 'activé' : 'désactivé'}** !`))
-        this.runProcess(msg,9)
-      }).catch(error => console.log(error))
-    }
-    if(process === 9){
-      return authorizeInvites(msg).then(response => {
-        const value = response.response;
-        msg.guild.settings.set('invites', value);
-    
-        msg.embed(resultEmbed(msg,`Les invitations seront maintenant **${value === true ? 'autorisés' : 'interdites donc supprimés'}** !`))
-        this.runProcess(msg,10)
-      }).catch(error => console.log(error))
-    }
-
-    // Il n'y pas plus de process
-    msg.embed(questionEmbed(msg,'Félicitations, la conconst { MessageEmbed } = require('discord.js')
+const { MessageEmbed } = require('discord.js')
 const { Command } = require('discord.js-commando')
 const { stripIndents } = require('common-tags')
 const { findChannel,findRole } = require('../../utils.js')
@@ -142,7 +78,71 @@ module.exports = class InviteCommand extends Command {
       }).catch(error => console.log(error))
     }
     if(process === 3){
-   figuration est terminée, merci !'))
+      return roleAutoAsk(msg).then(response => {
+        const value = response.response
+        //aucun stockage 
+        msg.embed(resultEmbed(msg,`La fonction de role automatique est maintenant **${value === true ? 'activé' : 'désactivé'}** !`))
+        this.runProcess(msg, value === true ? 4 : 5)
+      }).catch(error => console.log(error))
+    }
+    if(process === 4){
+      return roleAuto(msg).then(response => {
+        const value = response.response;
+        msg.guild.settings.set('defaultRole', value.id);
+    
+        msg.embed(resultEmbed(msg,`Le role \`${value.name}\` sera maintenant ajouté automatiquement aux nouveaux membres !`))
+        this.runProcess(msg,5);
+      }).catch(error => console.log(error))
+    }
+    if(process === 5){
+      return logsMessagesBot(msg).then(response => {
+        const value = response.response;
+        msg.guild.settings.set('logsMessageBot',value);
+    
+        msg.embed(resultEmbed(msg,`Les messages de logs du bot sont maintenant **${value === true ? 'activés' : 'désactivés'}** !`))
+        this.logschannel = value;
+        this.runProcess(msg, 6);
+      }).catch(error => console.log(error))
+    }
+    if(process === 6){
+      return logsMessagesServ(msg).then(response => {
+        const value = response.response
+        msg.guild.settings.set('logsMessageServ',value);
+    
+        msg.embed(resultEmbed(msg,`Les messages de logs du serveur sont maintenant **${value === true ? 'activés' : 'désactivés'}** !`))
+        this.runProcess(msg, value === true || this.logschannel === true ? 7 : 8)
+      }).catch(error => console.log(error))
+    }
+    if(process === 7){
+      return channelLogs(msg).then(response => {
+        const value = response.response;
+        msg.guild.settings.set('logsChannel', value);
+    
+        msg.embed(resultEmbed(msg,`Les messages de logs seront maintenant envoyés dans le salon \`#${value.name}\` !`))
+        this.runProcess(msg,8)
+      }).catch(error => console.log(error))
+    }
+    if(process === 8){
+      return levelSystem(msg).then(response => {
+        const value = response.response;
+        msg.guild.settings.set('levelSystem', value);
+    
+        msg.embed(resultEmbed(msg,`Le système de niveau est maintenant **${value === true ? 'activé' : 'désactivé'}** !`))
+        this.runProcess(msg,9)
+      }).catch(error => console.log(error))
+    }
+    if(process === 9){
+      return authorizeInvites(msg).then(response => {
+        const value = response.response;
+        msg.guild.settings.set('invites', value);
+    
+        msg.embed(resultEmbed(msg,`Les invitations seront maintenant **${value === true ? 'autorisés' : 'interdites donc supprimés'}** !`))
+        this.runProcess(msg,10)
+      }).catch(error => console.log(error))
+    }
+
+    // Il n'y pas plus de process
+    msg.embed(questionEmbed(msg,'Félicitations, la configuration est terminée, merci !'))
     stopTimer()
     msg.client.emit('cancel')
   }
