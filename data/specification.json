@@ -1,0 +1,30 @@
+[
+  {
+    "Nom":"DPSPFTT",
+    "Spec" : "Super - Pouvoirs : 1 point\n Chances d'attaque critique : 20 points\n Dégât d'attaque critique : 40 points\n Puissance et Pouvoir : 215 points\n Santé : 215 points"
+  },
+  {
+    "Nom":"DPSHYBRID",
+    "Spec" : "Hybride : 1 point\n Chances d'attaque critique : 20 points\n Dégât d'attaque critique : 40 points\n Précision : 215 points\n Puissance et Pouvoir : 215 points\n Santé : 215 points\n Partager entre puissance et précision"
+  },
+  {
+    "Nom":"DPSEXPERTARMES",
+    "Spec" : "Points dans les armes utilisées\n Expert en armes : 1 point\n Chances d'attaque critique : 20 points\n Dégât d'attaque critique : 40 points\n Précision: 215 points\n Santé : 215 points"
+  },
+  {
+    "Nom":"TROLL",
+    "Spec" : "Hybride : 1 point\n Chance de puissance critique : 20 points\n Magnitude de puissance critique : 10 points\n Vitalisation : 215 points\n Puissance et Pouvoir : 215 points\n Dominance : 215 points\n Santé : 215 points\n Partager entre Puissance et Dominance"
+  },
+  {
+    "Nom":"TANKDOMI",
+    "Spec" : "Hybride : 1 point\n Chances d'attaque critique : 20 points\n Dégât d'attaque critique : 40 points\n Dominance : 215 points\n Santé : 215 points\n Partager entre Santé et Dominance"
+  },
+  {
+    "Nom":"TANKHEAL",
+    "Spec" : "Hybride : 1 point\n Chance de guérison critique : 20 points\n Magnitude de guérison critique : 40 points\n Restauration : 215 points\n Dominance : 215 points\n Santé : 215 points\n Partager entre Santé et Dominance"
+  },
+  {
+    "Nom":"HEAL",
+    "Spec" : "Hybride : 1 point\n Chance de guérison critique : 20 points\n Magnitude de guérison critique : 40 points\n Restauration : 215 points\n Puissance et Pouvoir : 215 points\n Magnitude de puissance critique : 10 points\n Santé : 215 points"
+  }
+]
