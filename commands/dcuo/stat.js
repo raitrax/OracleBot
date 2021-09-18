@@ -1,35 +1,22 @@
-const { Command } = require('discord.js-commando');
-//const { RichEmbed } = require('discord.js');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const snekfetch = require("snekfetch");
 const fetch = require("node-fetch");
 const {MessageEmbed} = require('discord.js');
 
-module.exports = class StatCommand extends Command {
-  constructor(client) {
-    super(client, {
-      name: 'stat',
-      group: 'dcuo',
-      memberName: 'stat',
-      description: 'Affiche les stats d\'un joueur de DCUO sur le serveur EUPC/PS.',
-      examples: ['stat'],
-      args: [
-        {
-          key: 'name1',
-          prompt: 'premier nom',
-          type: 'string',
-          default : ''
-        },
-        {
-          key: 'name2',
-          prompt: 'deuxième nom',
-          type: 'string',
-          default : ''
-        }
-      ]
-    });
-  }
-
-  run(msg, { name1, name2 }) {
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('stat')
+		.setDescription('stat dcuo')
+		.addStringOption(option => 
+      option.setName('name1')
+      .setDescription('The user\'s avatar to show')
+      )
+    .addStringOption(option => 
+      option.setName('name2')
+      .setDescription('The user\'s avatar to show')
+      ),
+    
+	async execute(interaction) {
     var name = "";
     if (!name1) {
       return msg.say("Spécifie un pseudo. Ex: badbay973 Ex: Aretix Gaming")
@@ -159,34 +146,5 @@ module.exports = class StatCommand extends Command {
       }
     };
     getCharacterStat(rescharacter);
-
-    /*
-    //console.log("region : "+ region);
-    console.log(charactername);
-    console.log(combat_rating);
-    console.log(pvp_combat_rating);
-    console.log(skill_points);
-    console.log(pouvoir);
-    console.log(ligue);
-    console.log(region);
-    var Resistance = "Santé : " + max_health + "\nPouvoir : " + max_power + "\nDéfense : " + defense + "\nEndurance : " + toughness;
-    var Action = "Puissance : " + might + "\nPrécision : " + precision + "\nVitalisation : " + vitalization + "\nRestauration : " + restoration + "\nDominance : " + dominance;
-    const embed = new RichEmbed()
-    .setTitle(charactername)
-    //.setAuthor(msg.author.username, msg.author.displayAvatarURL)
-    .setColor(0x00AE86)
-    .setTimestamp()
-    .setDescription("Pour plus de détails sur le joueur via DCUOBLOGUIDE, [Clique ICI](http://census.dcuobloguide.com/character/stats/" + character_list.character_id + ")")
-    .setThumbnail("http://census.daybreakgames.com/files/dcuo/images/character/paperdoll/"+ character_list.character_id )
-    .addField("CR", combat_rating, true)
-    .addField("SP", skill_points, true)
-    .addField("PVP", pvp_combat_rating, true)
-    .addField("Pouvoir", pouvoir, true)
-    .addField("Ligue", ligue)
-    .addField("Resistance", Resistance, true)
-    .addField("Action", Action, true)
-    .setFooter("Demandé par " + msg.author.username , msg.author.avatarURL);
-
-    return msg.embed(embed);*/
   }
 };

@@ -1,49 +1,28 @@
 {
-  "name": "oraclebot",
-  "version": "4.0.0",
-  "description": "Raitrax Discord Bot",
+  "name": "oraclebotjscommando",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "discord",
-    "raitrax",
-    "commando"
-  ],
-  "author": "Raitrax",
-  "license": "GPL-3.0",
-  "dependencies": {
-    "better-sqlite3": "^5.0.1",
-    "common-tags": "^1.8.0",
-    "dblapi.js": "^2.3.0",
-    "discord.js": "git+https://github.com/Favna/discord.js.git",
-    "discord.js-commando": "git+https://github.com/DraftFiles/Commando.git",
-    "dotenv": "^6.2.0",
-    "express": "^4.16.4",
-    "ffmpeg": "0.0.4",
-    "fuse.js": "^3.3.0",
-    "jimp": "^0.3.11",
-    "jsdom": "^13.0.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.22.2",
-    "node-fetch": "^2.3.0",
-    "node-opus": "^0.3.1",
-    "simple-youtube-api": "^5.1.1",
-    "snekfetch": "^4.0.4",
-    "sqlite": "^3.0.0",
-    "sqlite3": "^4.0.4",
-    "string-pixel-width": "^1.8.0",
-    "to-markdown": "^3.1.1",
-    "ytdl-core": "^0.25.2"
-  },
-  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DraftProducts/DraftBot.git"
+    "url": "git+https://github.com/raitrax/OracleBotJSCommando.git"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DraftProducts/DraftBot/issues"
+    "url": "https://github.com/raitrax/OracleBotJSCommando/issues"
   },
-  "homepage": "https://github.com/DraftProducts/DraftBot#readme"
+  "homepage": "https://github.com/raitrax/OracleBotJSCommando#readme",
+  "dependencies": {
+    "@discordjs/builders": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.23.1",
+    "discord.js": "^13.1.0",
+    "path": "^0.12.7",
+    "snekfetch": "^4.0.4"
+  }
 }
