@@ -5,7 +5,7 @@ const Lspd = require("../models/Lspd");
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('editlspd')
+		.setName('showlspd')
 		.setDescription("édition d'un membre LSPD")
 		.addStringOption(option => option.setName('matricule').setDescription("matricule de l'agent"))
 		.addStringOption(option => option.setName('nom').setDescription("matricule de l'agent"))
@@ -26,14 +26,11 @@ module.exports = {
 		const Number = interaction.options.getString('number');
 		const Grade = interaction.options.getString('grade');
 
-		const tagList = Lspd.findOne({ where: { matricule: Matricule } })
-		console.log(tagList);
-		// equivalent to: UPDATE tags (descrption) values (?) WHERE name = ?;
-		//const affectedRows = await Lspd.update({ nom: Nom, number : Number, grade : Grade }, { where: { matricule: Matricule } });
-
-		//if (affectedRows > 0) {
-		//	return interaction.reply(`Matricule ${Matricule} à été édité.`);
-		//}
+		// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
+		//const LSPDsrch = await Lspd.findOne({ where: { matricule: Matricule } });
+		
+		
+		//return interaction.reply(`Could not find tag: ${LSPDsrch}`);
 
 		//return interaction.reply(`Le matricule ${Matricule} est introuvable.`);
 	},

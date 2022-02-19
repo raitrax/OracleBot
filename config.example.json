@@ -1,4 +1,5 @@
 {
 	"token": "BotID",
-    "clientId": "AuthorID"
+    "clientId": "AuthorID",
+    "guildId": "guildId"
 }

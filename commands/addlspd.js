@@ -30,7 +30,7 @@ module.exports = {
 			console.log(Number);
 			console.log(Grade);
 
-			try {
+			/*try {
 				// equivalent to: INSERT INTO tags (name, descrption, username) values (?, ?, ?);
 				
 				console.log("ajout LSPD");
@@ -49,7 +49,7 @@ module.exports = {
 					marie: Toto,
 					sierra: Toto,
 					poursuite: Toto,
-					persecours: Toto/**/
+					persecours: Toto
 				});
 				console.log("Reply LSPD");
 				return interaction.reply({content:`LSPD [${LSPD.matricule}] ${LSPD.nom} (${LSPD.number}) ajouté au grade de ${LSPD.grade}. Braquage : ${LSPD.braquages}`, ephemeral: true});
@@ -59,6 +59,7 @@ module.exports = {
 					return interaction.reply({content:"Cette personne fait déjà partie de l'effectif!", ephemeral: true});
 				}
 				return interaction.reply({content:"Quelque chose c'est mal passé dans l'ajout du membre LSPD.", ephemeral: true});
-			}
+			}*/
+			
 	},
 };

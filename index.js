@@ -35,7 +35,7 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 	storage: 'database.sqlite',
 });
 
-client.once('ready', () => {
+client.once('ready', () =>  {
 	db.authenticate().then(() => {
         console.log("Logged in to DB.");
         Lspd.init(db);
@@ -46,6 +46,31 @@ client.once('ready', () => {
 	effectifLspd();
 	//formationsLspd();
 	console.log('Ready!');
+	/*var obj = {
+		table: []
+	};
+	obj.table.push({id: 1, square:2});
+	var json = JSON.stringify(obj);
+	fs.writeFile('data/agentsLSPD.json', json, 'utf8', function(err){
+		if (err){
+			console.log(err);
+		}});*/
+
+	console.log("test deb");
+		fs.readFile('data/agentsLSPD.json', 'utf8', function readFileCallback(err, data){
+			if (err){
+				console.log(err);
+			} else {
+			obj = JSON.parse(data); //now it an object
+			console.log(obj);
+			obj.table.push({id: 2, square:3}); //add some data
+			json = JSON.stringify(obj); //convert it back to json
+			//fs.writeFile('data/agentsLSPD.json', json, 'utf8', function(err){
+			//	if (err){
+			//		console.log(err);
+			//	}}); // write it back 
+			console.log("test fin");
+		}});
 });
 
 client.on('interactionCreate', async interaction => {
@@ -53,6 +78,8 @@ client.on('interactionCreate', async interaction => {
 
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
+		
+	
 /*
 	if (commandName === 'addLSPD') {
 		const Matricule = interaction.options.getString('matricule');
@@ -176,18 +203,16 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-function effectifLspd()
+async function effectifLspd()
 {	
 
-	const channel = client.channels.cache.get('931249085678252123');
-	 channel.bulkDelete(99, true).catch(error => {
+	const EffectifChannel = client.channels.cache.get('931249085678252123');
+	EffectifChannel.bulkDelete(99, true).catch(error => {
 		console.error(error);
 		channel.send({ content: 'There was an error trying to prune messages in this channel!', ephemeral: true });
 	});
-	const tagList = Lspd.findAll({ attributes: ['matricule'] });
-	console.log(tagList);
-
-    channel.send("```Effectif : ```");
+	//const tagList = Lspd.findAll({ attributes: ['matricule'] });
+	//console.log(tagList);
 }
 
 function formationsLspd()

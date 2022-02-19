@@ -16,11 +16,11 @@ module.exports = {
 			console.log(Matricule);
 			console.log("suppression LSPD");
 			// equivalent to: DELETE from tags WHERE name = ?;
-		const rowCount = await Lspd.destroy({ where: { matricule: Matricule } });
+		//const rowCount = await Lspd.destroy({ where: { matricule: Matricule } });
 		//const rowCount1 = await Formations.destroy({ where: { matricule: Matricule } });
 
-		if (!rowCount) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
+		//if (!rowCount) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
 
-		return interaction.reply({content:'Membre LSPD supprimé.', ephemeral: true});
+		//return interaction.reply({content:'Membre LSPD supprimé.', ephemeral: true});
 	},
 };
