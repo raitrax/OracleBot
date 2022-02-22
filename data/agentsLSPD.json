@@ -1,1 +1,34 @@
-{"table":[{"id":1,"square":2},{"id":2,"square":3},{"id":2,"square":3},{"id":2,"square":3}]}
+{
+    "table": [
+        {
+            "matricule": "95",
+            "nom": "Lucius Tempest",
+            "number": "555-9900",
+            "grade": "Officier Supérieur",
+            "braquages": "Non validée",
+            "colonneswat": "Non validée",
+            "penitencier": "Non validée",
+            "henryu": "Non validée",
+            "henryd": "Non validée",
+            "marie": "Non validée",
+            "sierra": "Non validée",
+            "poursuite": "Non validée",
+            "persecours": "Non validée"
+        },
+        {
+            "matricule": "18",
+            "nom": "Patrick Balosto",
+            "number": "555-2318",
+            "grade": "Lieutenant",
+            "braquages": "Non validée",
+            "colonneswat": "Non validée",
+            "penitencier": "Non validée",
+            "henryu": "Non validée",
+            "henryd": "Non validée",
+            "marie": "Non validée",
+            "sierra": "Non validée",
+            "poursuite": "Non validée",
+            "persecours": "Non validée"
+        }
+    ]
+}

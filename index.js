@@ -1,13 +1,11 @@
 const fs = require('fs');
 const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
 const { token, clientId, guildId } = require('./config.json');
-const Sequelize = require('sequelize');
 const { Console } = require('console');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
-const db = require('./database/database');
-const Lspd = require('./models/Lspd');
-const Formations = require('./models/Formations');
+const path = require('path');
+const agent = ('./data/agentsLSPD.json');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const commands = [];
@@ -27,23 +25,8 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
 	.catch(console.error);
 
-const sequelize = new Sequelize('database', 'username', 'password', {
-	host: 'localhost',
-	dialect: 'sqlite',
-	logging: false,
-	// SQLite only
-	storage: 'database.sqlite',
-});
-
 client.once('ready', () =>  {
-	db.authenticate().then(() => {
-        console.log("Logged in to DB.");
-        Lspd.init(db);
-		Lspd.sync();
-		Formations.init(db);
-		Formations.sync();
-    }).catch(err => console.log(err));
-	effectifLspd();
+	//effectifLspd();
 	//formationsLspd();
 	console.log('Ready!');
 	/*var obj = {
@@ -56,21 +39,22 @@ client.once('ready', () =>  {
 			console.log(err);
 		}});*/
 
-	console.log("test deb");
-		fs.readFile('data/agentsLSPD.json', 'utf8', function readFileCallback(err, data){
+		/*fs.readFile(agent, 'utf8', function readFileCallback(err, data){
 			if (err){
-				console.log(err);
+				console.log("erreur catch1" +err);
 			} else {
 			obj = JSON.parse(data); //now it an object
 			console.log(obj);
-			obj.table.push({id: 2, square:3}); //add some data
+			//console.log(LSPD2);
+			//obj.table.push(test1); //add some data
+			//obj.table.push({id: 2, square:3}); //add some data
 			json = JSON.stringify(obj); //convert it back to json
-			//fs.writeFile('data/agentsLSPD.json', json, 'utf8', function(err){
-			//	if (err){
-			//		console.log(err);
-			//	}}); // write it back 
+			fs.writeFile(agent, json, 'utf8', function(err){
+				if (err){
+					console.log("erreur catch2" +err);
+				}}); // write it back 
 			console.log("test fin");
-		}});
+		}});*/
 });
 
 client.on('interactionCreate', async interaction => {

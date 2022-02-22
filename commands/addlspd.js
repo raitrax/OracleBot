@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const db = require("../database/database");
-const Lspd = require("../models/Lspd");
+const agent = './data/agentsLSPD.json';
+const fs = require('fs');
 
 
 module.exports = {
@@ -8,9 +8,9 @@ module.exports = {
 		.setName('addlspd')
 		.setDescription("ajout d'un membre LSPD")
 		.addStringOption(option => option.setName('matricule').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('nom').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('number').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('grade').setDescription("matricule de l'agent")
+		.addStringOption(option => option.setName('nom').setDescription("nom de l'agent"))
+		.addStringOption(option => option.setName('number').setDescription("numéro de l'agent"))
+		.addStringOption(option => option.setName('grade').setDescription("grade de l'agent")
 		.addChoice("Cadet", "Cadet")
 		.addChoice("Officier", "Officier")
 		.addChoice("Officier Supérieur", "Officier Supérieur")
@@ -30,36 +30,43 @@ module.exports = {
 			console.log(Number);
 			console.log(Grade);
 
-			/*try {
+			//try {
 				// equivalent to: INSERT INTO tags (name, descrption, username) values (?, ?, ?);
 				
 				console.log("ajout LSPD");
 				const Toto = "Non validée"; 
 
-				const LSPD = await Lspd.create({
-					matricule: Matricule,
-					nom: Nom,
-					number: Number,
-					grade: Grade,
-					braquages: Toto,
-					colonneswat: Toto,
-					penitencier: Toto,
-					henryu: Toto,
-					henryd: Toto,
-					marie: Toto,
-					sierra: Toto,
-					poursuite: Toto,
-					persecours: Toto
-				});
+				var LSPD2 = {
+					"matricule": Matricule,
+					"nom": Nom,
+					"number": Number,
+					"grade": Grade,
+					"braquages": Toto,
+					"colonneswat": Toto,
+					"penitencier": Toto,
+					"henryu": Toto,
+					"henryd": Toto,
+					"marie": Toto,
+					"sierra": Toto,
+					"poursuite": Toto,
+					"persecours": Toto
+				};
+				fs.readFile(agent, 'utf8', function readFileCallback(err, data){
+					if (err){
+						console.log("erreur catch1 " +err);
+					} else {
+					obj = JSON.parse(data); //now it's an object
+					//console.log(obj);
+					obj.table.push(LSPD2); //add some data
+					json = JSON.stringify(obj); //convert it back to json
+					//console.log(obj);
+					fs.writeFile(agent, json, 'utf8', function(err){
+						if (err){
+							console.log("erreur catch2 " +err);
+						}}); // write it back 
+				}});
+
 				console.log("Reply LSPD");
-				return interaction.reply({content:`LSPD [${LSPD.matricule}] ${LSPD.nom} (${LSPD.number}) ajouté au grade de ${LSPD.grade}. Braquage : ${LSPD.braquages}`, ephemeral: true});
-			} catch (error) {
-				console.log("erreur catch" + error.name + " " + error.data);
-				if (error.name === 'SequelizeUniqueConstraintError') {
-					return interaction.reply({content:"Cette personne fait déjà partie de l'effectif!", ephemeral: true});
-				}
-				return interaction.reply({content:"Quelque chose c'est mal passé dans l'ajout du membre LSPD.", ephemeral: true});
-			}*/
-			
+				return interaction.reply({content:`LSPD [${LSPD2.matricule}] ${LSPD2.nom} (${LSPD2.number}) ajouté au grade de ${LSPD2.grade}.`, ephemeral: true});
 	},
 };

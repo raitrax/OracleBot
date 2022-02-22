@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const db = require("../database/database");
-const Lspd = require("../models/Lspd");
+const agent = './data/agentsLSPD.json';
+const fs = require('fs');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -15,12 +15,40 @@ module.exports = {
 			const Matricule = interaction.options.getString('matricule');
 			console.log(Matricule);
 			console.log("suppression LSPD");
+			let found = false;
 			// equivalent to: DELETE from tags WHERE name = ?;
 		//const rowCount = await Lspd.destroy({ where: { matricule: Matricule } });
 		//const rowCount1 = await Formations.destroy({ where: { matricule: Matricule } });
+		fs.readFile(agent, 'utf8', function readFileCallback(err, data) {
+			if (err) {
+				console.log("erreur catch1 " + err);
+			} else {
+				obj = JSON.parse(data); //now it's an object
 
-		//if (!rowCount) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
+				//console.log(obj.table.length);
+				for (let index = 0; index < obj.table.length; index++) {
+					const member = obj.table[index];
+					if (member.matricule == Matricule) {
+						found = true;
+						obj.table.splice(index, 1);
 
-		//return interaction.reply({content:'Membre LSPD supprimé.', ephemeral: true});
+					}
+				};
+				//console.log(obj);
+				json = JSON.stringify(obj); //convert it back to json
+
+				//console.log(obj);
+				fs.writeFile(agent, json, 'utf8', function (err) {
+					if (err) {
+						console.log("erreur catch2 " + err);
+					}
+				}); // write it back 
+			}
+			console.log(found);
+			if (!found) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
+
+			return interaction.reply({content:'Membre LSPD supprimé.', ephemeral: true});
+		});
+		
 	},
 };
