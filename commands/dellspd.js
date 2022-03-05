@@ -31,7 +31,6 @@ module.exports = {
 					if (member.matricule == Matricule) {
 						found = true;
 						obj.table.splice(index, 1);
-
 					}
 				};
 				//console.log(obj);

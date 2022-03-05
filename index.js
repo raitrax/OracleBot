@@ -27,7 +27,7 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 
 client.once('ready', () =>  {
 	//effectifLspd();
-	//formationsLspd();
+	formationsLspd();
 	console.log('Ready!');
 	/*var obj = {
 		table: []
@@ -208,20 +208,37 @@ function formationsLspd()
 		channel.send({ content: 'There was an error trying to prune messages in this channel!', ephemeral: true });
 	});
 
-	const users = Lspd.findAll();
-	console.log("All users:", JSON.stringify(users, null, 2));
-
-	const FormationLspdEmbed = new MessageEmbed()
-	.setColor('#0099ff')
-	.setTitle(`lA.nom`)
-	.addFields(
-		{ name: 'Regular field title', value: 'Some value here' },
-		{ name: '\u200B', value: '\u200B' },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
-		{ name: 'Inline field title', value: 'Some value here', inline: true },
-	)
-	;
-	channel.send({ embeds: [FormationLspdEmbed] });
+	fs.readFile(agent, 'utf8', function readFileCallback(err, data) {
+		if (err) {
+			console.log("erreur catch1 " + err);
+		} else {
+			obj = JSON.parse(data); //now it's an object
+			
+			//console.log(obj.table.length);
+			for (let index = 0; index < obj.table.length; index++) {
+				const member = obj.table[index];
+				FormationLspdEmbed = new MessageEmbed()
+					.setColor('#0099ff')
+					.setTitle(`[${member.matricule}] ${member.nom}`)
+					.setAuthor({ name: 'IRIS'})
+					.setDescription(`${member.grade}`)
+					.addFields(
+						{ name: 'Braquages', value: `${member.braquages}`, inline: true },
+						{ name: 'Colonnes SWAT', value: `${member.colonneswat}`, inline: true },
+						{ name: 'Penitencier', value: `${member.penitencier}`, inline: true },
+						{ name: 'Henry 1', value: `${member.henryu}`, inline: true },
+						{ name: 'Henry 2', value: `${member.henryd}`, inline: true },
+						{ name: 'Marie', value: `${member.marie}`, inline: true },
+						{ name: 'Sierra', value: `${member.sierra}`, inline: true },
+						{ name: 'Poursuite', value: `${member.poursuite}`, inline: true },
+						{ name: '1er Secours', value: `${member.persecours}`, inline: true },
+					)
+					.setTimestamp()
+					.setFooter({ text: 'merci iris :)' })
+				channel.send({ embeds: [FormationLspdEmbed] });
+			};
+		}
+	});
 }
 
 /*function edit()

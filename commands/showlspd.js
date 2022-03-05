@@ -29,7 +29,6 @@ module.exports = {
 							.setAuthor({ name: 'IRIS'})
 							.setDescription(`${member.grade}`)
 							.addFields(
-								//{ name: '\u200B', value: '\u200B' },
 								{ name: 'Braquages', value: `${member.braquages}`, inline: true },
 								{ name: 'Colonnes SWAT', value: `${member.colonneswat}`, inline: true },
 								{ name: 'Penitencier', value: `${member.penitencier}`, inline: true },
@@ -42,7 +41,6 @@ module.exports = {
 							)
 							.setTimestamp()
 							//.setFooter({ text: 'merci iris :)' });
-
 					}
 				};
 			}

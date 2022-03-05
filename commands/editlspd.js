@@ -24,7 +24,38 @@ module.exports = {
 		const Nom = interaction.options.getString('nom');
 		const Number = interaction.options.getString('number');
 		const Grade = interaction.options.getString('grade');
-
+		switch (Grade) {
+			case "Commissaire":
+				gradeID = 1;
+				break;
+			case "Capitaine":
+				gradeID = 2;
+				break;
+			case "Lieutenant":
+				gradeID = 3;
+				break;
+			case "Inspecteur":
+				gradeID = 4;
+				break;
+			case "Sergent Chef":
+				gradeID = 5;
+				break;
+			case "Sergent":
+				gradeID = 6;
+				break;
+			case "Officier Supérieur":
+				gradeID = 7;
+				break;
+			case "Officier":
+				gradeID = 8;
+				break;
+			case "Cadet":
+				gradeID = 9;
+				break;
+			default:
+				gradeID = 9;
+				break;
+		}
 		console.log("edit LSPD");
 
 		fs.readFile(agent, 'utf8', function readFileCallback(err, data) {
@@ -51,6 +82,7 @@ module.exports = {
 						if (Grade) {
 							obj.table[index].grade = Grade;
 						}
+						//obj.table[index].gradeid = gradeID;
 					}
 				};
 				//console.log(obj);
