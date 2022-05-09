@@ -6,7 +6,9 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const path = require('path');
 const agent = ('./data/agentsLSPD.json');
-
+var effectifTXT = "```\n";
+var effectifTXT1 = "```\n";
+const egals = "=========";
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const commands = [];
 client.commands = new Collection();
@@ -26,35 +28,10 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.catch(console.error);
 
 client.once('ready', () =>  {
-	//effectifLspd();
-	formationsLspd();
+	effectifLspd();
+	//formationsLspd();
 	console.log('Ready!');
-	/*var obj = {
-		table: []
-	};
-	obj.table.push({id: 1, square:2});
-	var json = JSON.stringify(obj);
-	fs.writeFile('data/agentsLSPD.json', json, 'utf8', function(err){
-		if (err){
-			console.log(err);
-		}});*/
 
-		/*fs.readFile(agent, 'utf8', function readFileCallback(err, data){
-			if (err){
-				console.log("erreur catch1" +err);
-			} else {
-			obj = JSON.parse(data); //now it an object
-			console.log(obj);
-			//console.log(LSPD2);
-			//obj.table.push(test1); //add some data
-			//obj.table.push({id: 2, square:3}); //add some data
-			json = JSON.stringify(obj); //convert it back to json
-			fs.writeFile(agent, json, 'utf8', function(err){
-				if (err){
-					console.log("erreur catch2" +err);
-				}}); // write it back 
-			console.log("test fin");
-		}});*/
 });
 
 client.on('interactionCreate', async interaction => {
@@ -63,122 +40,6 @@ client.on('interactionCreate', async interaction => {
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
 		
-	
-/*
-	if (commandName === 'addLSPD') {
-		const Matricule = interaction.options.getString('matricule');
-		const Nom = interaction.options.getString('nom');
-		const Number = interaction.options.getString('number');
-		const Grade = interaction.options.getString('grade');
-		
-		//const Braquages = interaction.options.getString('braquages');
-		//const Colonneswat = interaction.options.getString('colonneswat');
-		//const Penitencier = interaction.options.getString('penitencier');
-		//const Henry1 = interaction.options.getString('henry1');
-		//const Henry2 = interaction.options.getString('henry2');
-		//const Marie = interaction.options.getString('marie');
-		//const Sierra = interaction.options.getString('sierra');
-		//const Poursuite = interaction.options.getString('poursuite');
-		//const Persecours = interaction.options.getString('persecours');
-		
-		try {
-			// equivalent to: INSERT INTO tags (name, descrption, username) values (?, ?, ?);
-			const Lspd = await LSPD.create({
-				matricule: Matricule,
-				nom: Nom,
-				number: Number,
-				grade: Grade
-			});
-			const Formations = await FORMATIONS.create({
-				matricule: tagMatricule,
-				braquages: Braquages.defaultValue,
-				colonneswat: Colonneswat.defaultValue,
-				penitencier: Penitencier.defaultValue,
-				henry1: Henry1.defaultValue,
-				henry2: Henry2.defaultValue,
-				marie: Marie.defaultValue,
-				sierra: Sierra.defaultValue,
-				poursuite: Poursuite.defaultValue,
-				persecours: Persecours.defaultValue,
-			});
-
-			return interaction.reply(`LSPD [${LSPD.matricule}] ${LSPD.nom} (${LSPD.number}) ajouté au grade de ${LSPD.grade}.`);
-		} catch (error) {
-			if (error.name === 'SequelizeUniqueConstraintError') {
-				return interaction.reply("Cette personne fait déjà partie de l'effectif!");
-			}
-
-			return interaction.reply("Quelque chose c'est mal passé dans l'ajout du membre LSPD.");
-		}
-	} else if (commandName === 'matricule') {
-		const numero = interaction.options.getString('numero');
-
-		// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
-		const membreLSPD = await LSPD.findOne({ where: { matricule: numero } });
-		const formationLSPD = await Formations.findOne({ where: { matricule: numero } });
-
-		if (membreLSPD) {
-			// equivalent to: UPDATE tags SET usage_count = usage_count + 1 WHERE name = 'tagName';
-			
-			return interaction.reply(`LSPD [${membreLSPD.matricule}] ${membreLSPD.nom} (${membreLSPD.number}) ajouté au grade de ${membreLSPD.grade}.` + 
-			`Formations : 
-				- braquages : ${formationLSPD.braquages} 
-				- colonneswat : ${formationLSPD.colonneswat} 
-				- penitencier : ${formationLSPD.penitencier} 
-				- henry1 : ${formationLSPD.henry1} 
-				- henry2 : ${formationLSPD.henry2} 
-				- marie : ${formationLSPD.marie} 
-				- sierra : ${formationLSPD.sierra} 
-				- poursuite : ${formationLSPD.poursuite} 
-				- persecours : ${formationLSPD.persecours}
-			`
-			);
-		}
-
-		return interaction.reply(`Je n'ai pas trouvé le matricule : ${numero}`);
-	} else if (commandName === 'editmatricule') {
-		const Matricule = interaction.options.getString('matricule');
-		const Nom = interaction.options.getString('nom');
-		const Number = interaction.options.getString('number');
-		const Grade = interaction.options.getString('grade');
-		const Braquages = interaction.options.getString('braquages');
-
-
-		// equivalent to: UPDATE tags (descrption) values (?) WHERE name = ?;
-		const affectedRows = await LSPD.update({ nom: Nom, number : Number, grade : Grade }, { where: { matricule: Matricule } });
-
-		if (affectedRows > 0) {
-			return interaction.reply(`Tag ${tagName} was edited.`);
-		}
-
-		return interaction.reply(`Could not find a tag with name ${tagName}.`);
-	} else if (commandName === 'taginfo') {
-		const tagName = interaction.options.getString('name');
-
-		// equivalent to: SELECT * FROM tags WHERE name = 'tagName' LIMIT 1;
-		const tag = await Tags.findOne({ where: { name: tagName } });
-
-		if (tag) {
-			return interaction.reply(`${tagName} was created by ${tag.username} at ${tag.createdAt} and has been used ${tag.usage_count} times.`);
-		}
-
-		return interaction.reply(`Could not find tag: ${tagName}`);
-	} else if (commandName === 'showtags') {
-		const tagList = await Tags.findAll({ attributes: ['name'] });
-		const tagString = tagList.map(t => t.name).join(', ') || 'No tags set.';
-
-		return interaction.reply(`List of tags: ${tagString}`);
-	} else if (commandName === 'removelspd') {
-		// equivalent to: DELETE from tags WHERE name = ?;
-		const Matricule = interaction.options.getString('matricule');
-		const rowCount = await LSPD.destroy({ where: { name: Matricule } });
-
-		if (!rowCount) return interaction.reply("Ce matricule LSPD n'existe pas.");
-
-		return interaction.reply('Membre LSPD/formation supprimé.');
-	}
-*/
-
 	try {
 		await command.execute(interaction);
 	} catch (error) {
@@ -189,20 +50,80 @@ client.on('interactionCreate', async interaction => {
 
 async function effectifLspd()
 {	
-
-	const EffectifChannel = client.channels.cache.get('931249085678252123');
+	const EffectifChannel = client.channels.cache.get('971551444853461023');
 	EffectifChannel.bulkDelete(99, true).catch(error => {
 		console.error(error);
 		channel.send({ content: 'There was an error trying to prune messages in this channel!', ephemeral: true });
 	});
-	//const tagList = Lspd.findAll({ attributes: ['matricule'] });
-	//console.log(tagList);
+	fs.readFile(agent, 'utf8', function readFileCallback(err, data) {
+		if (err) {
+			console.log("erreur catch1 " + err);
+		} else {
+			obj = JSON.parse(data); //now it's an object
+			var com = obj.table.filter(function (agent){ return agent.grade == "Commissaire"});
+			var cap = obj.table.filter(function (agent){ return agent.grade == "Capitaine"});
+			var ltn = obj.table.filter(function (agent){ return agent.grade == "Lieutenant"});
+			var insp = obj.table.filter(function (agent){ return agent.grade == "Inspecteur"});
+			var sgtchef = obj.table.filter(function (agent){ return agent.grade == "Sergent Chef"});
+			var sgt = obj.table.filter(function (agent){ return agent.grade == "Sergent"});
+			var offsup = obj.table.filter(function (agent){ return agent.grade == "Officier Supérieur"});
+			var off = obj.table.filter(function (agent){ return agent.grade == "Officier"});
+			var cad = obj.table.filter(function (agent){ return agent.grade == "Cadet"});
+			com.sort(function(a,b) { return a.matricule - b.matricule; });
+			cap.sort(function(a,b) { return a.matricule - b.matricule; });
+			ltn.sort(function(a,b) { return a.matricule - b.matricule; });
+			insp.sort(function(a,b) { return a.matricule - b.matricule; });
+			sgtchef.sort(function(a,b) { return a.matricule - b.matricule; });
+			sgt.sort(function(a,b) { return a.matricule - b.matricule; });
+			offsup.sort(function(a,b) { return a.matricule - b.matricule; });
+			off.sort(function(a,b) { return a.matricule - b.matricule; });
+			cad.sort(function(a,b) { return a.matricule - b.matricule; });
+			//console.log(obj.table.length);
+			
+			
+			effectifTXT += `Commissaire :\n${egals} \n`;
+			effectifTXT += listgrade(com)
+			effectifTXT += `\nCapitaine :\n${egals} \n`;
+			effectifTXT += listgrade(cap)
+			effectifTXT += `\nLieutenant :\n${egals} \n`;
+			effectifTXT += listgrade(ltn)
+			effectifTXT += `\nInspecteur :\n${egals} \n`;
+			effectifTXT += listgrade(insp)
+			effectifTXT += `\nSergent-chef :\n${egals} \n`;
+			effectifTXT += listgrade(sgtchef)
+			effectifTXT += `\nSergent :\n${egals} \n`;
+			effectifTXT += listgrade(sgt)
+			effectifTXT1 += `Officier Supérieur :\n${egals} \n`;
+			effectifTXT1 += listgrade(offsup)
+			effectifTXT1 += `\nOfficier :\n${egals} \n`;
+			effectifTXT1 += listgrade(off)
+			effectifTXT1 += `\nCadet :\n${egals} \n`;
+			effectifTXT1 += listgrade(cad)
+			
+			
+			effectifTXT += "```";
+			effectifTXT1 += "```";
+			EffectifChannel.send(effectifTXT);
+			EffectifChannel.send(effectifTXT1);
+		}
+	});
+}
+function listgrade(test)
+{	let txt = '';
+	for (let index = 0; index < test.length; index++) {
+		let formattedNumber = test[index].matricule.toLocaleString('en-US', {
+			minimumIntegerDigits: 2,
+			useGrouping: false
+		  })
+		  txt += `        - ${formattedNumber} : ${test[index].nom} (${test[index].number}) \n`;
+	};
+	return txt;
 }
 
 function formationsLspd()
 {	
 
-	const channel = client.channels.cache.get('931252649993596938');
+	const channel = client.channels.cache.get('971551551669809212');
 	channel.bulkDelete(99, true).catch(error => {
 		console.error(error);
 		channel.send({ content: 'There was an error trying to prune messages in this channel!', ephemeral: true });
@@ -217,11 +138,15 @@ function formationsLspd()
 			//console.log(obj.table.length);
 			for (let index = 0; index < obj.table.length; index++) {
 				const member = obj.table[index];
+				let formattedNumber = member.matricule.toLocaleString('en-US', {
+					minimumIntegerDigits: 2,
+					useGrouping: false
+				  })
 				FormationLspdEmbed = new MessageEmbed()
 					.setColor('#0099ff')
-					.setTitle(`[${member.matricule}] ${member.nom}`)
+					.setTitle(`[${formattedNumber}] ${member.grade} ${member.nom}`)
 					.setAuthor({ name: 'IRIS'})
-					.setDescription(`${member.grade}`)
+					/*.setDescription(`${member.grade}`)
 					.addFields(
 						{ name: 'Braquages', value: `${member.braquages}`, inline: true },
 						{ name: 'Colonnes SWAT', value: `${member.colonneswat}`, inline: true },
@@ -232,32 +157,15 @@ function formationsLspd()
 						{ name: 'Sierra', value: `${member.sierra}`, inline: true },
 						{ name: 'Poursuite', value: `${member.poursuite}`, inline: true },
 						{ name: '1er Secours', value: `${member.persecours}`, inline: true },
-					)
+					)*/
 					.setTimestamp()
-					.setFooter({ text: 'merci iris :)' })
+					.setFooter({ text: 'merci Raitrax :)' })
 				channel.send({ embeds: [FormationLspdEmbed] });
 			};
 		}
 	});
 }
 
-/*function edit()
-{
-	const guild = bot.guilds.get('guildIDhere');
-	if (!guild) return console.log('Unable to find guild.');
 
-	const channel = guild.channels.find(c => c.id === 'channelIDhere' && c.type === 'text');
-	if (!channel) return console.log('Unable to find channel.');
-
-	try {
-		const message = await channel.fetchMessage('messageIDhere');
-		if (!message) return console.log('Unable to find message.');
-
-		await message.edit('Test.');
-		console.log('Done.');
-	} catch(err) {
-		console.error(err);
-	}
-}*/
 
 client.login(token);

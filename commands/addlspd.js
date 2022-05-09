@@ -72,16 +72,7 @@ module.exports = {
 					"nom": Nom,
 					"number": Number,
 					//"gradeid": gradeID,
-					"grade": Grade,
-					"braquages": Toto,
-					"colonneswat": Toto,
-					"penitencier": Toto,
-					"henryu": Toto,
-					"henryd": Toto,
-					"marie": Toto,
-					"sierra": Toto,
-					"poursuite": Toto,
-					"persecours": Toto,
+					"grade": Grade
 				};
 				fs.readFile(agent, 'utf8', function readFileCallback(err, data){
 					if (err){

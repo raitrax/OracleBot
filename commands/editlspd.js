@@ -92,8 +92,75 @@ module.exports = {
 					console.log("erreur catch2 " +err);
 				}}); // write it back 
 				if (!found) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
-
+				trierLeLSPD();
 				return interaction.reply({content:'Membre LSPD édité.', ephemeral: true});
 		}});
 	},
 };
+function trierLeLSPD(lspdAgent) {
+	var com = lspdAgent.filter(function (agent){ return agent.grade == "Commissaire"});
+	var cap = lspdAgent.filter(function (agent){ return agent.grade == "Capitaine"});
+	var ltn = lspdAgent.filter(function (agent){ return agent.grade == "Lieutenant"});
+	var insp = lspdAgent.filter(function (agent){ return agent.grade == "Inspecteur"});
+	var sgtchef = lspdAgent.filter(function (agent){ return agent.grade == "Sergent Chef"});
+	var sgt = lspdAgent.filter(function (agent){ return agent.grade == "Sergent"});
+	var offsup = lspdAgent.filter(function (agent){ return agent.grade == "Officier Supérieur"});
+	var off = lspdAgent.filter(function (agent){ return agent.grade == "Officier"});
+	var cad = lspdAgent.filter(function (agent){ return agent.grade == "Cadet"});
+	var com2 = com.slice(0);
+	com2.sort(function(a,b) { return a.matricule - b.matricule; });
+	var cap2 = cap.slice(0);
+	cap2.sort(function(a,b) { return a.matricule - b.matricule; });
+
+	var ltn2 = ltn.slice(0);
+	ltn2.sort(function(a,b) { return a.matricule - b.matricule; });
+
+	var insp2 = insp.slice(0);
+	insp2.sort(function(a,b) { return a.matricule - b.matricule; });
+
+	var sgtchef2 = sgtchef.slice(0);
+	sgtchef2.sort(function(a,b) { return a.matricule - b.matricule; });
+
+	var sgt2 = sgt.slice(0);
+	sgt2.sort(function(a,b) { return a.matricule - b.matricule; });
+	
+	var offsup2 = offsup.slice(0);
+	offsup2.sort(function(a,b) { return a.matricule - b.matricule; });
+	
+	var off2 = off.slice(0);
+	off2.sort(function(a,b) { return a.matricule - b.matricule; });
+	
+	var cad2 = cad.slice(0);
+	cad2.sort(function(a,b) { return a.matricule - b.matricule; });
+
+	var table = Object.assign(com2, cap2, ltn2, insp2, sgtchef2, sgt2, offsup2, off2, cad2 );
+
+	console.log(table);
+	console.log(com2);
+	//table.push(com2);
+
+	console.log(cap2);
+	//table.push(cap2);
+
+	console.log(ltn2);
+	//table.push(ltn2);
+
+	console.log(insp2);
+	//table.push(insp2);
+
+	console.log(sgtchef2);
+	//table.push(sgtchef2);
+
+	console.log(sgt2);
+	//table.push(sgt2);
+
+	console.log(offsup2);
+	//table.push(offsup2);
+
+	console.log(off2);
+	//table.push(off2);
+
+	console.log(cad2);
+	//table.push(cad2);
+
+  }
