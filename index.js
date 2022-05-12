@@ -29,7 +29,7 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 
 client.once('ready', () =>  {
 	effectifLspd();
-	//formationsLspd();
+	formationsLspd();
 	console.log('Ready!');
 
 });
@@ -120,7 +120,7 @@ function listgrade(test)
 	return txt;
 }
 
-function formationsLspd()
+async function formationsLspd()
 {	
 
 	const channel = client.channels.cache.get('971551551669809212');
@@ -146,21 +146,27 @@ function formationsLspd()
 					.setColor('#0099ff')
 					.setTitle(`[${formattedNumber}] ${member.grade} ${member.nom}`)
 					.setAuthor({ name: 'IRIS'})
-					/*.setDescription(`${member.grade}`)
+					.setDescription(`${member.grade}`)
 					.addFields(
-						{ name: 'Braquages', value: `${member.braquages}`, inline: true },
-						{ name: 'Colonnes SWAT', value: `${member.colonneswat}`, inline: true },
-						{ name: 'Penitencier', value: `${member.penitencier}`, inline: true },
-						{ name: 'Henry 1', value: `${member.henryu}`, inline: true },
-						{ name: 'Henry 2', value: `${member.henryd}`, inline: true },
+						{ name: 'Henry 2', value: `${member.henry}`, inline: true },
 						{ name: 'Marie', value: `${member.marie}`, inline: true },
 						{ name: 'Sierra', value: `${member.sierra}`, inline: true },
-						{ name: 'Poursuite', value: `${member.poursuite}`, inline: true },
-						{ name: '1er Secours', value: `${member.persecours}`, inline: true },
-					)*/
+						{ name: 'William', value: `${member.william}`, inline: true },
+					)
 					.setTimestamp()
-					.setFooter({ text: 'merci Raitrax :)' })
-				channel.send({ embeds: [FormationLspdEmbed] });
+					.setFooter({ text: 'Merci Raitrax :)' })
+				channel.send({ embeds: [FormationLspdEmbed] }).then(sent => { // 'sent' is that message you just sent
+					let id = sent.id;
+					console.log(id);
+					obj.table[index].idformation = id
+					json = JSON.stringify(obj); //convert it back to json
+					//console.log(json);
+					fs.writeFile(agent, json, 'utf8', function(err){
+						if (err){
+							console.log("erreur catch2 " +err);
+						}}
+					);
+			    });
 			};
 		}
 	});

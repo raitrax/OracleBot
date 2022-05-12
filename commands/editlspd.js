@@ -1,15 +1,16 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { Client, Message, Intents, MessageEmbed } = require('discord.js');
 const agent = './data/agentsLSPD.json';
 const fs = require('fs');
-
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('editlspd')
 		.setDescription("édition d'un membre LSPD")
 		.addStringOption(option => option.setName('matricule').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('nom').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('number').setDescription("matricule de l'agent"))
-		.addStringOption(option => option.setName('grade').setDescription("matricule de l'agent")
+		.addStringOption(option => option.setName('nom').setDescription("nom de l'agent"))
+		.addStringOption(option => option.setName('number').setDescription("numéro de l'agent"))
+		.addStringOption(option => option.setName('grade').setDescription("gradede l'agent")
 		.addChoice("Cadet", "Cadet")
 		.addChoice("Officier", "Officier")
 		.addChoice("Officier Supérieur", "Officier Supérieur")
@@ -18,44 +19,34 @@ module.exports = {
 		.addChoice("Inspecteur", "Inspecteur")
 		.addChoice("Lieutenant", "Lieutenant")
 		.addChoice("Capitaine", "Capitaine")
-		.addChoice("Commissaire", "Commissaire")),
+		.addChoice("Commissaire", "Commissaire"))
+		.addStringOption(option => option.setName('marie').setDescription("formation à mettre à jour")
+		.addChoice("Validé", "Validé")
+		.addChoice("Non Validé", "Non Validé")
+		.addChoice("A Refaire", "A Refaire"))
+		.addStringOption(option => option.setName('sierra').setDescription("formation à mettre à jour")
+		.addChoice("Validé", "Validé")
+		.addChoice("Non Validé", "Non Validé")
+		.addChoice("A Refaire", "A Refaire"))
+		.addStringOption(option => option.setName('henry').setDescription("formation à mettre à jour")
+		.addChoice("Validé", "Validé")
+		.addChoice("Non Validé", "Non Validé")
+		.addChoice("A Refaire", "A Refaire"))
+		.addStringOption(option => option.setName('william').setDescription("formation à mettre à jour")
+		.addChoice("Validé", "Validé")
+		.addChoice("Non Validé", "Non Validé")
+		.addChoice("A Refaire", "A Refaire")),
+
 	async execute(interaction) {
 		const Matricule = interaction.options.getString('matricule');
 		const Nom = interaction.options.getString('nom');
 		const Number = interaction.options.getString('number');
 		const Grade = interaction.options.getString('grade');
-		switch (Grade) {
-			case "Commissaire":
-				gradeID = 1;
-				break;
-			case "Capitaine":
-				gradeID = 2;
-				break;
-			case "Lieutenant":
-				gradeID = 3;
-				break;
-			case "Inspecteur":
-				gradeID = 4;
-				break;
-			case "Sergent Chef":
-				gradeID = 5;
-				break;
-			case "Sergent":
-				gradeID = 6;
-				break;
-			case "Officier Supérieur":
-				gradeID = 7;
-				break;
-			case "Officier":
-				gradeID = 8;
-				break;
-			case "Cadet":
-				gradeID = 9;
-				break;
-			default:
-				gradeID = 9;
-				break;
-		}
+		const Marie = interaction.options.getString('marie');
+		const Sierra = interaction.options.getString('sierra');
+		const Henry = interaction.options.getString('henry');
+		const William = interaction.options.getString('william');
+		
 		console.log("edit LSPD");
 
 		fs.readFile(agent, 'utf8', function readFileCallback(err, data) {
@@ -67,7 +58,7 @@ module.exports = {
 				//console.log(obj.table.length);
 				for (let index = 0; index < obj.table.length; index++) {
 					const member = obj.table[index];
-					console.log("coucou le matricule : " + member.matricule);
+					//console.log("coucou le matricule : " + member.matricule);
 					if (member.matricule == Matricule) {
 						found = true;
 						if (Matricule) {
@@ -82,7 +73,18 @@ module.exports = {
 						if (Grade) {
 							obj.table[index].grade = Grade;
 						}
-						//obj.table[index].gradeid = gradeID;
+						if (Marie) {
+							obj.table[index].marie = Marie;
+						}
+						if (Sierra) {
+							obj.table[index].sierra = Sierra;
+						}
+						if (Henry) {
+							obj.table[index].henry = Henry;
+						}
+						if (William) {
+							obj.table[index].william = William;
+						}
 					}
 				};
 				//console.log(obj);
@@ -92,11 +94,42 @@ module.exports = {
 					console.log("erreur catch2 " +err);
 				}}); // write it back 
 				if (!found) return interaction.reply({content:"Ce matricule LSPD n'existe pas.", ephemeral: true});
-				trierLeLSPD();
-				return interaction.reply({content:'Membre LSPD édité.', ephemeral: true});
-		}});
+				//trierLeLSPD();
+				for (let index = 0; index < obj.table.length; index++) {
+					const member = obj.table[index];
+					
+					if (member.matricule == Matricule) {
+						let formattedNumber = member.matricule.toLocaleString('en-US', {
+							minimumIntegerDigits: 2,
+							useGrouping: false
+						})
+						FormationLspdEmbed = new MessageEmbed()
+							.setColor('#0099ff')
+							.setTitle(`[${formattedNumber}] ${member.grade} ${member.nom}`)
+							.setAuthor({ name: 'IRIS'})
+							.setDescription(`${member.grade}`)
+							.addFields(
+								{ name: 'Henry 2', value: `${member.henry}`, inline: true },
+								{ name: 'Marie', value: `${member.marie}`, inline: true },
+								{ name: 'Sierra', value: `${member.sierra}`, inline: true },
+								{ name: 'William', value: `${member.william}`, inline: true },
+							)
+							.setTimestamp()
+							.setFooter({ text: 'Merci Raitrax :)' });
+						//const FormationChannel = ;
+						interaction.client.channels.cache.get('971551551669809212').messages.fetch(member.idformation)
+							.then(message => {
+								message.edit({embeds: [FormationLspdEmbed]})
+							});
+						//client.channels.cache.get('971551551669809212').messages.fetch(member.idformation).then(msg => msg.edit({embeds: [FormationLspdEmbed]}));
+						return interaction.reply({content:'Membre LSPD édité.', ephemeral: true});
+					}
+				}
+			}
+		});
 	},
 };
+
 function trierLeLSPD(lspdAgent) {
 	var com = lspdAgent.filter(function (agent){ return agent.grade == "Commissaire"});
 	var cap = lspdAgent.filter(function (agent){ return agent.grade == "Capitaine"});
