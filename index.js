@@ -1,12 +1,12 @@
 const fs = require('fs');
-const { Client, Collection, Intents, MessageEmbed } = require('discord.js');
+const { Client, Collection, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 const { token, clientId, guildId } = require('./config.json');
 const { Console } = require('console');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const path = require('path');
 const egals = "=========";
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const commands = [];
 client.commands = new Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -18,7 +18,7 @@ for (const file of commandFiles) {
 	console.log("Commande : " + command.data.name)
 }
 
-const rest = new REST({ version: '9' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands.'))
@@ -31,7 +31,7 @@ client.once('ready', () =>  {
 });
 
 client.on('interactionCreate', async interaction => {
-	if (!interaction.isCommand()) return;
+	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);
 	if (!command) return;
