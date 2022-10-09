@@ -1,5 +1,27 @@
 [
   {
+    "id": 1417946487,
+    "tier": 2,
+    "time": 1800,
+    "nanocraftable": false,
+    "ingredients": [
+      {
+        "id": 511774178,
+        "quantity": 10,
+        "displayNameWithSize": "Steel product",
+        "locDisplayNameWithSize": "Produit en acier"
+      }
+    ],
+    "products": [
+      {
+        "quantity": 10,
+        "id": 3936127019,
+        "displayNameWithSize": "Basic Screw",
+        "locDisplayNameWithSize": "Vis basique"
+      }
+    ]
+  },
+  {
     "id": 604112,
     "tier": 1,
     "time": 60,

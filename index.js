@@ -25,7 +25,7 @@ client.once('ready', () =>  {
 client.on('interactionCreate', async interaction => {
 	if (interaction.isAutocomplete()){
 		if (interaction.commandName === 'recette') {
-			const focusedValue = interaction.options.getFocused();
+			const focusedValue = interaction.options.getFocused().toLowerCase();
 			var size = 25;
 			
 			var listItems = [];
@@ -68,6 +68,7 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return;
 		
 	try {
+		console.log(`commande exécuté : ${interaction.commandName} par : ${interaction.member.user}`);
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
