@@ -1,0 +1,602 @@
+[
+  {
+    "Name": "Aucun Schematic",
+    "Tier": "-",
+    "BatchQuantity": 1,
+    "BatchPrice": 0,
+    "Time": 0,
+    "UnitPrice": 0
+  },
+  {
+    "Name": "Tier 1 XS Element Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 10,
+    "BatchPrice": 3750,
+    "Time": 750,
+    "UnitPrice": 375
+  },
+  {
+    "Name": "Tier 1 S Element Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 5,
+    "BatchPrice": 7500,
+    "Time": 1500,
+    "UnitPrice": 1500
+  },
+  {
+    "Name": "Tier 1 M Element Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 3,
+    "BatchPrice": 15000,
+    "Time": 3000,
+    "UnitPrice": 5000
+  },
+  {
+    "Name": "Tier 1 L Element Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 2,
+    "BatchPrice": 30000,
+    "Time": 6000,
+    "UnitPrice": 15000
+  },
+  {
+    "Name": "Tier 1 XL Element Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 1,
+    "BatchPrice": 60000,
+    "Time": 12000,
+    "UnitPrice": 60000
+  },
+  {
+    "Name": "Tier 2 XS Element Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 10,
+    "BatchPrice": 9375,
+    "Time": 1875,
+    "UnitPrice": 938
+  },
+  {
+    "Name": "Tier 2 S Element Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 5,
+    "BatchPrice": 18750,
+    "Time": 3750,
+    "UnitPrice": 3750
+  },
+  {
+    "Name": "Tier 2 M Element Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 3,
+    "BatchPrice": 3750,
+    "Time": 7500,
+    "UnitPrice": 12500
+  },
+  {
+    "Name": "Tier 2 L Element Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 2,
+    "BatchPrice": 75000,
+    "Time": 15000,
+    "UnitPrice": 37500
+  },
+  {
+    "Name": "Tier 2 XL Element Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 1,
+    "BatchPrice": 150000,
+    "Time": 30000,
+    "UnitPrice": 150000
+  },
+  {
+    "Name": "Tier 3 XS Element Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 10,
+    "BatchPrice": 23437,
+    "Time": 4687,
+    "UnitPrice": 2344
+  },
+  {
+    "Name": "Tier 3 S Element Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 5,
+    "BatchPrice": 46875,
+    "Time": 9360,
+    "UnitPrice": 9375
+  },
+  {
+    "Name": "Tier 3 M Element Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 3,
+    "BatchPrice": 93750,
+    "Time": 18720,
+    "UnitPrice": 31250
+  },
+  {
+    "Name": "Tier 3 L Element Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 2,
+    "BatchPrice": 187500,
+    "Time": 37440,
+    "UnitPrice": 93750
+  },
+  {
+    "Name": "Tier 3 XL Element Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 1,
+    "BatchPrice": 375000,
+    "Time": 74880,
+    "UnitPrice": 375000
+  },
+  {
+    "Name": "Tier 4 XS Element Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 10,
+    "BatchPrice": 58593,
+    "Time": 11700,
+    "UnitPrice": 5859
+  },
+  {
+    "Name": "Tier 4 S Element Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 5,
+    "BatchPrice": 117187,
+    "Time": 23400,
+    "UnitPrice": 23437
+  },
+  {
+    "Name": "Tier 4 M Element Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 3,
+    "BatchPrice": 234375,
+    "Time": 46800,
+    "UnitPrice": 78125
+  },
+  {
+    "Name": "Tier 4 L Element Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 2,
+    "BatchPrice": 468750,
+    "Time": 93600,
+    "UnitPrice": 234375
+  },
+  {
+    "Name": "Tier 4 XL Element Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 1,
+    "BatchPrice": 937500,
+    "Time": 187200,
+    "UnitPrice": 937500
+  },
+  {
+    "Name": "Tier 5 XS Element Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 10,
+    "BatchPrice": 146484,
+    "Time": 29280,
+    "UnitPrice": 14648
+  },
+  {
+    "Name": "Tier 5 S Element Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 5,
+    "BatchPrice": 292968,
+    "Time": 58560,
+    "UnitPrice": 58594
+  },
+  {
+    "Name": "Tier 5 M Element Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 3,
+    "BatchPrice": 585937,
+    "Time": 117120,
+    "UnitPrice": 195312
+  },
+  {
+    "Name": "Tier 5 L Element Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 2,
+    "BatchPrice": 1171875,
+    "Time": 234000,
+    "UnitPrice": 585938
+  },
+  {
+    "Name": "Tier 5 XL Element Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 1,
+    "BatchPrice": 2343750,
+    "Time": 468000,
+    "UnitPrice": 2343750
+  },
+  {
+    "Name": "Core Unit XS Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 10,
+    "BatchPrice": 2500,
+    "Time": 500,
+    "UnitPrice": 250
+  },
+  {
+    "Name": "Core Unit S Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 5,
+    "BatchPrice": 25000,
+    "Time": 5000,
+    "UnitPrice": 5000
+  },
+  {
+    "Name": "Core Unit M Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 2,
+    "BatchPrice": 125000,
+    "Time": 25020,
+    "UnitPrice": 62500
+  },
+  {
+    "Name": "Core Unit L Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 1,
+    "BatchPrice": 725000,
+    "Time": 145020,
+    "UnitPrice": 725000
+  },
+  {
+    "Name": "Construct Support XS Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 25,
+    "BatchPrice": 3750,
+    "Time": 750,
+    "UnitPrice": 150
+  },
+  {
+    "Name": "Construct Support S Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 20,
+    "BatchPrice": 7500,
+    "Time": 1500,
+    "UnitPrice": 375
+  },
+  {
+    "Name": "Construct Support M Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 15,
+    "BatchPrice": 15000,
+    "Time": 3000,
+    "UnitPrice": 1000
+  },
+  {
+    "Name": "Construct Support L Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 10,
+    "BatchPrice": 30000,
+    "Time": 6000,
+    "UnitPrice": 3000
+  },
+  {
+    "Name": "Territory Unit Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 5,
+    "BatchPrice": 100000,
+    "Time": 19980,
+    "UnitPrice": 20000
+  },
+  {
+    "Name": "Warp Beacon Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 1,
+    "BatchPrice": 5000000,
+    "Time": 1000800,
+    "UnitPrice": 5000000
+  },
+  {
+    "Name": "Tier 2 Pure Material Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 40,
+    "BatchPrice": 7500,
+    "Time": 1500,
+    "UnitPrice": 188
+  },
+  {
+    "Name": "Tier 3 Pure Material Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 30,
+    "BatchPrice": 18750,
+    "Time": 3750,
+    "UnitPrice": 625
+  },
+  {
+    "Name": "Tier 4 Pure Material Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 20,
+    "BatchPrice": 46875,
+    "Time": 9360,
+    "UnitPrice": 2344
+  },
+  {
+    "Name": "Tier 5 Pure Material Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 10,
+    "BatchPrice": 117187,
+    "Time": 23460,
+    "UnitPrice": 11719
+  },
+  {
+    "Name": "Tier 1 Product Material Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 50,
+    "BatchPrice": 9000,
+    "Time": 1800,
+    "UnitPrice": 180
+  },
+  {
+    "Name": "Tier 2 Product Material Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 40,
+    "BatchPrice": 22500,
+    "Time": 4500,
+    "UnitPrice": 563
+  },
+  {
+    "Name": "Tier 3 Product Material Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 30,
+    "BatchPrice": 56250,
+    "Time": 11280,
+    "UnitPrice": 1875
+  },
+  {
+    "Name": "Tier 4 Product Material Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 20,
+    "BatchPrice": 140625,
+    "Time": 28140,
+    "UnitPrice": 7031
+  },
+  {
+    "Name": "Tier 5 Product Material Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 10,
+    "BatchPrice": 351562,
+    "Time": 66720,
+    "UnitPrice": 35156
+  },
+  {
+    "Name": "Tier 2 Pure Honeycomb Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 3125,
+    "Time": 625,
+    "UnitPrice": 125
+  },
+  {
+    "Name": "Tier 3 Pure Honeycomb Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 7812,
+    "Time": 1562,
+    "UnitPrice": 312
+  },
+  {
+    "Name": "Tier 4 Pure Honeycomb Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 19531,
+    "Time": 3906,
+    "UnitPrice": 781
+  },
+  {
+    "Name": "Tier 5 Pure Honeycomb Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 25,
+    "BatchPrice": 48828,
+    "Time": 9780,
+    "UnitPrice": 1953
+  },
+  {
+    "Name": "Tier 1 Product Honeycomb Schematic Copy",
+    "Tier": 1,
+    "BatchQuantity": 25,
+    "BatchPrice": 1250,
+    "Time": 250,
+    "UnitPrice": 50
+  },
+  {
+    "Name": "Tier 2 Product Honeycomb Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 3125,
+    "Time": 625,
+    "UnitPrice": 125
+  },
+  {
+    "Name": "Tier 3 Product Honeycomb Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 7812,
+    "Time": 1562,
+    "UnitPrice": 312
+  },
+  {
+    "Name": "Tier 4 Product Honeycomb Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 19531,
+    "Time": 3906,
+    "UnitPrice": 781
+  },
+  {
+    "Name": "Tier 5 Product Honeycomb Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 25,
+    "BatchPrice": 48828,
+    "Time": 9780,
+    "UnitPrice": 1953
+  },
+  {
+    "Name": "Tier 2 Scrap Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 750,
+    "Time": 150,
+    "UnitPrice": 30
+  },
+  {
+    "Name": "Tier 3 Scrap Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 1875,
+    "Time": 375,
+    "UnitPrice": 75
+  },
+  {
+    "Name": "Tier 4 Scrap Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 4687,
+    "Time": 937,
+    "UnitPrice": 187
+  },
+  {
+    "Name": "Tier 5 Scrap Schematic Copy",
+    "Tier": 5,
+    "BatchQuantity": 25,
+    "BatchPrice": 11718,
+    "Time": 2343,
+    "UnitPrice": 469
+  },
+  {
+    "Name": "Tier 2 Ammo XS Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 15000,
+    "Time": 3000,
+    "UnitPrice": 600
+  },
+  {
+    "Name": "Tier 2 Ammo S Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 30000,
+    "Time": 6000,
+    "UnitPrice": 1200
+  },
+  {
+    "Name": "Tier 2 Ammo M Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 60000,
+    "Time": 12000,
+    "UnitPrice": 2400
+  },
+  {
+    "Name": "Tier 2 Ammo L Schematic Copy",
+    "Tier": 2,
+    "BatchQuantity": 25,
+    "BatchPrice": 120000,
+    "Time": 24000,
+    "UnitPrice": 4800
+  },
+  {
+    "Name": "Tier 3 Ammo XS Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 37500,
+    "Time": 7500,
+    "UnitPrice": 1500
+  },
+  {
+    "Name": "Tier 3 Ammo S Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 75000,
+    "Time": 15000,
+    "UnitPrice": 3000
+  },
+  {
+    "Name": "Tier 3 Ammo M Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 150000,
+    "Time": 30000,
+    "UnitPrice": 6000
+  },
+  {
+    "Name": "Tier 3 Ammo L Schematic Copy",
+    "Tier": 3,
+    "BatchQuantity": 25,
+    "BatchPrice": 300000,
+    "Time": 60000,
+    "UnitPrice": 12000
+  },
+  {
+    "Name": "Tier 4 Ammo XS Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 93750,
+    "Time": 18780,
+    "UnitPrice": 3750
+  },
+  {
+    "Name": "Tier 4 Ammo S Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 187500,
+    "Time": 37500,
+    "UnitPrice": 7500
+  },
+  {
+    "Name": "Tier 4 Ammo M Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 375000,
+    "Time": 75000,
+    "UnitPrice": 15000
+  },
+  {
+    "Name": "Tier 4 Ammo L Schematic Copy",
+    "Tier": 4,
+    "BatchQuantity": 25,
+    "BatchPrice": 750000,
+    "Time": 150000,
+    "UnitPrice": 30000
+  },
+  {
+    "Name": "Atmospheric Fuel Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 50,
+    "BatchPrice": 3000,
+    "Time": 600,
+    "UnitPrice": 60
+  },
+  {
+    "Name": "Space Fuels Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 50,
+    "BatchPrice": 7500,
+    "Time": 1500,
+    "UnitPrice": 150
+  },
+  {
+    "Name": "Rocket Fuels Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 50,
+    "BatchPrice": 18750,
+    "Time": 3750,
+    "UnitPrice": 375
+  },
+  {
+    "Name": "Warp Cell Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 10,
+    "BatchPrice": 50000,
+    "Time": 10020,
+    "UnitPrice": 5000
+  },
+  {
+    "Name": "Bonsai Schematic Copy",
+    "Tier": "-",
+    "BatchQuantity": 1,
+    "BatchPrice": 10000000,
+    "Time": 1,
+    "UnitPrice": 10000000
+  }
+]
