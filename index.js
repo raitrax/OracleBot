@@ -3,6 +3,7 @@ const { Client, Collection, GatewayIntentBits, DiscordAPIError, InteractionType 
 const { token } = require('./config.json');
 const path = require('path');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const functions = require('./functions');
 
 const commands = [];
 client.commands = new Collection();
@@ -19,7 +20,9 @@ for (const file of commandFiles) {
 
 client.once('ready', () =>  {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
-
+	//var list = [];
+	//functions.recetteSearch("Adjustor l", 1, list);
+	
 });
 
 client.on('interactionCreate', async interaction => {
