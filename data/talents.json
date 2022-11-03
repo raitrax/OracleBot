@@ -1,1862 +1,651 @@
 [
-    {
-        "name": "Pures",
-        "data": [
-            {
-                "name": "Basic Ore Refining",
-                "type": "Pure",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Pure Aluminium"
-                    },
-                    {
-                        "name": "Pure Carbon"
-                    },
-                    {
-                        "name": "Pure Iron"
-                    },
-                    {
-                        "name": "Pure Silicon"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Pure Productivity",
-                "type": "Pure",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Pure Aluminium"
-                    },
-                    {
-                        "name": "Pure Carbon"
-                    },
-                    {
-                        "name": "Pure Iron"
-                    },
-                    {
-                        "name": "Pure Silicon"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Ore Refining",
-                "type": "Pure",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Pure Calcium"
-                    },
-                    {
-                        "name": "Pure Chromium"
-                    },
-                    {
-                        "name": "Pure Copper"
-                    },
-                    {
-                        "name": "Pure Sodium"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Pure Productivity",
-                "type": "Pure",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Pure Calcium"
-                    },
-                    {
-                        "name": "Pure Chromium"
-                    },
-                    {
-                        "name": "Pure Copper"
-                    },
-                    {
-                        "name": "Pure Sodium"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Ore Refining",
-                "type": "Pure",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Pure Lithium"
-                    },
-                    {
-                        "name": "Pure Nickel"
-                    },
-                    {
-                        "name": "Pure Silver"
-                    },
-                    {
-                        "name": "Pure Sulfur"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Pure Productivity",
-                "type": "Pure",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Pure Lithium"
-                    },
-                    {
-                        "name": "Pure Nickel"
-                    },
-                    {
-                        "name": "Pure Silver"
-                    },
-                    {
-                        "name": "Pure Sulfur"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Ore Refining",
-                "type": "Pure",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Pure Cobalt"
-                    },
-                    {
-                        "name": "Pure Fluorine"
-                    },
-                    {
-                        "name": "Pure Gold"
-                    },
-                    {
-                        "name": "Pure Scandium"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Pure Productivity",
-                "type": "Pure",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Pure Cobalt"
-                    },
-                    {
-                        "name": "Pure Fluorine"
-                    },
-                    {
-                        "name": "Pure Gold"
-                    },
-                    {
-                        "name": "Pure Scandium"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Ore Refining",
-                "type": "Pure",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Pure Manganese"
-                    },
-                    {
-                        "name": "Pure Niobium"
-                    },
-                    {
-                        "name": "Pure Titanium"
-                    },
-                    {
-                        "name": "Pure Vanadium"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Pure Productivity",
-                "type": "Pure",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Pure Manganese"
-                    },
-                    {
-                        "name": "Pure Niobium"
-                    },
-                    {
-                        "name": "Pure Titanium"
-                    },
-                    {
-                        "name": "Pure Vanadium"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Products",
-        "data": [
-            {
-                "name": "Basic Product Refining",
-                "type": "Product",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Al-Fe Alloy"
-                    },
-                    {
-                        "name": "Polycarbonate Plastic"
-                    },
-                    {
-                        "name": "Silumin"
-                    },
-                    {
-                        "name": "Steel"
-                    },
-                    {
-                        "name": "Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Product Productivity",
-                "type": "Product",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Al-Fe Alloy"
-                    },
-                    {
-                        "name": "Polycarbonate Plastic"
-                    },
-                    {
-                        "name": "Silumin"
-                    },
-                    {
-                        "name": "Steel"
-                    },
-                    {
-                        "name": "Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Product Refining",
-                "type": "Product",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Calcium Reinforced Copper"
-                    },
-                    {
-                        "name": "Duralumin"
-                    },
-                    {
-                        "name": "Stainless Steel"
-                    },
-                    {
-                        "name": "Polycalcite Plastic"
-                    },
-                    {
-                        "name": "Advanced Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Product Productivity",
-                "type": "Product",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Calcium Reinforced Copper"
-                    },
-                    {
-                        "name": "Duralumin"
-                    },
-                    {
-                        "name": "Stainless Steel"
-                    },
-                    {
-                        "name": "Polycalcite Plastic"
-                    },
-                    {
-                        "name": "Advanced Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Product Refining",
-                "type": "Product",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Cu-Ag Alloy"
-                    },
-                    {
-                        "name": "Al-Li Alloy"
-                    },
-                    {
-                        "name": "Inconel"
-                    },
-                    {
-                        "name": "Polysulfide Plastic"
-                    },
-                    {
-                        "name": "Ag-Li Reinforced Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Product Productivity",
-                "type": "Product",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Cu-Ag Alloy"
-                    },
-                    {
-                        "name": "Al-Li Alloy"
-                    },
-                    {
-                        "name": "Inconel"
-                    },
-                    {
-                        "name": "Polysulfide Plastic"
-                    },
-                    {
-                        "name": "Ag-Li Reinforced Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Product Refining",
-                "type": "Product",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Red Gold"
-                    },
-                    {
-                        "name": "Fluoropolymer"
-                    },
-                    {
-                        "name": "Sc-Al Alloy"
-                    },
-                    {
-                        "name": "Maraging Steel"
-                    },
-                    {
-                        "name": "Gold-Coated Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Product Productivity",
-                "type": "Product",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Red Gold"
-                    },
-                    {
-                        "name": "Fluoropolymer"
-                    },
-                    {
-                        "name": "Sc-Al Alloy"
-                    },
-                    {
-                        "name": "Maraging Steel"
-                    },
-                    {
-                        "name": "Gold-Coated Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Product Refining",
-                "type": "Product",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.05
-                    },
-                    {
-                        "name": "Ti-Nb Supraconductor"
-                    },
-                    {
-                        "name": "Vanamer"
-                    },
-                    {
-                        "name": "Grade 5 Titanium Alloy"
-                    },
-                    {
-                        "name": "Mangalloy"
-                    },
-                    {
-                        "name": "Manganese Reinforced Glass"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Product Productivity",
-                "type": "Product",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Ti-Nb Supraconductor"
-                    },
-                    {
-                        "name": "Vanamer"
-                    },
-                    {
-                        "name": "Grade 5 Titanium Alloy"
-                    },
-                    {
-                        "name": "Mangalloy"
-                    },
-                    {
-                        "name": "Manganese Reinforced Glass"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Parts",
-        "data": [
-            {
-                "name": "Intermediary Part Productivity",
-                "type": "Intermediary Part",
-                "subject": "Tier",
-                "class": "Output",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "name": "Intermediary Part Manufacturer",
-                "type": "Intermediary Part",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    }
-                ]
-            },
-            {
-                "name": "Complex Part Manufacturer",
-                "type": "Complex Part",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Exceptional Part Manufacturer",
-                "type": "Exceptional Part",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Functional Part Manufacturer",
-                "type": "Functional Part",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Structural Part Manufacturer",
-                "type": "Structural Part",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.1,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Elements",
-        "data": [
-            {
-                "name": "Combat Element Efficiency",
-                "type": "Combat Element",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Furniture & Appliances Element Efficiency",
-                "type": "Furniture & Appliances Element",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Industry & Infrastructure Element Efficiency",
-                "type": "Industry & Infrastructure Element",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Piloting Element Efficiency",
-                "type": "Piloting Element",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            },
-            {
-                "name": "Systems Element Efficiency",
-                "type": "Systems Element",
-                "subject": "Tier",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Basic",
-                        "tier": 1
-                    },
-                    {
-                        "name": "Uncommon",
-                        "tier": 2
-                    },
-                    {
-                        "name": "Advanced",
-                        "tier": 3
-                    },
-                    {
-                        "name": "Rare",
-                        "tier": 4
-                    },
-                    {
-                        "name": "Exotic",
-                        "tier": 5
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Ammunition",
-        "data": [
-            {
-                "name": "Uncommon Ammo Productivity",
-                "type": "Ammo",
-                "tier": 2,
-                "subject": "Tier",
-                "class": "Output",
-                "amount": 0.025,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "XS",
-                        "subtype": "XS"
-                    },
-                    {
-                        "name": "S",
-                        "subtype": "S"
-                    },
-                    {
-                        "name": "M",
-                        "subtype": "M"
-                    },
-                    {
-                        "name": "L",
-                        "subtype": "L"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Ammo Productivity",
-                "type": "Ammo",
-                "tier": 3,
-                "subject": "Tier",
-                "class": "Output",
-                "amount": 0.025,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "XS",
-                        "subtype": "XS"
-                    },
-                    {
-                        "name": "S",
-                        "subtype": "S"
-                    },
-                    {
-                        "name": "M",
-                        "subtype": "M"
-                    },
-                    {
-                        "name": "L",
-                        "subtype": "L"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Fuels",
-        "data": [
-            {
-                "name": "Fuel Productivity",
-                "type": "Fuel",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Nitron Fuel"
-                    },
-                    {
-                        "name": "Kergon Fuel",
-                        "subtype": "Space",
-                        "subject": "Tier"
-                    },
-                    {
-                        "name": "Xeron Fuel",
-                        "tier": 2
-                    }
-                ]
-            },
-            {
-                "name": "Fuel Refining",
-                "type": "Fuel",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.03,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Type",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Type",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Nitron Fuel"
-                    },
-                    {
-                        "name": "Kergon Fuel",
-                        "subtype": "Space",
-                        "subject": "Tier"
-                    },
-                    {
-                        "name": "Xeron Fuel",
-                        "tier": 2
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Pure Honeycombs",
-        "data": [
-            {
-                "name": "Basic Pure Honeycomb Refining",
-                "type": "Pure Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Aluminium Honeycomb"
-                    },
-                    {
-                        "name": "Carbon Honeycomb"
-                    },
-                    {
-                        "name": "Iron Honeycomb"
-                    },
-                    {
-                        "name": "Silicon Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Pure Honeycomb Productivity",
-                "type": "Pure Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Aluminium Honeycomb"
-                    },
-                    {
-                        "name": "Carbon Honeycomb"
-                    },
-                    {
-                        "name": "Iron Honeycomb"
-                    },
-                    {
-                        "name": "Silicon Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Pure Honeycomb Refining",
-                "type": "Pure Honeycomb",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Calcium Honeycomb"
-                    },
-                    {
-                        "name": "Chromium Honeycomb"
-                    },
-                    {
-                        "name": "Copper Honeycomb"
-                    },
-                    {
-                        "name": "Sodium Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Pure Honeycomb Productivity",
-                "type": "Pure Honeycomb",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Calcium Honeycomb"
-                    },
-                    {
-                        "name": "Chromium Honeycomb"
-                    },
-                    {
-                        "name": "Copper Honeycomb"
-                    },
-                    {
-                        "name": "Sodium Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Pure Honeycomb Refining",
-                "type": "Pure Honeycomb",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Lithium Honeycomb"
-                    },
-                    {
-                        "name": "Nickel Honeycomb"
-                    },
-                    {
-                        "name": "Silver Honeycomb"
-                    },
-                    {
-                        "name": "Sulfur Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Pure Honeycomb Productivity",
-                "type": "Pure Honeycomb",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Lithium Honeycomb"
-                    },
-                    {
-                        "name": "Nickel Honeycomb"
-                    },
-                    {
-                        "name": "Silver Honeycomb"
-                    },
-                    {
-                        "name": "Sulfur Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Pure Honeycomb Refining",
-                "type": "Pure Honeycomb",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Cobalt Honeycomb"
-                    },
-                    {
-                        "name": "Fluorine Honeycomb"
-                    },
-                    {
-                        "name": "Gold Honeycomb"
-                    },
-                    {
-                        "name": "Scandium Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Pure Honeycomb Productivity",
-                "type": "Pure Honeycomb",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Cobalt Honeycomb"
-                    },
-                    {
-                        "name": "Fluorine Honeycomb"
-                    },
-                    {
-                        "name": "Gold Honeycomb"
-                    },
-                    {
-                        "name": "Scandium Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Pure Honeycomb Refining",
-                "type": "Pure Honeycomb",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Manganese Honeycomb"
-                    },
-                    {
-                        "name": "Niobium Honeycomb"
-                    },
-                    {
-                        "name": "Titanium Honeycomb"
-                    },
-                    {
-                        "name": "Vanadium Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Pure Honeycomb Productivity",
-                "type": "Pure Honeycomb",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Manganese Honeycomb"
-                    },
-                    {
-                        "name": "Niobium Honeycomb"
-                    },
-                    {
-                        "name": "Titanium Honeycomb"
-                    },
-                    {
-                        "name": "Vanadium Honeycomb"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Product Honeycombs",
-        "data": [
-            {
-                "name": "Building Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Brick Honeycomb"
-                    },
-                    {
-                        "name": "Wood Honeycomb"
-                    },
-                    {
-                        "name": "Carbon Fiber Honeycomb"
-                    },
-                    {
-                        "name": "Marble Honeycomb"
-                    },
-                    {
-                        "name": "Concrete Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Building Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Brick Honeycomb"
-                    },
-                    {
-                        "name": "Wood Honeycomb"
-                    },
-                    {
-                        "name": "Carbon Fiber Honeycomb"
-                    },
-                    {
-                        "name": "Marble Honeycomb"
-                    },
-                    {
-                        "name": "Concrete Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Polycarbonate Plastic Honeycomb"
-                    },
-                    {
-                        "name": "Silumin Honeycomb"
-                    },
-                    {
-                        "name": "Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Polycarbonate Plastic Honeycomb"
-                    },
-                    {
-                        "name": "Silumin Honeycomb"
-                    },
-                    {
-                        "name": "Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Duralumin Honeycomb"
-                    },
-                    {
-                        "name": "Stainless Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Duralumin Honeycomb"
-                    },
-                    {
-                        "name": "Stainless Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Al-Li Honeycomb"
-                    },
-                    {
-                        "name": "Inconel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Al-Li Honeycomb"
-                    },
-                    {
-                        "name": "Inconel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Sc-Al Honeycomb"
-                    },
-                    {
-                        "name": "Maraging Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Sc-Al Honeycomb"
-                    },
-                    {
-                        "name": "Maraging Steel Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Product Honeycomb Refining",
-                "type": "Product Honeycomb",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Grade 5 Titanium Honeycomb"
-                    },
-                    {
-                        "name": "Mangalloy Honeycomb"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Product Honeycomb Productivity",
-                "type": "Product Honeycomb",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.05,
-                "skills": [
-                    {
-                        "name": "Grade 5 Titanium Honeycomb"
-                    },
-                    {
-                        "name": "Mangalloy Honeycomb"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Scraps",
-        "data": [
-            {
-                "name": "Basic Scrap Refining",
-                "type": "Scrap",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.04,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Tier",
-                        "class": "Input",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Aluminium Scrap"
-                    },
-                    {
-                        "name": "Carbon Scrap"
-                    },
-                    {
-                        "name": "Iron Scrap"
-                    },
-                    {
-                        "name": "Silicon Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Basic Scrap Productivity",
-                "type": "Scrap",
-                "tier": 1,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Aluminium Scrap"
-                    },
-                    {
-                        "name": "Carbon Scrap"
-                    },
-                    {
-                        "name": "Iron Scrap"
-                    },
-                    {
-                        "name": "Silicon Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Scrap Refining",
-                "type": "Scrap",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.04,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Tier",
-                        "class": "Input",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Calcium Scrap"
-                    },
-                    {
-                        "name": "Chromium Scrap"
-                    },
-                    {
-                        "name": "Copper Scrap"
-                    },
-                    {
-                        "name": "Sodium Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Uncommon Scrap Productivity",
-                "type": "Scrap",
-                "tier": 2,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Calcium Scrap"
-                    },
-                    {
-                        "name": "Chromium Scrap"
-                    },
-                    {
-                        "name": "Copper Scrap"
-                    },
-                    {
-                        "name": "Sodium Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Scrap Refining",
-                "type": "Scrap",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.04,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Tier",
-                        "class": "Input",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Lithium Scrap"
-                    },
-                    {
-                        "name": "Nickel Scrap"
-                    },
-                    {
-                        "name": "Silver Scrap"
-                    },
-                    {
-                        "name": "Sulfur Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Advanced Scrap Productivity",
-                "type": "Scrap",
-                "tier": 3,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Lithium Scrap"
-                    },
-                    {
-                        "name": "Nickel Scrap"
-                    },
-                    {
-                        "name": "Silver Scrap"
-                    },
-                    {
-                        "name": "Sulfur Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Scrap Refining",
-                "type": "Scrap",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.04,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Tier",
-                        "class": "Input",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Cobalt Scrap"
-                    },
-                    {
-                        "name": "Fluorine Scrap"
-                    },
-                    {
-                        "name": "Gold Scrap"
-                    },
-                    {
-                        "name": "Scandium Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Rare Scrap Productivity",
-                "type": "Scrap",
-                "tier": 4,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Cobalt Scrap"
-                    },
-                    {
-                        "name": "Fluorine Scrap"
-                    },
-                    {
-                        "name": "Gold Scrap"
-                    },
-                    {
-                        "name": "Scandium Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Scrap Refining",
-                "type": "Scrap",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Input",
-                "amount": 0.04,
-                "skills": [
-                    {
-                        "name": "Efficiency",
-                        "subject": "Tier",
-                        "class": "Time",
-                        "amount": 0.1
-                    },
-                    {
-                        "name": "Refinery",
-                        "subject": "Tier",
-                        "class": "Input",
-                        "amount": 0.02
-                    },
-                    {
-                        "name": "Titanium Scrap"
-                    },
-                    {
-                        "name": "Manganese Scrap"
-                    },
-                    {
-                        "name": "Niobium Scrap"
-                    },
-                    {
-                        "name": "Vanadium Scrap"
-                    }
-                ]
-            },
-            {
-                "name": "Exotic Scrap Productivity",
-                "type": "Scrap",
-                "tier": 5,
-                "subject": "Item",
-                "class": "Output",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Titanium Scrap"
-                    },
-                    {
-                        "name": "Manganese Scrap"
-                    },
-                    {
-                        "name": "Niobium Scrap"
-                    },
-                    {
-                        "name": "Vanadium Scrap"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "name": "Industry",
-        "data": [
-            {
-                "name": "Industry Efficiency",
-                "subject": "Industry",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Chemical Industry M"
-                    },
-                    {
-                        "name": "Metalwork Industry M"
-                    },
-                    {
-                        "name": "3D Printer M"
-                    },
-                    {
-                        "name": "Glass Furnace M"
-                    },
-                    {
-                        "name": "Electronics Industry M"
-                    }
-                ]
-            },
-            {
-                "name": "Industry Efficiency Handling",
-                "subject": "Industry",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Chemical Industry M"
-                    },
-                    {
-                        "name": "Metalwork Industry M"
-                    },
-                    {
-                        "name": "3D Printer M"
-                    },
-                    {
-                        "name": "Glass Furnace M"
-                    },
-                    {
-                        "name": "Electronics Industry M"
-                    }
-                ]
-            },
-            {
-                "name": "Assembly Efficiency",
-                "subject": "Industry",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Assembly Line XS"
-                    },
-                    {
-                        "name": "Assembly Line S"
-                    },
-                    {
-                        "name": "Assembly Line M"
-                    },
-                    {
-                        "name": "Assembly Line L"
-                    },
-                    {
-                        "name": "Assembly Line XL"
-                    }
-                ]
-            },
-            {
-                "name": "Assembly Efficiency Handling",
-                "subject": "Industry",
-                "class": "Time",
-                "amount": 0.02,
-                "skills": [
-                    {
-                        "name": "Assembly Line XS"
-                    },
-                    {
-                        "name": "Assembly Line S"
-                    },
-                    {
-                        "name": "Assembly Line M"
-                    },
-                    {
-                        "name": "Assembly Line L"
-                    },
-                    {
-                        "name": "Assembly Line XL"
-                    }
-                ]
-            }
-        ]
-    }
+  {
+    "Name": "Carbon Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Carbon"
+  },
+  {
+    "Name": "Iron Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Iron"
+  },
+  {
+    "Name": "Aluminium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Aluminium"
+  },
+  {
+    "Name": "Silicon Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Silicon"
+  },
+
+  {
+    "Name": "Pure Carbon Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Carbon"
+  },
+  {
+    "Name": "Pure Iron Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Iron"
+  },
+  {
+    "Name": "Pure Aluminium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Aluminium"
+  },
+  {
+    "Name": "Pure Silicon Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Silicon"
+  },
+
+  {
+    "Name": "Sodium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Sodium"
+  },
+  {
+    "Name": "Calcium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Calcium"
+  },
+  {
+    "Name": "Chromium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Chromium"
+  },
+  {
+    "Name": "Copper Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Copper"
+  },
+
+  {
+    "Name": "Pure Sodium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Sodium"
+  },
+  {
+    "Name": "Pure Calcium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Calcium"
+  },
+  {
+    "Name": "Pure Chromium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Chromium"
+  },
+  {
+    "Name": "Pure Copper Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Copper"
+  },
+
+  {
+    "Name": "Lithium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Lithium"
+  },
+  {
+    "Name": "Sulfur Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Sulfur"
+  },
+  {
+    "Name": "Nickel Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Nickel"
+  },
+  {
+    "Name": "Silver Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Silver"
+  },
+
+  {
+    "Name": "Pure Lithium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Lithium"
+  },
+  {
+    "Name": "Pure Sulfur Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Sulfur"
+  },
+  {
+    "Name": "Pure Nickel Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Nickel"
+  },
+  {
+    "Name": "Pure Silver Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Silver"
+  },
+
+  {
+    "Name": "Gold Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Gold"
+  },
+  {
+    "Name": "Cobalt Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Cobalt"
+  },
+  {
+    "Name": "Scandium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Scandium"
+  },
+  {
+    "Name": "Fluorine Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Fluorine"
+  },
+
+  {
+    "Name": "Pure Gold Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Gold"
+  },
+  {
+    "Name": "Pure Cobalt Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Cobalt"
+  },
+  {
+    "Name": "Pure Scandium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Scandium"
+  },
+  {
+    "Name": "Pure Fluorine Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Fluorine"
+  },
+
+  {
+    "Name": "Titanium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Titanium"
+  },
+  {
+    "Name": "Manganese Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Manganese"
+  },
+  {
+    "Name": "Vanadium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Vanadium"
+  },
+  {
+    "Name": "Niobium Ore Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Niobium"
+  },
+
+  {
+    "Name": "Pure Titanium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Titanium"
+  },
+  {
+    "Name": "Pure Manganese Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Manganese"
+  },
+  {
+    "Name": "Pure Vanadium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Vanadium"
+  },
+  {
+    "Name": "Pure Niobium Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Pure Niobium"
+  },
+
+  {
+    "Name": "Al-Fe Alloy product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Al-Fe Alloy product"
+  },
+  {
+    "Name": "Polycarbonate plastic product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polycarbonate plastic product"
+  },
+  {
+    "Name": "Silumin Product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Silumin Product"
+  },
+  {
+    "Name": "Steel product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Steel product"
+  },
+  {
+    "Name": "Glass product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Glass product"
+  },
+
+  {
+    "Name": "Al-Fe Alloy product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Al-Fe Alloy product"
+  },
+  {
+    "Name": "Polycarbonate plastic product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polycarbonate plastic product"
+  },
+  {
+    "Name": "Silumin Product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Silumin Product"
+  },
+  {
+    "Name": "Steel product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Steel product"
+  },
+  {
+    "Name": "Glass product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Glass product"
+  },
+
+  {
+    "Name": "Calcium Reinforced Copper product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Calcium Reinforced Copper product"
+  },
+  {
+    "Name": "Polycalcite plastic product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polycalcite plastic product"
+  },
+  {
+    "Name": "Duralumin Product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Duralumin Product"
+  },
+  {
+    "Name": "Stainless Steel product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Stainless Steel product"
+  },
+  {
+    "Name": "Advanced Glass product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Advanced Glass product"
+  },
+
+  {
+    "Name": "Calcium Reinforced Copper product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Calcium Reinforced Copper product"
+  },
+  {
+    "Name": "Polycalcite plastic product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polycalcite plastic product"
+  },
+  {
+    "Name": "Duralumin Product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Duralumin Product"
+  },
+  {
+    "Name": "Stainless Steel product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Stainless Steel product"
+  },
+  {
+    "Name": "Advanced Glass product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Advanced Glass product"
+  },
+
+  {
+    "Name": "Cu-Ag Alloy product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Cu-Ag Alloy product"
+  },
+  {
+    "Name": "Polysulfide plastic product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polysulfide plastic product"
+  },
+  {
+    "Name": "Al-Li Alloy Product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Al-Li Alloy Product"
+  },
+  {
+    "Name": "Inconel product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Inconel product"
+  },
+  {
+    "Name": "Ag-Li Reinforced Glass product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Ag-Li Reinforced Glass product"
+  },
+
+  {
+    "Name": "Cu-Ag Alloy product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Cu-Ag Alloy product"
+  },
+  {
+    "Name": "Polysulfide plastic product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Polysulfide plastic product"
+  },
+  {
+    "Name": "Al-Li Alloy Product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Al-Li Alloy Product"
+  },
+  {
+    "Name": "Inconel product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Inconel product"
+  },
+  {
+    "Name": "Ag-Li Reinforced Glass product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Ag-Li Reinforced Glass product"
+  },
+
+  {
+    "Name": "Red Gold product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Red Gold product"
+  },
+  {
+    "Name": "Fluoropolymer product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Fluoropolymer product"
+  },
+  {
+    "Name": "Sc-Al Alloy Product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Sc-Al Alloy Product"
+  },
+  {
+    "Name": "Maraging Steel product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Maraging Steel product"
+  },
+  {
+    "Name": "Gold-Coated Glass product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Gold-Coated Glass product"
+  },
+
+  {
+    "Name": "Red Gold product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Red Gold product"
+  },
+  {
+    "Name": "Fluoropolymer product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Fluoropolymer product"
+  },
+  {
+    "Name": "Sc-Al Alloy Product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Sc-Al Alloy Product"
+  },
+  {
+    "Name": "Maraging Steel product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Maraging Steel product"
+  },
+  {
+    "Name": "Gold-Coated Glass product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Gold-Coated Glass product"
+  },
+
+  {
+    "Name": "Ti-Nb Supraconductor product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Ti-Nb Supraconductor product"
+  },
+  {
+    "Name": "Vanamer product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Vanamer product"
+  },
+  {
+    "Name": "Grade 5 Titanium Alloy Product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Grade 5 Titanium Alloy Product"
+  },
+  {
+    "Name": "Mangalloy product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Mangalloy product"
+  },
+  {
+    "Name": "Manganese Reinforced Glass product Refining",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Manganese Reinforced Glass product"
+  },
+
+  {
+    "Name": "Ti-Nb Supraconductor product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Ti-Nb Supraconductor product"
+  },
+  {
+    "Name": "Vanamer product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Vanamer product"
+  },
+  {
+    "Name": "Grade 5 Titanium Alloy Product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Grade 5 Titanium Alloy Product"
+  },
+  {
+    "Name": "Mangalloy product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Mangalloy product"
+  },
+  {
+    "Name": "Manganese Reinforced Glass product Productivity",
+    "Tier": 1,
+    "amount": 0.03,
+    "lvl": 0,
+    "AffectedRecipe": "Manganese Reinforced Glass product"
+  }
 ]
