@@ -3,13 +3,15 @@ const { Module } = require('module');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const items = './data/items_api_dump.json';
 const recipes = './data/recipes_api_dump.json';
+const talents = './data/talents.json';
 const logo = "../PBSC.png";
 const fs = require('fs');
 const rawdataitems = fs.readFileSync(items);
-const objdataitems = JSON.parse(rawdataitems);
+var objdataitems = JSON.parse(rawdataitems);
 const rawdatarecipes = fs.readFileSync(recipes);
-const objdatarecipes = JSON.parse(rawdatarecipes);
-
+var objdatarecipes = JSON.parse(rawdatarecipes);
+const rawdatatalents = fs.readFileSync(talents);
+var objdatatalents = JSON.parse(rawdatatalents);
 module.exports = {
     isOre: async function (oreName) {
         var ore = [
@@ -121,5 +123,55 @@ module.exports = {
         }
 
         return list;
+    },
+    loadTalent: function () {
+
+
+
+        for (let index = 0; index < objdatatalents.length; index++) {
+            //console.log(objdatatalents[index].AffectedRecipe)
+            for (let index2 = 0; index2 < objdatatalents[index].AffectedRecipe.length; index2++) {
+                //console.log(objdatatalents[index].AffectedRecipe[index2])
+                var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
+                var recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
+                //console.log(rec.products[0].displayNameWithSize)
+
+
+                switch (objdatatalents[index].categorie) {
+                    case "Ore Refining":
+                    case "Product Refining":
+                    case "Fuel Refining":
+                        for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
+                            console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
+                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
+                            console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
+                        }
+                        break;
+                    case "Pure Productivity":
+                    case "Product Productivity":
+                    case "Fuel Productivity":
+                        for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
+                            console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
+                            console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                        }
+                        break;
+                    case "Intermediary Part":
+                    case "Ammo Productivity":
+                        for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
+                            console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents[index].lvl * objdatatalents[index].amount)
+                            console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                        }
+                        break;
+                    default:
+                        console.log("pas ok");
+                        break;
+                }
+            }
+
+
+        }
+
     }
 }

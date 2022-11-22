@@ -22,6 +22,7 @@ client.once('ready', () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
 	//var list = [];
 	//functions.recetteSearch("Adjustor l", 1, list);
+	functions.loadTalent();
 
 });
 
