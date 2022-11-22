@@ -1,17 +1,19 @@
 const { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { Module } = require('module');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-const items = './data/items_api_dump.json';
-const recipes = './data/recipes_api_dump.json';
-const talents = './data/talents.json';
 const logo = "../PBSC.png";
 const fs = require('fs');
+
+const items = './data/items_api_dump.json';
 const rawdataitems = fs.readFileSync(items);
-var objdataitems = JSON.parse(rawdataitems);
+const objdataitems = JSON.parse(rawdataitems);
+
+const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
 var objdatarecipes = JSON.parse(rawdatarecipes);
-const rawdatatalents = fs.readFileSync(talents);
-var objdatatalents = JSON.parse(rawdatatalents);
+
+
+
 module.exports = {
     isOre: async function (oreName) {
         var ore = [
@@ -55,7 +57,7 @@ module.exports = {
         var datetime = currentHours + "h" + currentMinutes;
         return datetime;
     },
-    recetteSearch: async function (recette, nombre, list) {
+    recetteSearch: async function (recette, nombre, list, objRecipesTalented) {
 
         //console.log("for end items " + objdataitems.length);
         //console.log("for end recipes " + objdatarecipes.length);
@@ -71,15 +73,14 @@ module.exports = {
         }
 
 
-
-        var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === recette);
+        var rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
         var nbsch;
         if (rec != null) {
             nbsch = nombre / rec.products[0].quantity;
             if (nbsch % 1 != 0) {
-                console.log(nbsch);
+                //console.log(nbsch);
                 nbsch = Math.ceil(nbsch);
-                console.log(nbsch);
+                //console.log(nbsch);
                 //nbpc = nbpc2 * rec.ingredients[index].quantity;
             }
         }
@@ -102,11 +103,11 @@ module.exports = {
             });
         }
         if (rec != null) {
-            //console.log("rec : " + rec.products[0].displayNameWithSize);
+            console.log("rec : " + rec.products[0].displayNameWithSize);
 
 
             for (let index = 0; index < rec.ingredients.length; index++) {
-                //console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
+                console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
                 var nbpc = Math.ceil((rec.ingredients[index].quantity / rec.products[0].quantity) * nombre);
                 ///pour calculer les batchs necessaire pour les crafts afin d'avoir de quoi faire tourner les batch
                 var nbpc2 = nbpc / rec.ingredients[index].quantity;
@@ -116,17 +117,28 @@ module.exports = {
                     //console.log(nbpc2);
                     //nbpc = nbpc2 * rec.ingredients[index].quantity;
                 }
-                //console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
+                console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
 
-                module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list)
+                module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list, objRecipesTalented)
             }
         }
 
         return list;
     },
-    loadTalent: function () {
+    loadTalent: async function (profil, objdatarecipes) {
+        const talents = `./data/profils/${profil}.json`;
 
+        var rawdatatalents;
+        try {
+            rawdatatalents = fs.readFileSync(`./data/profils/${profil}.json`);
+        } catch (err) {
+            // Here you get the error when the file was not found,
+            // but you also get any other error
+            const lvl0 = `./data/profils/lvl0.json`;
+            rawdatatalents = fs.readFileSync(lvl0);
 
+        }
+        const objdatatalents = JSON.parse(rawdatatalents);
 
         for (let index = 0; index < objdatatalents.length; index++) {
             //console.log(objdatatalents[index].AffectedRecipe)
@@ -142,26 +154,26 @@ module.exports = {
                     case "Product Refining":
                     case "Fuel Refining":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
-                            console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
+                            //console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
                             rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
-                            console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
+                            //console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
                         }
                         break;
                     case "Pure Productivity":
                     case "Product Productivity":
                     case "Fuel Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
-                            console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                             rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
-                            console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
                         break;
                     case "Intermediary Part":
                     case "Ammo Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
-                            console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                             rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents[index].lvl * objdatatalents[index].amount)
-                            console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
                         break;
                     default:
@@ -172,6 +184,7 @@ module.exports = {
 
 
         }
+        return objdatarecipes;
 
     }
 }

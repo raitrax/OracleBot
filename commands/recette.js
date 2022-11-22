@@ -6,6 +6,10 @@ const schematic = './data/schematic.json';
 const rawdataschematic = fs.readFileSync(schematic);
 const objdataschematic = JSON.parse(rawdataschematic);
 
+const recipes = './data/recipes_api_dump.json';
+const rawdatarecipes = fs.readFileSync(recipes);
+var objdatarecipes = JSON.parse(rawdatarecipes);
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('recette')
@@ -20,14 +24,26 @@ module.exports = {
             option.setName('nombre')
                 .setDescription(`Nombre d'élément`)
                 .setRequired(true)
+        )
+        .addStringOption(option =>
+            option.setName('profil')
+                .setDescription(`Profil de crafter`)
+                .setRequired(true)
+                .setAutocomplete(true)
         ),
 
     async execute(interaction) {
         const input = interaction.options.getString('input');
         const nombre = interaction.options.getInteger('nombre');
+        const profil = interaction.options.getString('profil');
+
+
+
+        var objRecipesTalented = await functions.loadTalent(profil, objdatarecipes);
+
         console.log("ajout test");
         var list = [];
-        await functions.recetteSearch(input, nombre, list);
+        await functions.recetteSearch(input, nombre, list, objRecipesTalented);
         //setTimeout(() => {
         // console.log("Retardée d'une seconde.");
         console.log(list);
