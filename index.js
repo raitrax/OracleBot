@@ -70,12 +70,61 @@ client.on('interactionCreate', async interaction => {
 					filtered.map(choice => ({ name: choice, value: choice })),
 				);
 			}
+		}
+		if (interaction.commandName === 'profil') {
+			const focusedValue = interaction.options.getFocused();
+			const profils = [];
+			const profilsPath = path.join(__dirname, 'data/profils');
+			var profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
+			for (let index = 0; index < profilsFiles.length; index++) {
+				profilsFiles[index] = profilsFiles[index].substring(0, profilsFiles[index].length - 5);
+			}
+
+			//console.log(profilsFiles);
 
 
+			//choices = ['lvl0', 'lvl5', 'Syth', 'Snow', 'Donny'];
 
+			const filtered = profilsFiles.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));
+			await interaction.respond(
+				filtered.map(choice => ({ name: choice, value: choice })),
+			);
+		}
+		if (interaction.commandName === 'modifprofil') {
+			var size = 25;
+			var listItems = [];
+			const focusedOption = interaction.options.getFocused(true);
+			if (focusedOption.name == "talent") {
+				const talent = './data/profils/lvl0.json';
+				const rawdatatalent = fs.readFileSync(talent);
+				const objdatatalent = JSON.parse(rawdatatalent);
+				for (let index = 0; index < objdatatalent.length; index++) {
+					listItems[index] = objdatatalent[index].Name;
+				}
+				const filtered = listItems.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
 
+				var itemList = filtered.slice(0, size)
+
+				await interaction.respond(
+					itemList.map(choice => ({ name: choice, value: choice })),
+				);
+			}
+			if (focusedOption.name == "profil") {
+				const profils = [];
+				const profilsPath = path.join(__dirname, 'data/profils');
+				var profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
+				for (let index = 0; index < profilsFiles.length; index++) {
+					profilsFiles[index] = profilsFiles[index].substring(0, profilsFiles[index].length - 5);
+				}
+
+				const filtered = profilsFiles.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
+				await interaction.respond(
+					filtered.map(choice => ({ name: choice, value: choice })),
+				);
+			}
 		}
 	}
+
 	if (!interaction.isChatInputCommand()) return;
 
 	const command = client.commands.get(interaction.commandName);

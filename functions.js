@@ -72,7 +72,6 @@ module.exports = {
             schematicName = itm.schematics[0].displayNameWithSize;
         }
 
-
         var rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
         var nbsch;
         if (rec != null) {
@@ -104,7 +103,6 @@ module.exports = {
         }
         if (rec != null) {
             console.log("rec : " + rec.products[0].displayNameWithSize);
-
 
             for (let index = 0; index < rec.ingredients.length; index++) {
                 console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
@@ -148,7 +146,6 @@ module.exports = {
                 var recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
                 //console.log(rec.products[0].displayNameWithSize)
 
-
                 switch (objdatatalents[index].categorie) {
                     case "Ore Refining":
                     case "Product Refining":
@@ -181,7 +178,6 @@ module.exports = {
                         break;
                 }
             }
-
 
         }
         return objdatarecipes;
