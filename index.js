@@ -23,6 +23,8 @@ client.once('ready', async () => {
 	//var list = [];
 	//functions.recetteSearch("Adjustor l", 1, list);
 	//await functions.loadTalent("lvl5");
+	//await functions.searchHoney();
+
 
 });
 

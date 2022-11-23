@@ -139,7 +139,7 @@ module.exports = {
         const objdatatalents = JSON.parse(rawdatatalents);
 
         for (let index = 0; index < objdatatalents.length; index++) {
-            //console.log(objdatatalents[index].AffectedRecipe)
+            console.log(objdatatalents[index].AffectedRecipe)
             for (let index2 = 0; index2 < objdatatalents[index].AffectedRecipe.length; index2++) {
                 //console.log(objdatatalents[index].AffectedRecipe[index2])
                 var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
@@ -150,6 +150,8 @@ module.exports = {
                     case "Ore Refining":
                     case "Product Refining":
                     case "Fuel Refining":
+                    case "Scrap Refinery":
+                    case "Honeycomb Refining":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
                             //console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
                             rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
@@ -159,6 +161,7 @@ module.exports = {
                     case "Pure Productivity":
                     case "Product Productivity":
                     case "Fuel Productivity":
+                    case "Honeycomb Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                             rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
@@ -167,6 +170,7 @@ module.exports = {
                         break;
                     case "Intermediary Part":
                     case "Ammo Productivity":
+                    case "Scrap Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                             rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents[index].lvl * objdatatalents[index].amount)
@@ -182,5 +186,92 @@ module.exports = {
         }
         return objdatarecipes;
 
+    },
+
+    searchHoney: async function () {
+        var listItems1PureIron = [];
+        var listItems1PureCarbon = [];
+        var listItems1PureAluminium = [];
+        var listItems1PureSilicon = [];
+        var listItems1Product = [];
+        var listItems2Pure = [];
+        var listItems2Product = [];
+        var listItems3Pure = [];
+        var listItems3Product = [];
+        var listItems4Pure = [];
+        var listItems4Product = [];
+        var listItems5Pure = [];
+        var listItems5Product = [];
+        const rawdataitems = fs.readFileSync(items);
+        const objdataitems = JSON.parse(rawdataitems);
+        var T1PureIron = objdataitems.filter(re => re.displayNameWithSize.includes("Iron"));
+        var T1PureCarbon = objdataitems.filter(re => re.displayNameWithSize.includes("Carbon"));
+        var T1PureAluminium = objdataitems.filter(re => re.displayNameWithSize.includes("Aluminium"));
+        var T1PureSilicon = objdataitems.filter(re => re.displayNameWithSize.includes("Silicon"));
+        var T1Product = objdataitems.find(re => re.displayNameWithSize === "Tier 1 Product Honeycomb Schematic Copy");
+        var T2Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Pure Honeycomb Schematic Copy");
+        var T2Product = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Product Honeycomb Schematic Copy");
+        var T3Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Pure Honeycomb Schematic Copy");
+        var T3Product = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Product Honeycomb Schematic Copy");
+        var T4Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Pure Honeycomb Schematic Copy");
+        var T4Product = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Product Honeycomb Schematic Copy");
+        var T5Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Pure Honeycomb Schematic Copy");
+        var T5Product = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Product Honeycomb Schematic Copy");
+
+        for (let index = 0; index < T1PureIron.length; index++) {
+            listItems1PureIron[index] = T1PureIron[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T1PureCarbon.length; index++) {
+            listItems1PureCarbon[index] = T1PureCarbon[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T1PureAluminium.length; index++) {
+            listItems1PureAluminium[index] = T1PureAluminium[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T1PureSilicon.length; index++) {
+            listItems1PureSilicon[index] = T1PureSilicon[index].displayNameWithSize;
+        }
+
+        for (let index = 0; index < T1Product.products.length; index++) {
+            listItems1Product[index] = T1Product.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T2Pure.products.length; index++) {
+            listItems2Pure[index] = T2Pure.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T2Product.products.length; index++) {
+            listItems2Product[index] = T2Product.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T3Pure.products.length; index++) {
+            listItems3Pure[index] = T3Pure.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T3Product.products.length; index++) {
+            listItems3Product[index] = T3Product.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T4Pure.products.length; index++) {
+            listItems4Pure[index] = T4Pure.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T4Product.products.length; index++) {
+            listItems4Product[index] = T4Product.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T5Pure.products.length; index++) {
+            listItems5Pure[index] = T5Pure.products[index].displayNameWithSize;
+        }
+        for (let index = 0; index < T5Product.products.length; index++) {
+            listItems5Product[index] = T5Product.products[index].displayNameWithSize;
+        }
+
+
+        fs.writeFileSync(`./data/T1PureIron.json`, JSON.stringify(listItems1PureIron));
+        fs.writeFileSync(`./data/T1PureCarbon.json`, JSON.stringify(listItems1PureCarbon));
+        fs.writeFileSync(`./data/T1PureAluminium.json`, JSON.stringify(listItems1PureAluminium));
+        fs.writeFileSync(`./data/T1PureSilicon.json`, JSON.stringify(listItems1PureSilicon));
+        fs.writeFileSync(`./data/T1Product.json`, JSON.stringify(listItems1Product));
+        fs.writeFileSync(`./data/T2Pure.json`, JSON.stringify(listItems2Pure));
+        fs.writeFileSync(`./data/T2Product.json`, JSON.stringify(listItems2Product));
+        fs.writeFileSync(`./data/T3Pure.json`, JSON.stringify(listItems3Pure));
+        fs.writeFileSync(`./data/T3Product.json`, JSON.stringify(listItems3Product));
+        fs.writeFileSync(`./data/T4Pure.json`, JSON.stringify(listItems4Pure));
+        fs.writeFileSync(`./data/T4Product.json`, JSON.stringify(listItems4Product));
+        fs.writeFileSync(`./data/T5Pure.json`, JSON.stringify(listItems5Pure));
+        fs.writeFileSync(`./data/T5Product.json`, JSON.stringify(listItems5Product));
     }
 }

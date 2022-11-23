@@ -10963,6 +10963,30 @@
     ]
   },
   {
+    "id": 218121504,
+    "tier": 1,
+    "time": 10,
+    "nanocraftable": true,
+    "ingredients": [
+      {
+        "quantity": 100,
+        "id": 511774178,
+        "displayNameWithSize": "Steel product",
+        "locDisplayNameWithSize": "Produit en acier",
+        "locDisplayNameWithSizeDE": "Stahlprodukt"
+      }
+    ],
+    "products": [
+      {
+        "quantity": 10,
+        "id": 1837365269,
+        "displayNameWithSize": "Galvanized red steel (cold)",
+        "locDisplayNameWithSize": "Acier rouge galvanisé (froid)",
+        "locDisplayNameWithSizeDE": "Verzinkter roter Stahl (kalt)"
+      }
+    ]
+  },
+  {
     "id": 218698870,
     "tier": 5,
     "time": 810,
