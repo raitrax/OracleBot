@@ -68,7 +68,7 @@ module.exports = {
         //console.log("itm : " + itm.displayNameWithSize);
         var schematicName = "Aucun Schematic";
         if (itm.schematics.length != 0) {
-            console.log("schema : " + itm.schematics[0].displayNameWithSize);
+            //console.log("schema : " + itm.schematics[0].displayNameWithSize);
             schematicName = itm.schematics[0].displayNameWithSize;
         }
 
@@ -102,10 +102,10 @@ module.exports = {
             });
         }
         if (rec != null) {
-            console.log("rec : " + rec.products[0].displayNameWithSize);
+            //console.log("rec : " + rec.products[0].displayNameWithSize);
 
             for (let index = 0; index < rec.ingredients.length; index++) {
-                console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
+                //console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
                 var nbpc = Math.ceil((rec.ingredients[index].quantity / rec.products[0].quantity) * nombre);
                 ///pour calculer les batchs necessaire pour les crafts afin d'avoir de quoi faire tourner les batch
                 var nbpc2 = nbpc / rec.ingredients[index].quantity;
@@ -115,7 +115,7 @@ module.exports = {
                     //console.log(nbpc2);
                     //nbpc = nbpc2 * rec.ingredients[index].quantity;
                 }
-                console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
+                //console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
 
                 module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list, objRecipesTalented)
             }
@@ -139,7 +139,7 @@ module.exports = {
         const objdatatalents = JSON.parse(rawdatatalents);
 
         for (let index = 0; index < objdatatalents.length; index++) {
-            console.log(objdatatalents[index].AffectedRecipe)
+            //console.log(objdatatalents[index].AffectedRecipe)
             for (let index2 = 0; index2 < objdatatalents[index].AffectedRecipe.length; index2++) {
                 //console.log(objdatatalents[index].AffectedRecipe[index2])
                 var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
@@ -188,7 +188,7 @@ module.exports = {
 
     },
 
-    searchHoney: async function () {
+    searchHoney: async function () { //temporaire pour chercher tous les items d'honeycomb existant pour les ajouter au talents
         var listItems1PureIron = [];
         var listItems1PureCarbon = [];
         var listItems1PureAluminium = [];

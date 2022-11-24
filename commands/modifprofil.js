@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 
 module.exports = {
@@ -27,7 +27,11 @@ module.exports = {
                     { name: "Product Productivity", value: "Product Productivity" },
                     { name: "Fuel Productivity", value: "Fuel Productivity" },
                     { name: "Intermediary Part", value: "Intermediary Part" },
-                    { name: "Ammo Productivity", value: "Ammo Productivity" }
+                    { name: "Ammo Productivity", value: "Ammo Productivity" },
+                    { name: "Scrap Refinery", value: "Scrap Refinery" },
+                    { name: "Scrap Productivity", value: "Scrap Productivity" },
+                    { name: "Honeycomb Refining", value: "Honeycomb Refining" },
+                    { name: "Honeycomb Productivity", value: "Honeycomb Productivity" }
                 ),
         )
         .addIntegerOption(option =>
@@ -68,24 +72,41 @@ module.exports = {
             return interaction.reply("Profil invalide");
         }
         const objdatatalents = JSON.parse(rawdatatalents);
-
+        var txtTotal = "";
         if (talent != null && level != null && categorie == null && tier == null) {
             var talIndex = objdatatalents.findIndex(ta => ta.Name === talent);
             objdatatalents[talIndex].lvl = level;
             fs.writeFileSync(`./data/profils/${profil}.json`, JSON.stringify(objdatatalents));
-            interaction.reply(`Talent : ${talent} mis à jour au niveau : ${level} sur le profil : ${profil}`);
+            txtTotal += `- ${objdatatalents[talIndex].Name} : ${objdatatalents[talIndex].lvl}`;
+            //interaction.reply(`Talent : ${talent} mis à jour au niveau : ${level} sur le profil : ${profil}`);
         } else if (categorie != null && tier != null && level != null && talent == null) {
+            txtTotal += `Catégorie "${categorie}" Tier ${tier} => \n`;
+
             for (let index = 0; index < objdatatalents.length; index++) {
                 if (categorie == objdatatalents[index].categorie && tier == objdatatalents[index].Tier) {
                     objdatatalents[index].lvl = level;
+                    txtTotal += `- ${objdatatalents[index].Name} : ${objdatatalents[index].lvl} \n`;
                 }
             }
             fs.writeFileSync(`./data/profils/${profil}.json`, JSON.stringify(objdatatalents));
-            interaction.reply(`Categorie : ${categorie} du Tier : ${tier} mis à jour au niveau : ${level} sur le profil : ${profil}`);
+            //interaction.reply(`Categorie : ${categorie} du Tier : ${tier} mis à jour au niveau : ${level} sur le profil : ${profil}`);
+
+
         }
         else {
-            interaction.reply("utiliser moi correctement svp");
+            return interaction.reply({ content: `utiliser moi correctement svp`, ephemeral: true });
         }
+        ServiceEmbed = new EmbedBuilder()
+            .setColor("0xFFA500")
+            .setTitle(`Modification du profil: ${profil}`)
+            //.setAuthor({ name: 'Raitrax' })
+            .setTimestamp()
+            .addFields(
+                //{ name: 'Elements', value: txtElements, inline: true },
+                { name: 'Talent(s) mis à jour : ', value: txtTotal, inline: true },
+            )
+            .setFooter({ text: 'Made by Raitrax' });
 
+        return interaction.reply({ embeds: [ServiceEmbed] });
     },
 };

@@ -44,7 +44,7 @@ module.exports = {
             await functions.recetteSearch(input, nombre, list, objRecipesTalented);
             //setTimeout(() => {
             // console.log("Retardée d'une seconde.");
-            console.log(list);
+            //console.log(list);
             //console.log(list.length);
             var schematicsList = [];
             for (let index = 0; index < list.length; index++) {
@@ -57,7 +57,7 @@ module.exports = {
                 }
 
             }
-            console.log(schematicsList);
+            //console.log(schematicsList);
             var txtElements = "";
             var txtSchematics = "";
             var txtTotal = "";
@@ -91,7 +91,7 @@ module.exports = {
 
             return interaction.reply({ embeds: [ServiceEmbed] });
         } catch (error) {
-            interaction.reply(`Essaie encore!`);
+            interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
         }
 
 

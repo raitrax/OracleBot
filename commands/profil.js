@@ -34,7 +34,7 @@ module.exports = {
         }
         if (choix === "supp") {
             if (nom == "lvl0" || nom == "lvl5") {
-                return interaction.reply(`Essaie encore pour voir!`);
+                return interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
             }
             const filePath = `./data/profils/${nom}.json`;
             fs.access(filePath, error => {
