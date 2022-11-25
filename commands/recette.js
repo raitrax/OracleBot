@@ -76,6 +76,8 @@ module.exports = {
                 totalPrice += price;
                 txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${price}h \n`;
             }
+            var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
+            var craftable = `${rec.nanocraftable}`;
             txtSchematics += `Total : ${totalPrice}h \n`;
             ServiceEmbed = new EmbedBuilder()
                 .setColor("0xFFA500")
@@ -83,7 +85,7 @@ module.exports = {
                 //.setAuthor({ name: 'Raitrax' })
                 .setTimestamp()
                 .addFields(
-                    //{ name: 'Elements', value: txtElements, inline: true },
+                    { name: 'Nanocraftable', value: craftable, inline: false },
                     { name: 'Ore/Minerai nécessaire : ', value: txtTotal, inline: true },
                     { name: 'Schematics : ', value: txtSchematics, inline: true },
                 )
