@@ -6,6 +6,10 @@ const schematic = './data/schematic.json';
 const rawdataschematic = fs.readFileSync(schematic);
 const objdataschematic = JSON.parse(rawdataschematic);
 
+const oreprice = './data/oreprice.json';
+const rawdataoreprice = fs.readFileSync(oreprice);
+const objdataoreprice = JSON.parse(rawdataoreprice);
+
 const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
 //var objdatarecipes = JSON.parse(rawdatarecipes);
@@ -62,24 +66,40 @@ module.exports = {
         var txtElements = "";
         var txtSchematics = "";
         var txtTotal = "";
+        var theTotal = "";
+        var totalOrePrice = 0;
+        var totalTalentPrice = 0;
+
         for (let index3 = 0; index3 < list.length; index3++) {
             txtElements += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
             let ore = await functions.isOre(list[index3].item);
             //console.log(ore);
+
+
             if (ore) {
-                txtTotal += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
+                var priceOre = objdataoreprice.find(re => re.Name = list[index3].item)
+                var orePrice = list[index3].itemQuantity * priceOre.Price;
+                totalOrePrice += orePrice;
+                txtTotal += `- ${list[index3].item} : **${list[index3].itemQuantity}** | ${orePrice}h\n`;
             }
+            /*else {
+                txtTotal += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
+            }*/
         }
-        var totalPrice = 0;
+        theTotal += `Ore Price : ${totalOrePrice}h\n`;
+
         for (let index4 = 0; index4 < schematicsList.length; index4++) {
             var index5 = objdataschematic.map(object => object.Name).indexOf(schematicsList[index4].name);
-            var price = objdataschematic[index5].UnitPrice * schematicsList[index4].nb;
-            totalPrice += price;
-            txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${price}h \n`;
+            var talentPrice = objdataschematic[index5].UnitPrice * schematicsList[index4].nb;
+            totalTalentPrice += talentPrice;
+            txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${talentPrice}h \n`;
         }
         var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
         var craftable = `${rec.nanocraftable}`;
-        txtSchematics += `Total : ${totalPrice}h \n`;
+        theTotal += `Schematic : ${totalTalentPrice}h\n`;
+        var thebigTotal = totalTalentPrice + totalOrePrice;
+        theTotal += `Total : **${thebigTotal}**h\n`;
+
         ServiceEmbed = new EmbedBuilder()
             .setColor("0xFFA500")
             .setTitle(`${nombre}x ${input} | Profil: ${profil}`)
@@ -89,6 +109,8 @@ module.exports = {
                 { name: 'Nanocraftable', value: craftable, inline: false },
                 { name: 'Ore/Minerai nécessaire : ', value: txtTotal, inline: true },
                 { name: 'Schematics : ', value: txtSchematics, inline: true },
+                { name: 'Prix', value: theTotal, inline: false },
+
             )
             .setFooter({ text: 'Made by Raitrax' });
 
