@@ -100,8 +100,8 @@ client.on('interactionCreate', async interaction => {
 				const talent = './data/profils/lvl0.json';
 				const rawdatatalent = fs.readFileSync(talent);
 				const objdatatalent = JSON.parse(rawdatatalent);
-				for (let index = 0; index < objdatatalent.length; index++) {
-					listItems[index] = objdatatalent[index].Name;
+				for (let index = 0; index < objdatatalent.TalentList.length; index++) {
+					listItems[index] = objdatatalent.TalentList[index].Name;
 				}
 				const filtered = listItems.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
 

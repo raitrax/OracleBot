@@ -138,15 +138,15 @@ module.exports = {
         }
         const objdatatalents = JSON.parse(rawdatatalents);
 
-        for (let index = 0; index < objdatatalents.length; index++) {
-            //console.log(objdatatalents[index].AffectedRecipe)
-            for (let index2 = 0; index2 < objdatatalents[index].AffectedRecipe.length; index2++) {
-                //console.log(objdatatalents[index].AffectedRecipe[index2])
-                var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
-                var recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === objdatatalents[index].AffectedRecipe[index2]);
+        for (let index = 0; index < objdatatalents.TalentList.length; index++) {
+            //console.log(objdatatalents.TalentList[index].AffectedRecipe)
+            for (let index2 = 0; index2 < objdatatalents.TalentList[index].AffectedRecipe.length; index2++) {
+                //console.log(objdatatalents.TalentList[index].AffectedRecipe[index2])
+                var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents.TalentList[index].AffectedRecipe[index2]);
+                var recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === objdatatalents.TalentList[index].AffectedRecipe[index2]);
                 //console.log(rec.products[0].displayNameWithSize)
 
-                switch (objdatatalents[index].categorie) {
+                switch (objdatatalents.TalentList[index].categorie) {
                     case "Ore Refining":
                     case "Product Refining":
                     case "Fuel Refining":
@@ -154,7 +154,7 @@ module.exports = {
                     case "Honeycomb Refining":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
                             //console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
-                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
+                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount))
                             //console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
                         }
                         break;
@@ -164,7 +164,7 @@ module.exports = {
                     case "Honeycomb Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents[index].lvl * objdatatalents[index].amount))
+                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount))
                             //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
                         break;
@@ -173,7 +173,7 @@ module.exports = {
                     case "Scrap Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents[index].lvl * objdatatalents[index].amount)
+                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount)
                             //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
                         break;

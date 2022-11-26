@@ -8,7 +8,7 @@ const objdataschematic = JSON.parse(rawdataschematic);
 
 const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
-var objdatarecipes = JSON.parse(rawdatarecipes);
+//var objdatarecipes = JSON.parse(rawdatarecipes);
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -36,65 +36,66 @@ module.exports = {
         const input = interaction.options.getString('input');
         const nombre = interaction.options.getInteger('nombre');
         const profil = interaction.options.getString('profil');
-        try {
-            var objRecipesTalented = await functions.loadTalent(profil, objdatarecipes);
+        //try {
+        var objdatarecipes = JSON.parse(rawdatarecipes);
+        var objRecipesTalented = await functions.loadTalent(profil, objdatarecipes);
 
-            console.log("ajout test");
-            var list = [];
-            await functions.recetteSearch(input, nombre, list, objRecipesTalented);
-            //setTimeout(() => {
-            // console.log("Retardée d'une seconde.");
-            //console.log(list);
-            //console.log(list.length);
-            var schematicsList = [];
-            for (let index = 0; index < list.length; index++) {
-                var index2 = schematicsList.map(object => object.name).indexOf(list[index].schematics);
+        console.log("ajout test");
+        var list = [];
+        await functions.recetteSearch(input, nombre, list, objRecipesTalented);
+        //setTimeout(() => {
+        // console.log("Retardée d'une seconde.");
+        //console.log(list);
+        //console.log(list.length);
+        var schematicsList = [];
+        for (let index = 0; index < list.length; index++) {
+            var index2 = schematicsList.map(object => object.name).indexOf(list[index].schematics);
 
-                if (index2 != -1) {
-                    schematicsList[index2].nb += list[index].schematicsQuantity;
-                } else {
-                    schematicsList.push({ name: list[index].schematics, nb: list[index].schematicsQuantity });
-                }
-
+            if (index2 != -1) {
+                schematicsList[index2].nb += list[index].schematicsQuantity;
+            } else {
+                schematicsList.push({ name: list[index].schematics, nb: list[index].schematicsQuantity });
             }
-            //console.log(schematicsList);
-            var txtElements = "";
-            var txtSchematics = "";
-            var txtTotal = "";
-            for (let index3 = 0; index3 < list.length; index3++) {
-                txtElements += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
-                let ore = await functions.isOre(list[index3].item);
-                //console.log(ore);
-                if (ore) {
-                    txtTotal += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
-                }
-            }
-            var totalPrice = 0;
-            for (let index4 = 0; index4 < schematicsList.length; index4++) {
-                var index5 = objdataschematic.map(object => object.Name).indexOf(schematicsList[index4].name);
-                var price = objdataschematic[index5].UnitPrice * schematicsList[index4].nb;
-                totalPrice += price;
-                txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${price}h \n`;
-            }
-            var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
-            var craftable = `${rec.nanocraftable}`;
-            txtSchematics += `Total : ${totalPrice}h \n`;
-            ServiceEmbed = new EmbedBuilder()
-                .setColor("0xFFA500")
-                .setTitle(`${nombre}x ${input} | Profil: ${profil}`)
-                //.setAuthor({ name: 'Raitrax' })
-                .setTimestamp()
-                .addFields(
-                    { name: 'Nanocraftable', value: craftable, inline: false },
-                    { name: 'Ore/Minerai nécessaire : ', value: txtTotal, inline: true },
-                    { name: 'Schematics : ', value: txtSchematics, inline: true },
-                )
-                .setFooter({ text: 'Made by Raitrax' });
 
-            return interaction.reply({ embeds: [ServiceEmbed] });
-        } catch (error) {
-            interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
         }
+        //console.log(schematicsList);
+        var txtElements = "";
+        var txtSchematics = "";
+        var txtTotal = "";
+        for (let index3 = 0; index3 < list.length; index3++) {
+            txtElements += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
+            let ore = await functions.isOre(list[index3].item);
+            //console.log(ore);
+            if (ore) {
+                txtTotal += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
+            }
+        }
+        var totalPrice = 0;
+        for (let index4 = 0; index4 < schematicsList.length; index4++) {
+            var index5 = objdataschematic.map(object => object.Name).indexOf(schematicsList[index4].name);
+            var price = objdataschematic[index5].UnitPrice * schematicsList[index4].nb;
+            totalPrice += price;
+            txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${price}h \n`;
+        }
+        var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
+        var craftable = `${rec.nanocraftable}`;
+        txtSchematics += `Total : ${totalPrice}h \n`;
+        ServiceEmbed = new EmbedBuilder()
+            .setColor("0xFFA500")
+            .setTitle(`${nombre}x ${input} | Profil: ${profil}`)
+            //.setAuthor({ name: 'Raitrax' })
+            .setTimestamp()
+            .addFields(
+                { name: 'Nanocraftable', value: craftable, inline: false },
+                { name: 'Ore/Minerai nécessaire : ', value: txtTotal, inline: true },
+                { name: 'Schematics : ', value: txtSchematics, inline: true },
+            )
+            .setFooter({ text: 'Made by Raitrax' });
+
+        return interaction.reply({ embeds: [ServiceEmbed] });
+        //} catch (error) {
+        //    interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
+        //}
 
 
 

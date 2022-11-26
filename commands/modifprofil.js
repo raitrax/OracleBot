@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
-
+const { ownersID } = require('../config.json');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('modifprofil')
@@ -72,26 +72,34 @@ module.exports = {
             return interaction.reply("Profil invalide");
         }
         const objdatatalents = JSON.parse(rawdatatalents);
+        if (ownersID != interaction.member.id) {
+            if (objdatatalents.Nom == "lvl0" || objdatatalents.Nom == "lvl1" || objdatatalents.Nom == "lvl2" || objdatatalents.Nom == "lvl3" || objdatatalents.Nom == "lvl4" || objdatatalents.Nom == "lvl5") {
+                return interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
+            }
+            if (objdatatalents.Owner != interaction.member.id) {
+                return interaction.reply({ content: `T'es pas le proprio, tu peux arrêter d'essayer! :)`, ephemeral: true });
+            }
+        }
+
         var txtTotal = "";
+
         if (talent != null && level != null && categorie == null && tier == null) {
-            var talIndex = objdatatalents.findIndex(ta => ta.Name === talent);
-            objdatatalents[talIndex].lvl = level;
+            var talIndex = objdatatalents.TalentList.findIndex(ta => ta.Name === talent);
+            objdatatalents.TalentList[talIndex].lvl = level;
             fs.writeFileSync(`./data/profils/${profil}.json`, JSON.stringify(objdatatalents));
-            txtTotal += `- ${objdatatalents[talIndex].Name} : ${objdatatalents[talIndex].lvl}`;
+            txtTotal += `- ${objdatatalents.TalentList[talIndex].Name} : ${objdatatalents.TalentList[talIndex].lvl}`;
             //interaction.reply(`Talent : ${talent} mis à jour au niveau : ${level} sur le profil : ${profil}`);
         } else if (categorie != null && tier != null && level != null && talent == null) {
             txtTotal += `Catégorie "${categorie}" Tier ${tier} => \n`;
 
-            for (let index = 0; index < objdatatalents.length; index++) {
-                if (categorie == objdatatalents[index].categorie && tier == objdatatalents[index].Tier) {
-                    objdatatalents[index].lvl = level;
-                    txtTotal += `- ${objdatatalents[index].Name} : ${objdatatalents[index].lvl} \n`;
+            for (let index = 0; index < objdatatalents.TalentList.length; index++) {
+                if (categorie == objdatatalents.TalentList[index].categorie && tier == objdatatalents.TalentList[index].Tier) {
+                    objdatatalents.TalentList[index].lvl = level;
+                    txtTotal += `- ${objdatatalents.TalentList[index].Name} : ${objdatatalents.TalentList[index].lvl} \n`;
                 }
             }
             fs.writeFileSync(`./data/profils/${profil}.json`, JSON.stringify(objdatatalents));
             //interaction.reply(`Categorie : ${categorie} du Tier : ${tier} mis à jour au niveau : ${level} sur le profil : ${profil}`);
-
-
         }
         else {
             return interaction.reply({ content: `utiliser moi correctement svp`, ephemeral: true });
@@ -107,6 +115,6 @@ module.exports = {
             )
             .setFooter({ text: 'Made by Raitrax' });
 
-        return interaction.reply({ embeds: [ServiceEmbed] });
+        return interaction.reply({ embeds: [ServiceEmbed], ephemeral: true });
     },
 };
