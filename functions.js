@@ -12,7 +12,9 @@ const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
 var objdatarecipes = JSON.parse(rawdatarecipes);
 
-
+const schematics = './data/schematic.json';
+const rawdataschematics = fs.readFileSync(schematics);
+var objdataschematics = JSON.parse(rawdataschematics);
 
 module.exports = {
     isOre: async function (oreName) {
@@ -123,7 +125,7 @@ module.exports = {
 
         return list;
     },
-    loadTalent: async function (profil, objdatarecipes) {
+    loadTalent: async function (profil, objdatarecipes, objdataschematics) {
         const talents = `./data/profils/${profil}.json`;
 
         var rawdatatalents;
@@ -154,7 +156,7 @@ module.exports = {
                     case "Honeycomb Refining":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
                             //console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
-                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount))
+                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount));
                             //console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
                         }
                         break;
@@ -164,7 +166,7 @@ module.exports = {
                     case "Honeycomb Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount))
+                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount));
                             //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
                         break;
@@ -173,9 +175,13 @@ module.exports = {
                     case "Scrap Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
                             //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount)
+                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount);
                             //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
                         }
+                        break;
+                    case "Schematics Cost":
+                    case "Schematics Productivity":
+                        console.log("passé");
                         break;
                     default:
                         console.log("pas ok");
@@ -183,8 +189,22 @@ module.exports = {
                 }
             }
 
+
         }
-        return objdatarecipes;
+
+        var schemaCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Cost Optimization");
+        var schemaAdvCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Cost Optimization");
+        var schemaProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Output Productivity");
+        var schemaAdvProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Output Productivity");
+
+        for (let index3 = 0; index3 < objdataschematics.length; index3++) {
+            objdataschematics[index3].UnitPrice = Math.round(objdataschematics[index3].UnitPrice - (objdataschematics[index3].UnitPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
+            objdataschematics[index3].BatchPrice = Math.round(objdataschematics[index3].BatchPrice - (objdataschematics[index3].BatchPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
+            objdataschematics[index3].BatchQuantity = Math.round(objdataschematics[index3].BatchQuantity + (objdataschematics[index3].BatchQuantity * ((objdatatalents.TalentList[schemaProdIndex].lvl * objdatatalents.TalentList[schemaProdIndex].amount) + (objdatatalents.TalentList[schemaAdvProdIndex].lvl * objdatatalents.TalentList[schemaAdvProdIndex].amount))));
+        }
+        var objRecipesTalented = objdatarecipes;
+        var objSchematicTalented = objdataschematics;
+        return { objRecipesTalented, objSchematicTalented };
 
     },
 

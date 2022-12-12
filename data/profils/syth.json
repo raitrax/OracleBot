@@ -1,6 +1,6 @@
 {
   "Nom": "syth",
-  "Owner": 186766051634184193,
+  "Owner": 186766051634184200,
   "TalentList": [
     {
       "Name": "Carbon Ore Refining",
@@ -4790,6 +4790,38 @@
         "Sky Mangalloy Panel",
         "White Mangalloy Panel"
       ]
+    },
+    {
+      "Name": "Schematic Cost Optimization",
+      "Tier": 1,
+      "categorie": "Schematics Cost",
+      "amount": 0.05,
+      "lvl": 4,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Schematic Output Productivity",
+      "Tier": 1,
+      "categorie": "Schematics Productivity",
+      "amount": 0.03,
+      "lvl": 4,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Advanced Schematic Cost Optimization",
+      "Tier": 1,
+      "categorie": "Schematics Cost",
+      "amount": 0.03,
+      "lvl": 4,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Advanced Schematic Output Productivity",
+      "Tier": 1,
+      "categorie": "Schematics Productivity",
+      "amount": 0.02,
+      "lvl": 3,
+      "AffectedRecipe": []
     }
   ]
 }

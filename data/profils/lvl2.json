@@ -4831,6 +4831,38 @@
         "Sky Mangalloy Panel",
         "White Mangalloy Panel"
       ]
+    },
+    {
+      "Name": "Schematic Cost Optimization",
+      "Tier": 1,
+      "categorie": "Schematics Cost",
+      "amount": 0.05,
+      "lvl": 2,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Schematic Output Productivity",
+      "Tier": 1,
+      "categorie": "Schematics Productivity",
+      "amount": 0.03,
+      "lvl": 2,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Advanced Schematic Cost Optimization",
+      "Tier": 1,
+      "categorie": "Schematics Cost",
+      "amount": 0.03,
+      "lvl": 2,
+      "AffectedRecipe": []
+    },
+    {
+      "Name": "Advanced Schematic Output Productivity",
+      "Tier": 1,
+      "categorie": "Schematics Productivity",
+      "amount": 0.02,
+      "lvl": 2,
+      "AffectedRecipe": []
     }
   ]
 }

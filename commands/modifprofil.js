@@ -31,7 +31,9 @@ module.exports = {
                     { name: "Scrap Refinery", value: "Scrap Refinery" },
                     { name: "Scrap Productivity", value: "Scrap Productivity" },
                     { name: "Honeycomb Refining", value: "Honeycomb Refining" },
-                    { name: "Honeycomb Productivity", value: "Honeycomb Productivity" }
+                    { name: "Honeycomb Productivity", value: "Honeycomb Productivity" },
+                    { name: "Schematics Cost", value: "Schematics Cost" },
+                    { name: "Schematics Productivity", value: "Schematics Productivity" }
                 ),
         )
         .addIntegerOption(option =>

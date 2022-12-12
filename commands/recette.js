@@ -3,8 +3,7 @@ const functions = require('../functions');
 const fs = require('fs');
 const { isOre } = require('../functions');
 const schematic = './data/schematic.json';
-const rawdataschematic = fs.readFileSync(schematic);
-const objdataschematic = JSON.parse(rawdataschematic);
+const rawdataschematics = fs.readFileSync(schematic);
 
 const oreprice = './data/oreprice.json';
 const rawdataoreprice = fs.readFileSync(oreprice);
@@ -42,7 +41,9 @@ module.exports = {
         const profil = interaction.options.getString('profil');
         //try {
         var objdatarecipes = JSON.parse(rawdatarecipes);
-        var objRecipesTalented = await functions.loadTalent(profil, objdatarecipes);
+        var objdataschematics = JSON.parse(rawdataschematics);
+
+        var { objRecipesTalented, objSchematicTalented } = await functions.loadTalent(profil, objdatarecipes, objdataschematics);
 
         console.log("ajout test");
         var list = [];
@@ -89,8 +90,8 @@ module.exports = {
         theTotal += `Ore Price : ${totalOrePrice}h\n`;
 
         for (let index4 = 0; index4 < schematicsList.length; index4++) {
-            var index5 = objdataschematic.map(object => object.Name).indexOf(schematicsList[index4].name);
-            var talentPrice = objdataschematic[index5].UnitPrice * schematicsList[index4].nb;
+            var index5 = objSchematicTalented.map(object => object.Name).indexOf(schematicsList[index4].name);
+            var talentPrice = objSchematicTalented[index5].UnitPrice * schematicsList[index4].nb;
             totalTalentPrice += talentPrice;
             txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${talentPrice}h \n`;
         }
