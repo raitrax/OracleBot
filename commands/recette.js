@@ -91,15 +91,15 @@ module.exports = {
 
         for (let index4 = 0; index4 < schematicsList.length; index4++) {
             var index5 = objSchematicTalented.map(object => object.Name).indexOf(schematicsList[index4].name);
-            var talentPrice = objSchematicTalented[index5].UnitPrice * schematicsList[index4].nb;
+            var talentPrice = (objSchematicTalented[index5].BatchPrice / objSchematicTalented[index5].BatchQuantity) * schematicsList[index4].nb;
             totalTalentPrice += talentPrice;
             txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${talentPrice}h \n`;
         }
         var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
         var craftable = `${rec.nanocraftable}`;
-        theTotal += `Schematic : ${totalTalentPrice}h\n`;
+        theTotal += `Schematic : ${Math.round(totalTalentPrice)}h\n`;
         var thebigTotal = totalTalentPrice + totalOrePrice;
-        theTotal += `Total : **${thebigTotal}**h\n`;
+        theTotal += `Total : **${Math.round(thebigTotal)}**h\n`;
 
         ServiceEmbed = new EmbedBuilder()
             .setColor("0xFFA500")

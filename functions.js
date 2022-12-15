@@ -188,8 +188,6 @@ module.exports = {
                         break;
                 }
             }
-
-
         }
 
         var schemaCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Cost Optimization");
