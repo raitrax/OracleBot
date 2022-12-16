@@ -12,6 +12,7 @@ module.exports = {
                 .addChoices(
                     { name: "Hematite", value: "Hematite" },
                     { name: "Bauxite", value: "Bauxite" },
+                    { name: "Coal", value: "Coal" },
                     { name: "Quartz", value: "Quartz" },
                     { name: "Chromite", value: "Chromite" },
                     { name: "Natron", value: "Natron" },
