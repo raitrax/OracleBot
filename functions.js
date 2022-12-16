@@ -68,58 +68,59 @@ module.exports = {
         //var isOre = module.exports.isOre(itm.displayNameWithSize);
         //console.log(isOre);
         //console.log("itm : " + itm.displayNameWithSize);
-        var schematicName = "Aucun Schematic";
-        if (itm.schematics.length != 0) {
-            //console.log("schema : " + itm.schematics[0].displayNameWithSize);
-            schematicName = itm.schematics[0].displayNameWithSize;
-        }
+        if (!itm.displayNameWithSize.toLowerCase().includes("catalyst")) {
 
-        var rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
-        var nbsch;
-        if (rec != null) {
-            nbsch = nombre / rec.products[0].quantity;
-            if (nbsch % 1 != 0) {
-                //console.log(nbsch);
-                nbsch = Math.ceil(nbsch);
-                //console.log(nbsch);
-                //nbpc = nbpc2 * rec.ingredients[index].quantity;
+            var schematicName = "Aucun Schematic";
+            if (itm.schematics.length != 0) {
+                //console.log("schema : " + itm.schematics[0].displayNameWithSize);
+                schematicName = itm.schematics[0].displayNameWithSize;
             }
-        }
-        else {
-            nbsch = 0;
-        }
 
-        var index2 = list.map(object => object.item).indexOf(recette);
-
-        if (index2 != -1) {
-            list[index2].itemQuantity += nombre;
-            list[index2].schematicsQuantity += nbsch;
-        }
-        else {
-            list.push({
-                item: recette,
-                itemQuantity: nombre,
-                schematics: schematicName,
-                schematicsQuantity: nbsch
-            });
-        }
-        if (rec != null) {
-            //console.log("rec : " + rec.products[0].displayNameWithSize);
-
-            for (let index = 0; index < rec.ingredients.length; index++) {
-                //console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
-                var nbpc = Math.ceil((rec.ingredients[index].quantity / rec.products[0].quantity) * nombre);
-                ///pour calculer les batchs necessaire pour les crafts afin d'avoir de quoi faire tourner les batch
-                var nbpc2 = nbpc / rec.ingredients[index].quantity;
-                if (nbpc2 % 1 != 0) {
-                    //console.log(nbpc2);
-                    nbpc2 = Math.ceil(nbpc2);
-                    //console.log(nbpc2);
+            var rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
+            var nbsch;
+            if (rec != null) {
+                nbsch = nombre / rec.products[0].quantity;
+                if (nbsch % 1 != 0) {
+                    //console.log(nbsch);
+                    nbsch = Math.ceil(nbsch);
+                    //console.log(nbsch);
                     //nbpc = nbpc2 * rec.ingredients[index].quantity;
                 }
-                //console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
+            }
+            else {
+                nbsch = 0;
+            }
 
-                module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list, objRecipesTalented)
+            var index2 = list.map(object => object.item).indexOf(recette);
+
+            if (index2 != -1) {
+                list[index2].itemQuantity += nombre;
+                list[index2].schematicsQuantity += nbsch;
+            }
+            else {
+                list.push({
+                    item: recette,
+                    itemQuantity: nombre,
+                    schematics: schematicName,
+                    schematicsQuantity: nbsch
+                });
+            }
+            if (rec != null) {
+                //console.log("rec : " + rec.products[0].displayNameWithSize);
+
+                for (let index = 0; index < rec.ingredients.length; index++) {
+                    //console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
+                    var nbpc = Math.ceil((rec.ingredients[index].quantity / rec.products[0].quantity) * nombre);
+                    ///pour calculer les batchs necessaire pour les crafts afin d'avoir de quoi faire tourner les batch
+                    //var nbpc2 = nbpc / rec.ingredients[index].quantity;
+                    //console.log(nbpc2);
+                    //nbpc2 = Math.ceil(nbpc2);
+                    //console.log(nbpc2);
+                    //nbpc = nbpc2 * rec.ingredients[index].quantity;
+                    //console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
+
+                    module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list, objRecipesTalented)
+                }
             }
         }
 

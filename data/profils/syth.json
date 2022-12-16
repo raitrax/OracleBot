@@ -327,7 +327,7 @@
       "Tier": 1,
       "categorie": "Product Refining",
       "amount": 0.03,
-      "lvl": 4,
+      "lvl": 5,
       "AffectedRecipe": ["Al-Fe Alloy product"]
     },
     {
@@ -343,7 +343,7 @@
       "Tier": 1,
       "categorie": "Product Refining",
       "amount": 0.03,
-      "lvl": 4,
+      "lvl": 5,
       "AffectedRecipe": ["Silumin Product"]
     },
     {
@@ -367,7 +367,7 @@
       "Tier": 1,
       "categorie": "Product Productivity",
       "amount": 0.03,
-      "lvl": 4,
+      "lvl": 5,
       "AffectedRecipe": ["Al-Fe Alloy product"]
     },
     {
@@ -383,7 +383,7 @@
       "Tier": 1,
       "categorie": "Product Productivity",
       "amount": 0.03,
-      "lvl": 4,
+      "lvl": 5,
       "AffectedRecipe": ["Silumin Product"]
     },
     {

@@ -97,6 +97,10 @@ module.exports = {
         }
         var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
         var craftable = `${rec.nanocraftable}`;
+        var crafts = ``;
+        for (let index = 0; index < rec.ingredients.length; index++) {
+            crafts += `- ${rec.ingredients[index].quantity * nombre} x ${rec.ingredients[index].displayNameWithSize}\n`
+        }
         theTotal += `Schematic : ${Math.round(totalTalentPrice)}h\n`;
         var thebigTotal = totalTalentPrice + totalOrePrice;
         theTotal += `Total : **${Math.round(thebigTotal)}**h\n`;
@@ -107,6 +111,7 @@ module.exports = {
             //.setAuthor({ name: 'Raitrax' })
             .setTimestamp()
             .addFields(
+                { name: 'Crafts', value: crafts, inline: false },
                 { name: 'Nanocraftable', value: craftable, inline: false },
                 { name: 'Ore/Minerai nécessaire : ', value: txtTotal, inline: true },
                 { name: 'Schematics : ', value: txtSchematics, inline: true },
