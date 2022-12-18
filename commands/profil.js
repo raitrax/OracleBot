@@ -26,17 +26,13 @@ module.exports = {
 
         if (choix === "creer") {
             const lvl0 = `./data/profils/lvl0.json`;
-            rawdatatalents = fs.readFileSync(lvl0);
-            var objdatatalents = JSON.parse(rawdatatalents);
+            const rawdatatalents = fs.readFileSync(lvl0);
+            let objdatatalents = JSON.parse(rawdatatalents);
 
             objdatatalents.Nom = nom;
             objdatatalents.Owner = interaction.member.id;
 
             fs.writeFileSync(`./data/profils/${nom}.json`, JSON.stringify(objdatatalents));
-            //fs.copyFile(`./data/profils/lvl0.json`, `./data/profils/${nom}.json`, (err) => {
-            //    if (err) throw err;
-            //console.log('source.txt was copied to destination.txt');
-            //});
             interaction.reply({ content: `Profil ${nom} crée`, ephemeral: true });
         }
         if (choix === "supp") {
@@ -44,8 +40,8 @@ module.exports = {
                 return interaction.reply({ content: `Essaie encore pour voir!`, ephemeral: true });
             }
             const lvl0 = `./data/profils/${nom}.json`;
-            rawdatatalents = fs.readFileSync(lvl0);
-            var objdatatalents = JSON.parse(rawdatatalents);
+            const rawdatatalents = fs.readFileSync(lvl0);
+            let objdatatalents = JSON.parse(rawdatatalents);
             if (objdatatalents.Owner != interaction.member.id) {
                 return interaction.reply({ content: `T'es pas le proprio, tu peux arrêter d'essayer! :)`, ephemeral: true });
             }

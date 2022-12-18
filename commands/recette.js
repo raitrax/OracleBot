@@ -11,7 +11,7 @@ const objdataoreprice = JSON.parse(rawdataoreprice);
 
 const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
-//var objdatarecipes = JSON.parse(rawdatarecipes);
+
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -40,37 +40,33 @@ module.exports = {
         const nombre = interaction.options.getInteger('nombre');
         const profil = interaction.options.getString('profil');
         //try {
-        var objdatarecipes = JSON.parse(rawdatarecipes);
-        var objdataschematics = JSON.parse(rawdataschematics);
+        let objdatarecipes = JSON.parse(rawdatarecipes);
+        let objdataschematics = JSON.parse(rawdataschematics);
 
-        var { objRecipesTalented, objSchematicTalented } = await functions.loadTalent(profil, objdatarecipes, objdataschematics);
+        let { objRecipesTalented, objSchematicTalented } = await functions.loadTalent(profil, objdatarecipes, objdataschematics);
 
         console.log("ajout test");
-        var list = [];
+        let list = [];
         await functions.recetteSearch(input, nombre, list, objRecipesTalented);
-        //setTimeout(() => {
-        // console.log("Retardée d'une seconde.");
-        //console.log(list);
-        //console.log(list.length);
-        var schematicsList = [];
-        for (let index = 0; index < list.length; index++) {
-            var index2 = schematicsList.map(object => object.name).indexOf(list[index].schematics);
+        let index2;
+        let schematicsList = [];
+        for (const li of list) {
+            index2 = schematicsList.map(object => object.name).indexOf(li.schematics);
 
             if (index2 != -1) {
-                schematicsList[index2].nb += list[index].schematicsQuantity;
+                schematicsList[index2].nb += li.schematicsQuantity;
             } else {
-                schematicsList.push({ name: list[index].schematics, nb: list[index].schematicsQuantity });
+                schematicsList.push({ name: li.schematics, nb: li.schematicsQuantity });
             }
 
         }
-        //console.log(schematicsList);
-        var txtElements = "";
-        var txtSchematics = "";
-        var txtTotal = "";
-        var theTotal = "";
-        var totalOrePrice = 0;
-        var totalTalentPrice = 0;
-        var oreList = [
+        let txtElements = "";
+        let txtSchematics = "";
+        let txtTotal = "";
+        let theTotal = "";
+        let totalOrePrice = 0;
+        let totalTalentPrice = 0;
+        let oreList = [
             {
                 Name: "Hematite",
                 Quantity: 0,
@@ -173,55 +169,48 @@ module.exports = {
             }
         ];
 
-        for (let index3 = 0; index3 < list.length; index3++) {
-            txtElements += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
-            let ore = await functions.isOre(list[index3].item);
-            //console.log(ore);
-
+        for (const li of list) {
+            txtElements += `- ${li.item} : ${li.itemQuantity}\n`;
+            let ore = await functions.isOre(li.item);
 
             if (ore) {
-                var priceOre = objdataoreprice.find(re => re.Name === list[index3].item)
-                var orePrice = list[index3].itemQuantity * priceOre.Price;
-                let oreListIndex = oreList.findIndex(re => re.Name === list[index3].item);
-                //console.log(oreListIndex);
+                let priceOre = objdataoreprice.find(re => re.Name === li.item)
+                let orePrice = li.itemQuantity * priceOre.Price;
+                let oreListIndex = oreList.findIndex(re => re.Name === li.item);
                 oreList[oreListIndex].Price = orePrice;
-                oreList[oreListIndex].Quantity = list[index3].itemQuantity;
+                oreList[oreListIndex].Quantity = li.itemQuantity;
                 totalOrePrice += orePrice;
-                //console.table(oreList[oreListIndex]);
             }
             /*else {
                 txtTotal += `- ${list[index3].item} : ${list[index3].itemQuantity}\n`;
             }*/
         }
-            console.log(txtElements);
-
         theTotal += `Ore Price : ${totalOrePrice}h\n`;
         
-        for (let index4 = 0; index4 < schematicsList.length; index4++) {
-            var index5 = objSchematicTalented.map(object => object.Name).indexOf(schematicsList[index4].name);
-            var talentPrice = (objSchematicTalented[index5].BatchPrice / objSchematicTalented[index5].BatchQuantity) * schematicsList[index4].nb;
+        for (const schematicsLi of schematicsList) {
+            let index5 = objSchematicTalented.map(object => object.Name).indexOf(schematicsLi.name);
+            let talentPrice = (objSchematicTalented[index5].BatchPrice / objSchematicTalented[index5].BatchQuantity) * schematicsLi.nb;
             totalTalentPrice += talentPrice;
-            txtSchematics += `- ${schematicsList[index4].name} : ${schematicsList[index4].nb} | ${talentPrice}h \n`;
+            txtSchematics += `- ${schematicsLi.name} : ${schematicsLi.nb} | ${talentPrice}h \n`;
         }
-        console.table(oreList);
-        for (let index6 = 0; index6 < oreList.length; index6++) {
-            if (oreList[index6].Quantity != 0) {
-                txtTotal += `- **${oreList[index6].Name}** : **${oreList[index6].Quantity}** | **${oreList[index6].Price}h**\n`;
+        for (const oreLi of oreList) {
+            if (oreLi.Quantity != 0) {
+                txtTotal += `- **${oreLi.Name}** : **${oreLi.Quantity}** | **${oreLi.Price}h**\n`;
             }else{
-                txtTotal += `- ${oreList[index6].Name} : ${oreList[index6].Quantity} | ${oreList[index6].Price}h\n`;
+                txtTotal += `- ${oreLi.Name} : ${oreLi.Quantity} | ${oreLi.Price}h\n`;
             }
         }
-        var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
-        var craftable = `${rec.nanocraftable}`;
-        var crafts = ``;
-        for (let index = 0; index < rec.ingredients.length; index++) {
-            crafts += `- ${rec.ingredients[index].quantity * nombre} x ${rec.ingredients[index].displayNameWithSize}\n`
+        let rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === input);
+        let craftable = `${rec.nanocraftable}`;
+        let crafts = ``;
+        for (const recingre of rec.ingredients) {
+            crafts += `- ${recingre.quantity * nombre} x ${recingre.displayNameWithSize}\n`
         }
         theTotal += `Schematic : ${Math.round(totalTalentPrice)}h\n`;
-        var thebigTotal = totalTalentPrice + totalOrePrice;
+        let thebigTotal = totalTalentPrice + totalOrePrice;
         theTotal += `Total : **${Math.round(thebigTotal)}**h\n`;
 
-        ServiceEmbed = new EmbedBuilder()
+        let ServiceEmbed = new EmbedBuilder()
             .setColor("0xFFA500")
             .setTitle(`${nombre}x ${input} | Profil: ${profil}`)
             //.setAuthor({ name: 'Raitrax' })

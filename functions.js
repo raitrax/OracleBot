@@ -10,15 +10,15 @@ const objdataitems = JSON.parse(rawdataitems);
 
 const recipes = './data/recipes_api_dump.json';
 const rawdatarecipes = fs.readFileSync(recipes);
-var objdatarecipes = JSON.parse(rawdatarecipes);
+let objdatarecipes = JSON.parse(rawdatarecipes);
 
 const schematics = './data/schematic.json';
 const rawdataschematics = fs.readFileSync(schematics);
-var objdataschematics = JSON.parse(rawdataschematics);
+let objdataschematics = JSON.parse(rawdataschematics);
 
 module.exports = {
     isOre: async function (oreName) {
-        var ore = [
+        let ore = [
             "Hematite",
             "Bauxite",
             "Coal",
@@ -43,55 +43,46 @@ module.exports = {
             "Vanadinite",
             "Thoramine"
         ]
-        for (let index = 0; index < ore.length; index++) {
-            if (oreName == ore[index]) {
+        for (const or of ore) {
+            if (oreName == or) {
                 return true;
             }
         }
         return false;
     },
     getHeures: function () {
-        var currentdate = new Date();
-        var currentHours = currentdate.getHours();
+        let currentdate = new Date();
+        let currentHours = currentdate.getHours();
         currentHours = ("0" + currentHours).slice(-2);
-        var currentMinutes = currentdate.getMinutes();
+        let currentMinutes = currentdate.getMinutes();
         currentMinutes = ("0" + currentMinutes).slice(-2);
-        var datetime = currentHours + "h" + currentMinutes;
+        let datetime = currentHours + "h" + currentMinutes;
         return datetime;
     },
     recetteSearch: async function (recette, nombre, list, objRecipesTalented) {
 
-        //console.log("for end items " + objdataitems.length);
-        //console.log("for end recipes " + objdatarecipes.length);
-
-        var itm = objdataitems.find(it => it.displayNameWithSize === recette);
-        //var isOre = module.exports.isOre(itm.displayNameWithSize);
-        //console.log(isOre);
-        //console.log("itm : " + itm.displayNameWithSize);
+        let itm = objdataitems.find(it => it.displayNameWithSize === recette);
         if (!itm.displayNameWithSize.toLowerCase().includes("catalyst")) {
 
-            var schematicName = "Aucun Schematic";
+            let schematicName = "Aucun Schematic";
             if (itm.schematics.length != 0) {
-                //console.log("schema : " + itm.schematics[0].displayNameWithSize);
                 schematicName = itm.schematics[0].displayNameWithSize;
             }
 
-            var rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
-            var nbsch;
+            let rec = objRecipesTalented.find(re => re.products[0].displayNameWithSize === recette);
+            let nbsch;
             if (rec != null) {
                 nbsch = nombre / rec.products[0].quantity;
                 if (nbsch % 1 != 0) {
-                    //console.log(nbsch);
                     nbsch = Math.ceil(nbsch);
-                    //console.log(nbsch);
-                    //nbpc = nbpc2 * rec.ingredients[index].quantity;
+                    ///nbpc = nbpc2 * rec.ingredients[index].quantity;
                 }
             }
             else {
                 nbsch = 0;
             }
 
-            var index2 = list.map(object => object.item).indexOf(recette);
+            let index2 = list.map(object => object.item).indexOf(recette);
 
             if (index2 != -1) {
                 list[index2].itemQuantity += nombre;
@@ -106,11 +97,8 @@ module.exports = {
                 });
             }
             if (rec != null) {
-                //console.log("rec : " + rec.products[0].displayNameWithSize);
-
-                for (let index = 0; index < rec.ingredients.length; index++) {
-                    //console.log(rec.ingredients[index].quantity + "/" + rec.ingredients[index].displayNameWithSize);
-                    var nbpc = Math.ceil((rec.ingredients[index].quantity / rec.products[0].quantity) * nombre);
+                for (const recingre of rec.ingredients) {
+                    let nbpc = Math.ceil((recingre.quantity / rec.products[0].quantity) * nombre);
                     ///pour calculer les batchs necessaire pour les crafts afin d'avoir de quoi faire tourner les batch
                     //var nbpc2 = nbpc / rec.ingredients[index].quantity;
                     //console.log(nbpc2);
@@ -119,7 +107,7 @@ module.exports = {
                     //nbpc = nbpc2 * rec.ingredients[index].quantity;
                     //console.log(`${rec.ingredients[index].displayNameWithSize} => ${nbpc} = ${rec.ingredients[index].quantity} / ${rec.products[0].quantity} * ${nombre} `)
 
-                    module.exports.recetteSearch(rec.ingredients[index].displayNameWithSize, nbpc, list, objRecipesTalented)
+                    module.exports.recetteSearch(recingre.displayNameWithSize, nbpc, list, objRecipesTalented)
                 }
             }
         }
@@ -127,9 +115,7 @@ module.exports = {
         return list;
     },
     loadTalent: async function (profil, objdatarecipes, objdataschematics) {
-        const talents = `./data/profils/${profil}.json`;
-
-        var rawdatatalents;
+        let rawdatatalents;
         try {
             rawdatatalents = fs.readFileSync(`./data/profils/${profil}.json`);
         } catch (err) {
@@ -141,24 +127,22 @@ module.exports = {
         }
         const objdatatalents = JSON.parse(rawdatatalents);
 
-        for (let index = 0; index < objdatatalents.TalentList.length; index++) {
+        for (const talentList of objdatatalents.TalentList) {
             //console.log(objdatatalents.TalentList[index].AffectedRecipe)
-            for (let index2 = 0; index2 < objdatatalents.TalentList[index].AffectedRecipe.length; index2++) {
+            for (const affectedRecipe of talentList.AffectedRecipe) {
                 //console.log(objdatatalents.TalentList[index].AffectedRecipe[index2])
-                var rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === objdatatalents.TalentList[index].AffectedRecipe[index2]);
-                var recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === objdatatalents.TalentList[index].AffectedRecipe[index2]);
+                let rec = objdatarecipes.find(re => re.products[0].displayNameWithSize === affectedRecipe);
+                let recIndex = objdatarecipes.findIndex(re => re.products[0].displayNameWithSize === affectedRecipe);
                 //console.log(rec.products[0].displayNameWithSize)
 
-                switch (objdatatalents.TalentList[index].categorie) {
+                switch (talentList.categorie) {
                     case "Ore Refining":
                     case "Product Refining":
                     case "Fuel Refining":
                     case "Scrap Refinery":
                     case "Honeycomb Refining":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].ingredients.length; index3++) {
-                            //console.log("avant : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
-                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount));
-                            //console.log("après : " + rec.ingredients[index3].displayNameWithSize + " " + rec.ingredients[index3].quantity);
+                            rec.ingredients[index3].quantity = rec.ingredients[index3].quantity - (rec.ingredients[index3].quantity * (talentList.lvl * talentList.amount));
                         }
                         break;
                     case "Pure Productivity":
@@ -166,18 +150,14 @@ module.exports = {
                     case "Fuel Productivity":
                     case "Honeycomb Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
-                            //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount));
-                            //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            rec.products[index3].quantity = rec.products[index3].quantity + (rec.products[index3].quantity * (talentList.lvl * talentList.amount));
                         }
                         break;
                     case "Intermediary Part":
                     case "Ammo Productivity":
                     case "Scrap Productivity":
                         for (let index3 = 0; index3 < objdatarecipes[recIndex].products.length; index3++) {
-                            //console.log("avant : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
-                            rec.products[index3].quantity = rec.products[index3].quantity + (objdatatalents.TalentList[index].lvl * objdatatalents.TalentList[index].amount);
-                            //console.log("après : " + rec.products[index3].displayNameWithSize + " " + rec.products[index3].quantity);
+                            rec.products[index3].quantity = rec.products[index3].quantity + (talentList.lvl * talentList.amount);
                         }
                         break;
                     case "Schematics Cost":
@@ -191,51 +171,51 @@ module.exports = {
             }
         }
 
-        var schemaCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Cost Optimization");
-        var schemaAdvCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Cost Optimization");
-        var schemaProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Output Productivity");
-        var schemaAdvProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Output Productivity");
+        let schemaCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Cost Optimization");
+        let schemaAdvCostIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Cost Optimization");
+        let schemaProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Schematic Output Productivity");
+        let schemaAdvProdIndex = objdatatalents.TalentList.findIndex(re => re.Name === "Advanced Schematic Output Productivity");
 
-        for (let index3 = 0; index3 < objdataschematics.length; index3++) {
-            objdataschematics[index3].UnitPrice = Math.round(objdataschematics[index3].UnitPrice - (objdataschematics[index3].UnitPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
-            objdataschematics[index3].BatchPrice = Math.round(objdataschematics[index3].BatchPrice - (objdataschematics[index3].BatchPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
-            objdataschematics[index3].BatchQuantity = Math.round(objdataschematics[index3].BatchQuantity + (objdataschematics[index3].BatchQuantity * ((objdatatalents.TalentList[schemaProdIndex].lvl * objdatatalents.TalentList[schemaProdIndex].amount) + (objdatatalents.TalentList[schemaAdvProdIndex].lvl * objdatatalents.TalentList[schemaAdvProdIndex].amount))));
+        for (const schematics of objdataschematics) {
+            schematics.UnitPrice = Math.round(schematics.UnitPrice - (schematics.UnitPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
+            schematics.BatchPrice = Math.round(schematics.BatchPrice - (schematics.BatchPrice * ((objdatatalents.TalentList[schemaCostIndex].lvl * objdatatalents.TalentList[schemaCostIndex].amount) + (objdatatalents.TalentList[schemaAdvCostIndex].lvl * objdatatalents.TalentList[schemaAdvCostIndex].amount))));
+            schematics.BatchQuantity = Math.round(schematics.BatchQuantity + (schematics.BatchQuantity * ((objdatatalents.TalentList[schemaProdIndex].lvl * objdatatalents.TalentList[schemaProdIndex].amount) + (objdatatalents.TalentList[schemaAdvProdIndex].lvl * objdatatalents.TalentList[schemaAdvProdIndex].amount))));
         }
-        var objRecipesTalented = objdatarecipes;
-        var objSchematicTalented = objdataschematics;
+        let objRecipesTalented = objdatarecipes;
+        let objSchematicTalented = objdataschematics;
         return { objRecipesTalented, objSchematicTalented };
 
     },
 
     searchHoney: async function () { //temporaire pour chercher tous les items d'honeycomb existant pour les ajouter au talents
-        var listItems1PureIron = [];
-        var listItems1PureCarbon = [];
-        var listItems1PureAluminium = [];
-        var listItems1PureSilicon = [];
-        var listItems1Product = [];
-        var listItems2Pure = [];
-        var listItems2Product = [];
-        var listItems3Pure = [];
-        var listItems3Product = [];
-        var listItems4Pure = [];
-        var listItems4Product = [];
-        var listItems5Pure = [];
-        var listItems5Product = [];
+        let listItems1PureIron = [];
+        let listItems1PureCarbon = [];
+        let listItems1PureAluminium = [];
+        let listItems1PureSilicon = [];
+        let listItems1Product = [];
+        let listItems2Pure = [];
+        let listItems2Product = [];
+        let listItems3Pure = [];
+        let listItems3Product = [];
+        let listItems4Pure = [];
+        let listItems4Product = [];
+        let listItems5Pure = [];
+        let listItems5Product = [];
         const rawdataitems = fs.readFileSync(items);
         const objdataitems = JSON.parse(rawdataitems);
-        var T1PureIron = objdataitems.filter(re => re.displayNameWithSize.includes("Iron"));
-        var T1PureCarbon = objdataitems.filter(re => re.displayNameWithSize.includes("Carbon"));
-        var T1PureAluminium = objdataitems.filter(re => re.displayNameWithSize.includes("Aluminium"));
-        var T1PureSilicon = objdataitems.filter(re => re.displayNameWithSize.includes("Silicon"));
-        var T1Product = objdataitems.find(re => re.displayNameWithSize === "Tier 1 Product Honeycomb Schematic Copy");
-        var T2Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Pure Honeycomb Schematic Copy");
-        var T2Product = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Product Honeycomb Schematic Copy");
-        var T3Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Pure Honeycomb Schematic Copy");
-        var T3Product = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Product Honeycomb Schematic Copy");
-        var T4Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Pure Honeycomb Schematic Copy");
-        var T4Product = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Product Honeycomb Schematic Copy");
-        var T5Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Pure Honeycomb Schematic Copy");
-        var T5Product = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Product Honeycomb Schematic Copy");
+        let T1PureIron = objdataitems.filter(re => re.displayNameWithSize.includes("Iron"));
+        let T1PureCarbon = objdataitems.filter(re => re.displayNameWithSize.includes("Carbon"));
+        let T1PureAluminium = objdataitems.filter(re => re.displayNameWithSize.includes("Aluminium"));
+        let T1PureSilicon = objdataitems.filter(re => re.displayNameWithSize.includes("Silicon"));
+        let T1Product = objdataitems.find(re => re.displayNameWithSize === "Tier 1 Product Honeycomb Schematic Copy");
+        let T2Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Pure Honeycomb Schematic Copy");
+        let T2Product = objdataitems.find(re => re.displayNameWithSize === "Tier 2 Product Honeycomb Schematic Copy");
+        let T3Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Pure Honeycomb Schematic Copy");
+        let T3Product = objdataitems.find(re => re.displayNameWithSize === "Tier 3 Product Honeycomb Schematic Copy");
+        let T4Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Pure Honeycomb Schematic Copy");
+        let T4Product = objdataitems.find(re => re.displayNameWithSize === "Tier 4 Product Honeycomb Schematic Copy");
+        let T5Pure = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Pure Honeycomb Schematic Copy");
+        let T5Product = objdataitems.find(re => re.displayNameWithSize === "Tier 5 Product Honeycomb Schematic Copy");
 
         for (let index = 0; index < T1PureIron.length; index++) {
             listItems1PureIron[index] = T1PureIron[index].displayNameWithSize;

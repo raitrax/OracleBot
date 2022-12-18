@@ -42,30 +42,31 @@ module.exports = {
         const prix = interaction.options.getInteger('prix');
 
         try {
-            rawdataoreprice = fs.readFileSync(`./data/oreprice.json`);
+            const rawdataoreprice = fs.readFileSync(`./data/oreprice.json`);
+            const objdataoreprice = JSON.parse(rawdataoreprice);
+            let orepriceIndex = objdataoreprice.findIndex(ta => ta.Name === ore);
+            let oldPrice = objdataoreprice[orepriceIndex].Price;
+            objdataoreprice[orepriceIndex].Price = prix;
+    
+            fs.writeFileSync(`./data/oreprice.json`, JSON.stringify(objdataoreprice));
+    
+    
+            let ServiceEmbed = new EmbedBuilder()
+                .setColor("0xFFA500")
+                .setTitle(`Modification du prix du minerais : ${ore}`)
+                //.setAuthor({ name: 'Raitrax' })
+                .setTimestamp()
+                .addFields(
+                    //{ name: 'Elements', value: txtElements, inline: true },
+                    { name: 'Ancien prix : ', value: `${oldPrice}h`, inline: true },
+                    { name: 'Nouveau prix : ', value: `${prix}h`, inline: true },
+                )
+                .setFooter({ text: 'Made by Raitrax' });
+    
+            return interaction.reply({ embeds: [ServiceEmbed], ephemeral: true });
         } catch (err) {
             return interaction.reply("Fichier prix absent");
         }
-        const objdataoreprice = JSON.parse(rawdataoreprice);
-        var orepriceIndex = objdataoreprice.findIndex(ta => ta.Name === ore);
-        var oldPrice = objdataoreprice[orepriceIndex].Price;
-        objdataoreprice[orepriceIndex].Price = prix;
-
-        fs.writeFileSync(`./data/oreprice.json`, JSON.stringify(objdataoreprice));
-
-
-        ServiceEmbed = new EmbedBuilder()
-            .setColor("0xFFA500")
-            .setTitle(`Modification du prix du minerais : ${ore}`)
-            //.setAuthor({ name: 'Raitrax' })
-            .setTimestamp()
-            .addFields(
-                //{ name: 'Elements', value: txtElements, inline: true },
-                { name: 'Ancien prix : ', value: `${oldPrice}h`, inline: true },
-                { name: 'Nouveau prix : ', value: `${prix}h`, inline: true },
-            )
-            .setFooter({ text: 'Made by Raitrax' });
-
-        return interaction.reply({ embeds: [ServiceEmbed], ephemeral: true });
+        
     },
 };
