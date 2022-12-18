@@ -20,12 +20,6 @@ for (const file of commandFiles) {
 
 client.once('ready', async () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
-	//var list = [];
-	//functions.recetteSearch("Adjustor l", 1, list);
-	//await functions.loadTalent("lvl5");
-	//await functions.searchHoney();
-
-
 });
 
 client.on('interactionCreate', async interaction => {
@@ -33,20 +27,20 @@ client.on('interactionCreate', async interaction => {
 		if (interaction.commandName === 'recette') {
 			const focusedOption = interaction.options.getFocused(true);
 			if (focusedOption.name == "input") {
-				var size = 25;
+				let size = 25;
 
-				var listItems = [];
+				let listItems = [];
 
 				fs.readFile(items, 'utf8', async function readFileCallback(err, dataitems) {
 					if (err) {
 						console.log("erreur catch1 items" + err);
 					} else {
-						objdataitems = JSON.parse(dataitems); //now it's an object
+						const objdataitems = JSON.parse(dataitems); //now it's an object
 						for (let index = 0; index < objdataitems.length; index++) {
 							listItems[index] = objdataitems[index].displayNameWithSize;
 						}
 						const filtered = listItems.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
-						var itemList = filtered.slice(0, size)
+						let itemList = filtered.slice(0, size)
 
 						await interaction.respond(
 							itemList.map(choice => ({ name: choice, value: choice })),
@@ -57,16 +51,10 @@ client.on('interactionCreate', async interaction => {
 			if (focusedOption.name == "profil") {
 				const profils = [];
 				const profilsPath = path.join(__dirname, 'data/profils');
-				var profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
+				let profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
 				for (let index = 0; index < profilsFiles.length; index++) {
 					profilsFiles[index] = profilsFiles[index].substring(0, profilsFiles[index].length - 5);
 				}
-
-				//console.log(profilsFiles);
-
-
-				//choices = ['lvl0', 'lvl5', 'Syth', 'Snow', 'Donny'];
-
 				const filtered = profilsFiles.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
 				await interaction.respond(
 					filtered.map(choice => ({ name: choice, value: choice })),
@@ -75,17 +63,11 @@ client.on('interactionCreate', async interaction => {
 		}
 		if (interaction.commandName === 'profil') {
 			const focusedValue = interaction.options.getFocused();
-			const profils = [];
 			const profilsPath = path.join(__dirname, 'data/profils');
-			var profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
+			let profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
 			for (let index = 0; index < profilsFiles.length; index++) {
 				profilsFiles[index] = profilsFiles[index].substring(0, profilsFiles[index].length - 5);
 			}
-
-			//console.log(profilsFiles);
-
-
-			//choices = ['lvl0', 'lvl5', 'Syth', 'Snow', 'Donny'];
 
 			const filtered = profilsFiles.filter(choice => choice.toLowerCase().includes(focusedValue.toLowerCase()));
 			await interaction.respond(
@@ -93,8 +75,8 @@ client.on('interactionCreate', async interaction => {
 			);
 		}
 		if (interaction.commandName === 'modifprofil') {
-			var size = 25;
-			var listItems = [];
+			let size = 25;
+			let listItems = [];
 			const focusedOption = interaction.options.getFocused(true);
 			if (focusedOption.name == "talent") {
 				const talent = './data/profils/lvl0.json';
@@ -105,7 +87,7 @@ client.on('interactionCreate', async interaction => {
 				}
 				const filtered = listItems.filter(choice => choice.toLowerCase().includes(focusedOption.value.toLowerCase()));
 
-				var itemList = filtered.slice(0, size)
+				let itemList = filtered.slice(0, size)
 
 				await interaction.respond(
 					itemList.map(choice => ({ name: choice, value: choice })),
@@ -114,7 +96,7 @@ client.on('interactionCreate', async interaction => {
 			if (focusedOption.name == "profil") {
 				const profils = [];
 				const profilsPath = path.join(__dirname, 'data/profils');
-				var profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
+				let profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
 				for (let index = 0; index < profilsFiles.length; index++) {
 					profilsFiles[index] = profilsFiles[index].substring(0, profilsFiles[index].length - 5);
 				}
