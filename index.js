@@ -49,7 +49,6 @@ client.on('interactionCreate', async interaction => {
 				});
 			}
 			if (focusedOption.name == "profil") {
-				const profils = [];
 				const profilsPath = path.join(__dirname, 'data/profils');
 				let profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
 				for (let index = 0; index < profilsFiles.length; index++) {
@@ -94,7 +93,6 @@ client.on('interactionCreate', async interaction => {
 				);
 			}
 			if (focusedOption.name == "profil") {
-				const profils = [];
 				const profilsPath = path.join(__dirname, 'data/profils');
 				let profilsFiles = fs.readdirSync(profilsPath).filter(profil => profil.endsWith('.json'));
 				for (let index = 0; index < profilsFiles.length; index++) {
