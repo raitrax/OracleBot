@@ -5,6 +5,7 @@
     "discord-api-types": "^0.27.2",
     "discord.js": "^14.3.0",
     "node-gyp": "^8.4.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "undici": "^5.16.0"
   }
 }
