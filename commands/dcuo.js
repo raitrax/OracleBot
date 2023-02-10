@@ -30,16 +30,19 @@ module.exports = {
         const { guild_roster_list } = await guidRosterResult.body.json();
         if (!guild_roster_list.length) {
             ligueName = "Aucun";
+        } else {
+            const [answer2] = guild_roster_list;
+            const guidListResult = await request(`https://census.daybreakgames.com/s:raitrax/get/dcuo/guild?guild_id=${answer2.guild_id}`);
+            const { guild_list } = await guidListResult.body.json();
+            if (!guild_list.length) {
+                ligueName = "Aucun";
+            }
+            else {
+                const [answer3] = guild_list;
+                ligueName = answer3.name;
+            }
         }
-        const [answer2] = guild_roster_list;
 
-        const guidListResult = await request(`https://census.daybreakgames.com/s:raitrax/get/dcuo/guild?guild_id=${answer2.guild_id}`);
-        const { guild_list } = await guidListResult.body.json();
-        if (!guild_list.length) {
-            ligueName = "Aucun";
-        }
-        const [answer3] = guild_list;
-        ligueName = answer3.name;
 
         let Resistance = `Santé : ${answer.max_health}\nPouvoir : ${answer.max_power}\nDéfense : ${answer.defense}\nEndurance : ${answer.toughness}`;
         let Action = `Puissance : ${answer.might}\nPrécision : ${answer.precision}\nVitalisation : ${answer.vitalization}\nRestauration : ${answer.restoration}\nDominance : ${answer.dominance}`;
@@ -52,10 +55,10 @@ module.exports = {
             case '3314':
                 deplacement = "Super vitesse";
                 break;
-            case '3315':
+            case '3527':
                 deplacement = "Planeur";
                 break;
-            case '3316':
+            case '3317':
                 deplacement = "Surf";
                 break;
             default:
@@ -67,6 +70,51 @@ module.exports = {
         switch (answer.power_type_id) {
             case '1810455':
                 pouvoir = "Quantum";
+                break;
+            case '7019':
+                pouvoir = "Mental";
+                break;
+            case '00000':
+                pouvoir = "Feu";
+                break;
+            case '0000':
+                pouvoir = "Glace";
+                break;
+            case '175798':
+                pouvoir = "Gadget";
+                break;
+            case '000':
+                pouvoir = "Lantern Vert";
+                break;
+            case '00':
+                pouvoir = "Lantern Jaune";
+                break;
+            case '0':
+                pouvoir = "Rage";
+                break;
+            case '1':
+                pouvoir = "Munition";
+                break;
+            case '2325':
+                pouvoir = "Electrique";
+                break;
+            case '2':
+                pouvoir = "Nature";
+                break;
+            case '3':
+                pouvoir = "Atomic";
+                break;
+            case '4':
+                pouvoir = "Celeste";
+                break;
+            case '5':
+                pouvoir = "Sorcier";
+                break;
+            case '6':
+                pouvoir = "Eau";
+                break;
+            case '3316':
+                pouvoir = "Terre";
                 break;
             default:
                 pouvoir = "Non trouvé";
