@@ -1,8 +1,8 @@
 const fs = require('fs');
 const { Client, Collection, GatewayIntentBits, DiscordAPIError, InteractionType } = require('discord.js');
-const { token } = require('./config.json');
+const { token, autoRoleId, log_channel_id } = require('./config.json');
 const path = require('path');
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildPresences] });
 const functions = require('./functions');
 const deploy = require("./deploy-commands");
 const commands = [];
@@ -20,6 +20,20 @@ for (const file of commandFiles) {
 
 client.once('ready', async () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
+});
+
+client.on('guildMemberAdd', async memberAdd => {
+	const logchannel = memberAdd.guild.channels.cache.get(log_channel_id);
+	console.log(`ajout de ${memberAdd} sur le serveur`);
+	memberAdd.roles.add(autoRoleId).then(console.log(`ajout du role membre pour ${memberAdd}`));
+	await logchannel.send({ content: `ajout de ${memberAdd} sur le serveur`, ephemeral: false });
+
+});
+client.on('guildMemberRemove', async memberRemove => {
+	const logchannel = memberRemove.guild.channels.cache.get(log_channel_id);
+	console.log(`Retrait de ${memberRemove} sur le serveur`);
+	await logchannel.send({ content: `Retrait de ${memberRemove} sur le serveur`, ephemeral: false });
+
 });
 
 client.on('interactionCreate', async interaction => {
