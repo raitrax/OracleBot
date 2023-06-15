@@ -30,6 +30,8 @@ client.on('guildMemberAdd', async memberAdd => {
 
 });
 client.on('guildMemberRemove', async memberRemove => {
+	const logchannel = memberAdd.guild.channels.cache.get(log_channel_id);
+	console.log(`ajout de ${memberAdd} sur le serveur`);
 	await logchannel.send({ content: `Retrait de ${memberRemove} sur le serveur`, ephemeral: false });
 });
 
