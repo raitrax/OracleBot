@@ -21,7 +21,7 @@ for (const file of commandFiles) {
 client.once('ready', async () => {
 	console.log(`Ready! Logged in as ${client.user.tag}`);
 });
-
+/*** 
 client.on('guildMemberAdd', async memberAdd => {
 	const logchannel = memberAdd.guild.channels.cache.get(log_channel_id);
 	console.log(`ajout de ${memberAdd} sur le serveur`);
@@ -34,7 +34,7 @@ client.on('guildMemberRemove', async memberRemove => {
 	console.log(`ajout de ${memberAdd} sur le serveur`);
 	await logchannel.send({ content: `Retrait de ${memberRemove} sur le serveur`, ephemeral: false });
 });
-
+*/
 client.on('interactionCreate', async interaction => {
 	if (interaction.isAutocomplete()) {
 		if (interaction.commandName === 'recette') {
