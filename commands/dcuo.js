@@ -121,7 +121,7 @@ module.exports = {
                 break;
         }
         const embed = new EmbedBuilder()
-            .setColor(0xEFFF00)
+            .setColor('#EFFF00')
             .setTitle(answer.name)
             .addFields(
                 { name: 'CR', value: answer.combat_rating, inline: true },
