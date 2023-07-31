@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, UserSelectMenuBuilder, RoleSelectMenuBuilder, MentionableSelectMenuBuilder, ChannelSelectMenuBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, SlashCommandBuilder } = require('discord.js');
 
 const leagues = require("./models/leagues");
+const { ownersID, colorGreen } = require('./config.json');
 
 module.exports = {
 
@@ -25,7 +26,7 @@ module.exports = {
             .setTitle(`Bienvenue sur le serveur Oracle!\nWelcome in Oracle's server!`)
             .setDescription(`Veuillez choisir votre role et votre ligue!\nChoose your role and your league!`)//.setAuthor({ name: 'Oracle' })
             //.setTimestamp()
-            //.setFooter({ text: 'Oracle' })
+            .setFooter({ text: `Si votre ligue n'est pas renseignée, veuillez contacter Cyborg de la JLA` })
             ;
 
         const row = new ActionRowBuilder()
@@ -51,9 +52,10 @@ module.exports = {
         const leagueSelection = await leagues.findAll();
 
         const menu = new StringSelectMenuBuilder()
-            .setCustomId('select')
+            .setCustomId('selectLeague')
             .setPlaceholder('Choisissez votre ligue/Choose your League')
             .addOptions(leagueSelection.map(league => { return { label: league.name, value: league.roleId } }))
+            .setMaxValues(1)
         const row1 = new ActionRowBuilder()
             .addComponents(menu);
         await channel.send({ embeds: [ServiceEmbed], components: [row, row1] });

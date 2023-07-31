@@ -175,6 +175,42 @@ client.on(Events.InteractionCreate, async interaction => {
 			);
 		}
 	}
+	if (interaction.isStringSelectMenu()) {
+		let member = interaction.member;
+		await interaction.deferReply({ ephemeral: true }).catch((e) => console.log(e));
+		switch (interaction.customId) {
+			case "selectLeague":
+				let leagueChoose = "";
+				interaction.values.forEach(async (value) => {
+					leagueChoose += `${value}`;
+				})
+				if (member.roles.cache.has(leagueChoose)) {
+					await member.roles.remove(leagueChoose);
+					let RetraitEmbed = new EmbedBuilder()
+						.setColor(colorGreen)
+						.setAuthor({ name: `Oracle` })
+						.setDescription(`Retrait du rôle <@&${leagueChoose}>`)
+
+					await interaction.editReply({ embeds: [RetraitEmbed], ephemeral: true });
+				} else {
+					await member.roles.add(leagueChoose);
+					let AjoutEmbed = new EmbedBuilder()
+						.setColor(colorGreen)
+						.setAuthor({ name: `Oracle` })
+						.setDescription(`Ajout du rôle <@&${leagueChoose}>`)
+
+					await interaction.editReply({ embeds: [AjoutEmbed], ephemeral: true });
+				}
+				await interaction.editReply({ content: `Vous vous êtes attribué le rôle de la ligue : <@&${leagueChoose}>`, ephemeral: true });
+
+				break;
+			case "selection":
+				break;
+			default:
+				await interaction.editReply({ content: `Vous n'avez pas d'actions assigner à ce menu de selection`, ephemeral: true });
+				break;
+		}
+	}
 
 	if (!interaction.isChatInputCommand()) return;
 
