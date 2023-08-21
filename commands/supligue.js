@@ -19,8 +19,7 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply({ ephemeral: true });
 		let member = interaction.guild.members.cache.get(interaction.user.id)
-		if (member.roles.cache.has(adminID) || member.roles.cache.has(adminID)) {
-			//const Member = interaction.options.getMember('tag');
+		if (member.roles.cache.has(adminID)) {
 			const nom = interaction.options.getString('nom');
 
 			const LeaguesList = await leagues.findOne({ where: { name: nom } });

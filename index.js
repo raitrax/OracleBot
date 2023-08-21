@@ -14,6 +14,9 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 
 const db = require('./database/database');
 const leagues = require('./models/leagues');
+const allies = require('./models/allies');
+const artefacts = require('./models/artefacts');
+const prixsources = require('./models/prixsources');
 
 
 for (const file of commandFiles) {
@@ -25,12 +28,18 @@ for (const file of commandFiles) {
 
 client.once(Events.ClientReady, async () => {
 	db.authenticate().then(() => {
-		console.log("Logged in to DB.");
 		leagues.init(db);
+		allies.init(db);
+		artefacts.init(db);
+		prixsources.init(db);
 		leagues.sync();
+		allies.sync();
+		artefacts.sync();
+		prixsources.sync();
+		console.log("Logged in to DB.");
+
 	}).catch(err => console.log(err));
-	await functions.service(client.channels.cache.get(presentationID));
-	console.log(`Ready! Logged in as ${client.user.tag}`);
+	//await functions.service(client.channels.cache.get(presentationID));
 });
 
 client.on('messageCreate', async message => {
