@@ -2,5 +2,4 @@ node_modules/
 .env
 storage.sqlite
 settings.sqlite
-config.json
 .DS_Store
