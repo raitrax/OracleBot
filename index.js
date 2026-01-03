@@ -1,6 +1,18 @@
 require('dotenv').config();
 const fs = require('fs');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+
+// Validation des variables d'environnement
+if (!process.env.TOKEN) {
+	console.error('❌ Erreur : TOKEN manquant dans le fichier .env');
+	process.exit(1);
+}
+
+if (!process.env.CLIENT_ID) {
+	console.error('❌ Erreur : CLIENT_ID manquant dans le fichier .env');
+	process.exit(1);
+}
+
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds]
 });
@@ -17,8 +29,8 @@ for (const file of commandFiles) {
 }
 
 client.once(Events.ClientReady, async () => {
-	//client.user.setPresence({ status: "invisible" })
-	console.log(`Bot connecté en tant que ${client.user.tag}`);
+	console.log(`✅ Bot connecté en tant que ${client.user.tag}`);
+	console.log(`📊 ${client.guilds.cache.size} serveur(s) | ${client.commands.size} commande(s)`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -28,12 +40,27 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (!command) return;
 
 	try {
-		console.log(`commande exécuté : ${interaction.commandName} par : ${interaction.member.user}`);
+		console.log(`⚡ Commande exécutée : /${interaction.commandName} par ${interaction.user.tag}`);
 		await command.execute(interaction);
 	} catch (error) {
 		console.error(error);
-		return interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+		const errorMessage = { content: 'Une erreur est survenue lors de l\'exécution de cette commande !', ephemeral: true };
+		if (interaction.deferred || interaction.replied) {
+			return interaction.followUp(errorMessage);
+		} else {
+			return interaction.reply(errorMessage);
+		}
 	}
+});
+
+// Gestion des erreurs non capturées
+process.on('unhandledRejection', (error) => {
+	console.error('❌ Erreur non gérée :', error);
+});
+
+process.on('uncaughtException', (error) => {
+	console.error('❌ Exception non capturée :', error);
+	process.exit(1);
 });
 
 client.login(process.env.TOKEN);
