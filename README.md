@@ -94,7 +94,7 @@ npm run deploy
 ```
 OracleBot/
 ├── commands/          # Commandes slash
-│   └── ping.js
+│   └── ping.js       # Commande de test
 ├── .env              # Variables d'environnement (ne pas commit)
 ├── .env.example      # Template des variables
 ├── deploy-commands.js # Script de déploiement
