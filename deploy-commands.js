@@ -3,6 +3,13 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { REST, Routes } = require('discord.js');
 
+for (const key of ['TOKEN', 'CLIENT_ID', 'GUILD_ID']) {
+	if (!process.env[key]) {
+		console.error(`❌ Erreur : ${key} manquant dans le fichier .env`);
+		process.exit(1);
+	}
+}
+
 const commands = [];
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));

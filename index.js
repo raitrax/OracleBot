@@ -13,6 +13,11 @@ if (!process.env.CLIENT_ID) {
 	process.exit(1);
 }
 
+if (!process.env.GUILD_ID) {
+	console.error('❌ Erreur : GUILD_ID manquant dans le fichier .env');
+	process.exit(1);
+}
+
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds]
 });

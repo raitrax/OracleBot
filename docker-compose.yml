@@ -1,0 +1,9 @@
+services:
+  oraclebot:
+    build: .
+    container_name: oraclebot
+    restart: unless-stopped
+    environment:
+      TOKEN: ${TOKEN}
+      CLIENT_ID: ${CLIENT_ID}
+      GUILD_ID: ${GUILD_ID}

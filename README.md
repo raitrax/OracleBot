@@ -45,7 +45,7 @@ Avant de démarrer le bot, déployez les commandes slash sur Discord :
 npm run deploy
 ```
 
-Les commandes seront disponibles globalement après ~1 heure.
+Les commandes sont déployées sur le serveur défini par `GUILD_ID` et sont disponibles **immédiatement**.
 
 ## 🏃 Démarrage
 

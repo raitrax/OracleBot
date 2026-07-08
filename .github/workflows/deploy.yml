@@ -1,0 +1,45 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          envs: TOKEN,CLIENT_ID,GUILD_ID
+          script: |
+            set -e
+            REPO="https://github.com/raitrax/OracleBot.git"
+            DIR="${{ secrets.VPS_PATH }}"
+
+            # Première fois : clone ; sinon : mise à jour
+            if [ ! -d "$DIR/.git" ]; then
+              git clone "$REPO" "$DIR"
+            fi
+            cd "$DIR"
+            git fetch --all
+            git reset --hard origin/master
+
+            export TOKEN CLIENT_ID GUILD_ID
+
+            # (Re)build + (re)démarrage du bot
+            docker compose up -d --build
+
+            # Synchronise les commandes slash sur le serveur Discord
+            docker compose run --rm oraclebot node deploy-commands.js
+
+            docker image prune -f
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          GUILD_ID: ${{ secrets.GUILD_ID }}
