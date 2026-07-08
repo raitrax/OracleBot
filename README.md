@@ -61,9 +61,59 @@ npm run dev
 
 ## 📚 Commandes disponibles
 
-| Commande | Description |
-|----------|-------------|
-| `/ping` | Affiche la latence du bot et les statistiques |
+| Commande | Description | Accès |
+|----------|-------------|-------|
+| `/ping` | Affiche la latence du bot et les statistiques | Tous |
+| `/rolepanel` | Publie le panneau d'auto-rôles dans le salon courant | Gérer le serveur |
+| `/ticketpanel` | Publie le panneau d'ouverture de tickets | Gérer le serveur |
+
+## ✨ Fonctionnalités
+
+- **Message de bienvenue** + **auto-rôle** à l'arrivée d'un membre.
+- **Auto-rôles** : panneau à boutons, un clic ajoute/retire un rôle.
+- **Tickets** : panneau à bouton → crée un salon privé (membre + staff), fermable par bouton.
+
+### 🔗 Inviter le bot avec les bonnes permissions
+
+Le bot a besoin de **Gérer les rôles**, **Gérer les salons**, Voir/Envoyer les messages, Lire l'historique et Intégrer des liens :
+
+```
+https://discord.com/api/oauth2/authorize?client_id=VOTRE_CLIENT_ID&permissions=268520464&scope=bot%20applications.commands
+```
+
+> ⚠️ Pour les auto-rôles, **le rôle du bot doit être placé au-dessus** des rôles qu'il distribue (Paramètres du serveur → Rôles).
+
+### ⚙️ Configuration (`config.json`)
+
+Toute la config (non secrète) se fait dans `config.json`, puis **commit + push** (le déploiement s'applique tout seul) :
+
+```json
+{
+  "welcome": {
+    "channelId": "ID_DU_SALON",        // vide = bienvenue désactivée
+    "message": "Bienvenue {user} sur **{server}** ! Membre #{count} 🎉",
+    "autoRoleId": "ID_DU_ROLE"          // optionnel, rôle donné à l'arrivée
+  },
+  "roles": {
+    "title": "🎭 Choisis tes rôles",
+    "items": [
+      { "roleId": "ID_ROLE", "label": "Annonces", "emoji": "📢" }
+    ]
+  },
+  "tickets": {
+    "categoryId": "ID_CATEGORIE",       // optionnel : catégorie où créer les tickets
+    "supportRoleId": "ID_ROLE_STAFF"    // optionnel : rôle qui voit les tickets
+  }
+}
+```
+
+Variables dispo dans `welcome.message` : `{user}`, `{server}`, `{count}`.
+
+> 💡 **Message de bienvenue** : active l'intent privilégié **Server Members Intent** dans le
+> [Developer Portal](https://discord.com/developers/applications) → Bot → *Privileged Gateway Intents*.
+> Le bot ne réclame cet intent que si `welcome.channelId` est renseigné (sinon il démarre sans, aucun risque de crash).
+
+**Pour récupérer un ID** : active le *Mode développeur* dans Discord (Paramètres → Avancés), puis clic droit sur un salon/rôle/catégorie → *Copier l'identifiant*.
 
 ## 🛠️ Ajouter une nouvelle commande
 

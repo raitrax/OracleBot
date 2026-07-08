@@ -1,0 +1,22 @@
+{
+  "welcome": {
+    "channelId": "",
+    "message": "Bienvenue {user} sur **{server}** ! Tu es le membre #{count} 🎉",
+    "autoRoleId": ""
+  },
+  "roles": {
+    "title": "🎭 Choisis tes rôles",
+    "description": "Clique sur un bouton pour obtenir ou retirer un rôle.",
+    "items": [
+      { "roleId": "", "label": "Annonces", "emoji": "📢" },
+      { "roleId": "", "label": "Events", "emoji": "🎉" }
+    ]
+  },
+  "tickets": {
+    "categoryId": "",
+    "supportRoleId": "",
+    "title": "🎫 Support",
+    "description": "Un souci, une question, une candidature ? Ouvre un ticket, le staff te répondra.",
+    "buttonLabel": "Ouvrir un ticket"
+  }
+}
